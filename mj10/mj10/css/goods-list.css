@@ -434,8 +434,10 @@
 
 @media (max-width: 760px) {
   .content .location_wrap + .goods_list_item .goods_pick_list {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 10px;
   }
 
   .content .location_wrap + .goods_list_item .goods_pick_list form {
@@ -456,6 +458,7 @@
   .content .location_wrap + .goods_list_item .goods_pick_list .choice_num_view,
   .content .goods_list_item .goods_pick_list .choice_num_view {
     flex: 0 0 calc(50% - 6px);
+    white-space: nowrap;
   }
 
   .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list,
