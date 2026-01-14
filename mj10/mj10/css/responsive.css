@@ -334,6 +334,9 @@
   .mj10-goods-view .item_goods_sec{
     margin:0;
   }
+  .mj10-goods-view .btn_choice_box button{
+    height:36px;
+  }
   .mj10-goods-view .item_photo_big{
     height:auto;
   }

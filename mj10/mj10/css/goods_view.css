@@ -205,7 +205,7 @@
   align-items:center;
   justify-content:center;
   height:50px;
-  border-radius:15px;
+  border-radius:5px;
   font-size:18px;
   font-weight:500;
   transition:color .25s ease, background-size .35s ease;
