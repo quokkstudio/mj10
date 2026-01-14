@@ -794,6 +794,9 @@
   padding:0;
   background:#ffffff;
 }
+.mj10-join-v2 .file_upload_sec .btn_upload_box{
+  padding:0;
+}
 .mj10-join-v2 .loading_place_upload{
   display:block;
   height:auto;

@@ -236,7 +236,7 @@
 .join_type_box .type_select_sec ul{text-align:center;}
 .join_type_box .type_select_sec li{display:inline-block; padding: 0 13px;}
 .join_type_box{display:none;}
-.loading_place_upload__row{display:flex; align-items:flex-start; gap:18px; margin:20px 0;}
+.loading_place_upload__row{display:flex; align-items:flex-start; gap:18px; margin:10px 0;}
 .loading_place_upload__controls{min-width:140px; display:flex; flex-direction:column; align-items:flex-start; gap:6px;}
 .loading_place_upload .btn_upload_box{display:flex; align-items:center; gap:12px;}
 .loading_place_upload .upload_list_count{margin-top:0; font-size:13px; color:#666; display:block;}

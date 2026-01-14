@@ -142,6 +142,16 @@
 
 		<!--{?joinField.businessinfo.use == 'y'}-->
 		var bizStep = 1;
+		var bizStepDesc = {
+			1: __('로그인 정보를 입력해주세요.'),
+			2: __('발주 및 결제 담당자 정보를 입력하세요'),
+			3: __('출입/ 적재정보')
+		};
+
+		function updateBizStepDesc(step) {
+			var text = bizStepDesc[step] || bizStepDesc[1];
+			$('.join_panel_business .mj10-join-v2__desc').text(text);
+		}
 
 		function setStepInputsEnabled(selector, enabled) {
 			var $inputs = $(selector).find('input, select, textarea');
@@ -197,6 +207,7 @@
 			setStepInputsEnabled('.js-biz-step3', bizStep >= 3);
 
 			$('.js_btn_join').toggleClass('dn', bizStep !== 3);
+			updateBizStepDesc(bizStep);
 		}
 
 		function setJoinMode(isBusiness) {
