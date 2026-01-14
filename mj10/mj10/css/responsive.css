@@ -634,7 +634,7 @@
   }
   .member_email .member_warning{
     display:flex;
-    flex-direction:column;
+    flex-wrap:nowrap;
     gap:8px;
   }
   .member_email .member_warning input[type="text"],
@@ -642,6 +642,8 @@
     width:100% !important;
     max-width:100% !important;
     box-sizing:border-box;
+    min-width:0;
+    flex:1 1 0;
   }
   .member_cont{
     padding:0;
