@@ -560,7 +560,10 @@
     display:flex;
   }
   .mj10-join-intro__btn{
-    height:50px;
+    min-height:60px;
+    padding:12px 16px;
+    line-height:1.2;
+    box-sizing:border-box;
     border:1px solid #111111;
     background:#ffffff;
     color:#111111;
