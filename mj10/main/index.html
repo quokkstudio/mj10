@@ -223,8 +223,11 @@
       (function(){
         var timer = null;
         var retryCount = 0;
+        var eventsBound = false;
+        var observer = null;
+        var MOBILE_SLIDES = 2.5;
         var applyMainGoodsSlider = function(){
-          if (!window.jQuery) return;
+          if (!window.jQuery || !window.jQuery.fn || !window.jQuery.fn.slick) return;
           var $ = window.jQuery;
           var isMobile = window.matchMedia && window.matchMedia('(max-width: 600px)').matches;
           var $sliders = $('.main_goods_cont .item_slide_horizontal .slick-slider');
@@ -250,7 +253,7 @@
               $slider.data('mj10ScrollOrigin', slick.options.slidesToScroll);
             }
             if (isMobile) {
-              $slider.slick('setOption', {slidesToShow: 2.5, slidesToScroll: 1}, true);
+              $slider.slick('setOption', {slidesToShow: MOBILE_SLIDES, slidesToScroll: 1, swipe: true, touchMove: true, draggable: true}, true);
             } else {
               var originShow = $slider.data('mj10SlidesOrigin');
               var originScroll = $slider.data('mj10ScrollOrigin');
@@ -259,7 +262,7 @@
               }
             }
           });
-          if (needsRetry && retryCount < 8) {
+          if (needsRetry && retryCount < 20) {
             retryCount += 1;
             setTimeout(applyMainGoodsSlider, 300);
           }
@@ -270,10 +273,28 @@
           timer = setTimeout(applyMainGoodsSlider, 150);
         };
 
+        var bindEvents = function(){
+          if (eventsBound || !window.jQuery) return;
+          eventsBound = true;
+          window.jQuery(document).on('init reInit', '.main_goods_cont .item_slide_horizontal .slick-slider', schedule);
+        };
+
+        var startObserver = function(){
+          if (observer || !('MutationObserver' in window) || !document.body) return;
+          observer = new MutationObserver(schedule);
+          observer.observe(document.body, {childList: true, subtree: true, attributes: true, attributeFilter: ['class']});
+        };
+
         if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', schedule);
+          document.addEventListener('DOMContentLoaded', function(){
+            schedule();
+            bindEvents();
+            startObserver();
+          });
         } else {
           schedule();
+          bindEvents();
+          startObserver();
         }
         window.addEventListener('load', schedule);
         window.addEventListener('resize', schedule);
