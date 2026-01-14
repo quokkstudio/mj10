@@ -185,11 +185,31 @@
       }
     };
 
+    const setupAccordion = () => {
+      if (!megaGrid) return;
+      const items = megaGrid.querySelectorAll(".gnb_menu0 > li, .depth0 > li");
+      items.forEach((li) => {
+        const sub = li.querySelector(":scope > .depth1");
+        if (!sub) return;
+        if (li.querySelector(".cn-acc-btn")) return;
+        li.classList.add("has-children");
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "cn-acc-btn";
+        btn.setAttribute("aria-expanded", "false");
+        btn.innerHTML = "<span class=\"cn-acc-icon\" aria-hidden=\"true\"></span>";
+        li.appendChild(btn);
+      });
+    };
+
     const setMega = (open) => {
       if (!mega || !allBtn) return;
       hydrateMega();
+      setupAccordion();
       mega.dataset.open = open ? "true" : "false";
       allBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      if (backdrop) backdrop.dataset.open = open ? "true" : "false";
+      document.body.classList.toggle("cn-menu-open", open);
       if (open) {
         syncMegaPos();
       } else {
@@ -215,6 +235,15 @@
     if (mega) {
       mega.addEventListener("mouseenter", openMega);
       mega.addEventListener("mouseleave", closeMega);
+      mega.addEventListener("click", (e) => {
+        const btn = e.target.closest(".cn-acc-btn");
+        if (!btn) return;
+        e.preventDefault();
+        const li = btn.closest("li");
+        if (!li) return;
+        const isOpen = li.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
     }
     if (mobileMenuBtn) {
       mobileMenuBtn.addEventListener("click", (e) => {

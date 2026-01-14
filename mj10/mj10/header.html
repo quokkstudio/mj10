@@ -55,9 +55,6 @@
       </div>
 
       <div class="cn-icons">
-        <button class="cn-ico cn-ico--menu" type="button" id="cnMobileMenuBtn" aria-label="전체 메뉴">
-          <span class="cn-menu-icon" aria-hidden="true"></span>
-        </button>
         <!--{ ? gd_is_login() === false }-->
         <a class="cn-ico" href="../member/login.php?returnUrl=../mypage/index.php" aria-label="마이페이지">
         <!--{ : }-->
@@ -75,6 +72,9 @@
             <path d="M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM17 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="#111"/>
           </svg>
         </a>
+        <button class="cn-ico cn-ico--menu" type="button" id="cnMobileMenuBtn" aria-label="전체 메뉴">
+          <span class="cn-menu-icon" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   </div>
@@ -107,7 +107,10 @@
   <!-- MEGA -->
   <div class="cn-mega" id="cnMega" data-open="false" aria-label="전체 카테고리 메뉴">
     <div class="cn-container">
-      <button class="cn-mega-close" type="button" id="cnMegaClose">닫기</button>
+      <div class="cn-mega-head">
+        <strong class="cn-mega-title">CATEGORY</strong>
+        <button class="cn-mega-close" type="button" id="cnMegaClose" aria-label="메뉴 닫기">X</button>
+      </div>
       <div class="cn-mega-grid" id="cnMegaGrid"></div>
     </div>
   </div>
