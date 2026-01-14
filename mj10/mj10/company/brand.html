@@ -1,131 +1,160 @@
 {*** 브랜드 소개 | mj10/company/brand.html ***}
 <style>
-  .mj10-brand{
-    background:#0b0b0b;
-    color:#ffffff;
-    padding:0 16px;
-  }
-  .mj10-brand__inner{
-    max-width:1280px;
-    margin:0 auto;
-  }
-  .mj10-brand__spacer{
-    width:100%;
-  }
-  .mj10-brand__spacer--xl{ height:132px; }
-  .mj10-brand__spacer--lg{ height:81px; }
-  .mj10-brand__spacer--md{ height:64px; }
-  .mj10-brand__spacer--sm{ height:64px; }
-  .mj10-brand__title{
-    margin:0;
-    text-align:center;
-    font-size:38px;
-    font-weight:700;
-    color:#ffffff;
-    letter-spacing:0.02em;
-  }
-  .mj10-brand__subtitle{
-    margin:18px 0 0;
-    text-align:center;
-    font-size:18px;
-    line-height:1.6;
-    color:#ffffff;
-  }
-  .mj10-brand__feature{
-    display:grid;
-    grid-template-columns:5fr 1fr 6fr;
-    gap:0;
-    align-items:start;
-  }
-  .mj10-brand__gap{
-    height:100%;
-  }
-  .mj10-brand__figure{
-    margin:0;
-    text-align:center;
-  }
-  .mj10-brand__image{
-    width:100%;
-    display:block;
-    border-radius:0;
-    object-fit:cover;
-  }
-  .mj10-brand__figure--tall .mj10-brand__image{
-    height:640px;
-  }
-  .mj10-brand__caption,
-  .mj10-brand__figure figcaption{
-    margin-top:18px;
-    font-size:15px;
-    text-align:center;
-    color:#ffffff;
-  }
-  .mj10-brand__gallery{
-    display:grid;
-    grid-template-columns:repeat(3, minmax(0, 1fr));
-    gap:20px;
-  }
-  .mj10-brand__gallery .mj10-brand__image{
-    height:556px;
-  }
-  @media (max-width:1024px){
-    .mj10-brand__feature{
-      grid-template-columns:1fr;
-      gap:36px;
+    .mj10-brand-story{
+        width:100%;
+        background:#eee7e2;
+        color:#682e06;
     }
-    .mj10-brand__gap{
-      display:none;
+    .mj10-brand-story__inner{
+        max-width:1400px;
+        margin:0 auto;
+        padding:100px 16px;
+        box-sizing:border-box;
     }
-    .mj10-brand__figure--tall .mj10-brand__image,
-    .mj10-brand__gallery .mj10-brand__image{
-      height:auto;
+    .mj10-brand-story__intro{
+        text-align:center;
     }
-    .mj10-brand__gallery{
-      grid-template-columns:1fr;
+    .mj10-brand-story__intro h1{
+        margin:0;
+        font-size:36px;
+        line-height:1.4;
+        font-weight:700;
+        color:#682e06;
     }
-    .mj10-brand__title{
-      font-size:30px;
+    .mj10-brand-story__intro h5{
+        margin:14px 0 0;
+        font-size:18px;
+        font-weight:600;
+        color:#682e06;
     }
-  }
+    .mj10-brand-story__section{
+        margin-top:30px;
+    }
+    .mj10-brand-story__row{
+        display:grid;
+        grid-template-columns:3fr 9fr;
+        gap:36px;
+        align-items:start;
+    }
+    .mj10-brand-story__image,
+    .mj10-brand-story__media{
+        width:100%;
+        overflow:hidden;
+    }
+    .mj10-brand-story__image{
+        height:330px;
+    }
+    .mj10-brand-story__media{
+        height:386px;
+    }
+    .mj10-brand-story__media--lg{
+        height:403px;
+    }
+    .mj10-brand-story__image img,
+    .mj10-brand-story__media img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
+    }
+    .mj10-brand-story__text{
+        font-size:16px;
+        line-height:1.8;
+        text-align:justify;
+        color:#682e06;
+    }
+    .mj10-brand-story__media-grid{
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:24px;
+    }
+    .mj10-brand-story__headline{
+        margin:0 0 12px;
+        font-size:22px;
+        font-weight:700;
+        color:#682e06;
+    }
+    .mj10-brand-story__paragraph{
+        margin:0;
+        font-size:16px;
+        line-height:1.8;
+        text-align:justify;
+        color:#682e06;
+    }
+    @media (max-width:1024px){
+        .mj10-brand-story__inner{
+            padding:80px 16px;
+        }
+        .mj10-brand-story__row{
+            grid-template-columns:1fr;
+        }
+        .mj10-brand-story__image,
+        .mj10-brand-story__media,
+        .mj10-brand-story__media--lg{
+            height:auto;
+        }
+        .mj10-brand-story__media-grid{
+            grid-template-columns:1fr;
+        }
+        .mj10-brand-story__intro h1{
+            font-size:30px;
+        }
+    }
 </style>
 
-<div class="mj10-brand">
-  <div class="mj10-brand__inner">
-    <div class="mj10-brand__spacer mj10-brand__spacer--xl"></div>
+<div class="mj10-brand-story">
+    <div class="mj10-brand-story__inner">
+        <div class="mj10-brand-story__intro">
+            <h1>“목표를 높게 잡으면<br>그 과정에서 많은 성장을 하게 됩니다”</h1>
+            <h5>대한민국 제과명장 10호 <strong>송영광</strong></h5>
+        </div>
 
-    <h1 class="mj10-brand__title">송영광 명장텐 베이커리</h1>
-    <p class="mj10-brand__subtitle">명장10 베이커리는 대한민국 10번째 제과명장 송영광 대표가 2019년에 설립하였습니다</p>
+        <div class="mj10-brand-story__section">
+            <div class="mj10-brand-story__row">
+                <div class="mj10-brand-story__image">
+                    <img src="../../img/company/branding/brand-story-01.jpg" alt="송영광 명장" />
+                </div>
+                <div class="mj10-brand-story__text">
+                    1988년 당시 17살의 송영광 명장은 돈을 벌기 위해 전북 순창에서 서울로 향하는 기차에 몸을 실었다. 하루종일 서울역에서 이태원을 오가다 우연히 발견한 ‘종업원 구함’이라는 구인 광고를 보고 찾은 곳이 바로 서울역 인근 ‘파리 제과’다. (사)대한제과협회 12대 회장이자 첫 여성 회장인 한정희 고문이 대표로 있던 제과점이었다. 그의 성실함을 눈 여겨 본 이삼선 선생(당시 공장장)은 그를 3개월만에 공장으로 불러들여 빵 만드는 일을 가르쳤다. “저는 행운아였다고 생각합니다. 무작정 상경했는데 취업한 곳이 그 당시 최고의 빵집이었고, 또 최고의 기술자가 공장장으로 있었으니까요. 군에 입대해서도 반죽을 만지던 촉감, 빵 구울 때 나던 냄새와 소리가 잊히지 않았습니다. 그 때 느꼈던 그리움이 ‘아 나는 제과 제빵을 평생의 업으로 삼아야겠다’는 결심으로 이어진 것 같습니다.”
+                    송영광 명장은 파리 제과 이후 ‘그린 하우스’, ‘김충복 과자점’, 돈암동 ‘태극당’, ‘김용현 베이커리’, ‘빠나미’ 등에서 내로라하는 기술자들에게 빵에 대해, 그리고 빵을 대하는 태도에 대해 더 깊이 배우게 된다. 그리고 2001년, 제과기능장을 취득하기 위해 들어간 리치몬드 제과학원에서 제1호 대한민국 제과 명장인 박찬회 명장을 재회했다(박찬회 명장은 김충복 과자점 총괄 셰프였다). 그렇지 않아도 제과 명장 제도에 관심이 많았던 데다 마침 제1호 명장을 만나게 된 송영광 명장은 그 기회를 놓치지 않았다. 어떻게 하면 명장이 되는지, 명장이 되기 위해 갖춰야 할 소양과 덕목은 무엇인지 등 매일 같이 묻는 송영광 명장에게 박찬회 명장은 시간이 날 때마다 응답해줬다. 그가 가장 중요한 덕목으로 꼽은 건 ‘인성’이었다. “박찬회 명장님의 조언을 정리해보니, 명장이 되든 되지 않든 명장을 목표로 하면 그 과정에서 많은 성장이 이뤄질 것이라 판단했습니다.” 열정적으로 배움을 구한 송영광 명장은 이듬해 제과기능장을 취득, 최연소 제과기능장이라는 타이틀을 얻게 된다. 그리고 더 나은 기술자가 되고자 프랑스 유학길에 올랐다.
+                </div>
+            </div>
+        </div>
 
-    <div class="mj10-brand__spacer mj10-brand__spacer--lg"></div>
+        <div class="mj10-brand-story__section">
+            <div class="mj10-brand-story__media-grid">
+                <div class="mj10-brand-story__media">
+                    <img src="../../img/company/branding/brand-story-02.jpg" alt="명장텐 베이커리" />
+                </div>
+                <div class="mj10-brand-story__media">
+                    <img src="../../img/company/branding/brand-story-03.jpg" alt="명장텐 베이커리" />
+                </div>
+            </div>
+        </div>
 
-    <div class="mj10-brand__feature">
-      <figure class="mj10-brand__figure mj10-brand__figure--tall">
-        <img class="mj10-brand__image" src="../../img/company/branding/brand-01.jpg" alt="명장텐 베이커리 카페내부 전경" />
-        <figcaption>명장텐 베이커리 카페내부 전경</figcaption>
-      </figure>
-      <div class="mj10-brand__gap"></div>
-      <figure class="mj10-brand__figure mj10-brand__figure--tall">
-        <img class="mj10-brand__image" src="../../img/company/branding/brand-02.jpg" alt="명장텐 베이커리 카페 인기 소금빵" />
-        <figcaption>명장텐 베이커리 카페 인기 소금빵</figcaption>
-      </figure>
+        <div class="mj10-brand-story__section">
+            <h3 class="mj10-brand-story__headline">한국에 프랑스빵을 알리다</h3>
+            <p class="mj10-brand-story__paragraph">
+                그가 프랑스로 유학을 떠난 건 2005년의 일이다. 적지 않은 나이였다. “하루는 한 고객이 자신이 프랑스에서 먹은 바게트와 맛이 다르다며 그 이유를 묻는데 대답을 못 하겠더라고요. 저도 바게트를 한국에서 배웠으니까요. 그래서 내가 계속 빵을 하려면 빵의 본고장인 프랑스에서 배워야겠다고 결심했고, 1년 넘게 어학 공부를 하며 정말 열심히 유학을 준비했습니다.” 프랑스 후앙(Rouen)에 위치한 프랑스 국립제과제빵학교(INBP)를 졸업한 그는 제빵 자격증(CAP)을 따고 프랑스 파리의 ‘에릭 카이저’ 등에서 일한 뒤 2009년 귀국했다. 그는 바로 프랑스에서 열리는 제빵 월드컵 ‘몽디알 뒤 빵(Mondial du Pain)’에 한국 대표로 출전해 4위를 기록한다. 남들보다 출발이 늦었으나 단시간에 많은 성과를 이룬 그는 한국 제과 제빵 시장에 적응한 후 2011년 마침내 본인의 첫 매장인 ‘후앙’을 오픈한다. 어떤 고객이 프랑스빵에 대해 물어보더라도 언제든 바로 대답해낸다는 자신감과 함께 말이다. 하지만 현실은 녹록지 않았다. 열심히 프랑스빵을 만들어 낸들 고객들이 쟁반에 담아오는 것은 도넛과 단팥빵이었다. 프랑스빵을 알리기 위한 고심 끝에 송영광 명장이 선택한 방법은 프랑스빵 전문 서적 집필이었다. 이듬해 그는 프랑스빵의 분류와 프랑스 밀가루, 발효종, 제법 등을 정리한 <쉽게 배우는 송셰프의 프랑스빵>을 발행했다. 일반인은 물론 현직에 있는 제빵 기술자에게도 널리 읽혔으며 대학교 교재로도 많이 쓰이는 등 프랑스빵에 대한 인식 보편화에 기여했다. 그리고 2014년, 10번째 대한민국 제과 명장이 됐다.
+            </p>
+        </div>
+
+        <div class="mj10-brand-story__section">
+            <div class="mj10-brand-story__media-grid">
+                <div class="mj10-brand-story__media mj10-brand-story__media--lg">
+                    <img src="../../img/company/branding/brand-story-04.jpg" alt="명장텐 베이커리" />
+                </div>
+                <div class="mj10-brand-story__media mj10-brand-story__media--lg">
+                    <img src="../../img/company/branding/brand-story-05.jpg" alt="명장텐 베이커리" />
+                </div>
+            </div>
+        </div>
+
+        <div class="mj10-brand-story__section">
+            <h3 class="mj10-brand-story__headline">10호 명장의 명장텐</h3>
+            <p class="mj10-brand-story__paragraph">
+                송영광 명장은 2019년, ‘10번째 명장’이라는 뜻의 ‘명장텐’을 오픈한다. 명장 타이틀에 흠이 가지 않도록 자기 발전을 보여주자는 의지를 담았다. 하지만 코로나19가 창궐하면서 명장텐은 위기를 맞이했다. “오픈한 지 한 달 만에 코로나가 터졌어요. 인근 대형 카페에서 에어컨을 통해 13명이 코로나에 집단 감염되면서 테이블 영업도 금지됐고요. 물론 절망적이었지만 이성적으로 생각하고 행동하기로 했습니다. 인건비는 부담이었지만 누구 하나 권고사직 하지 않고 기존 제품을 업그레이드하는 데 모든 인력과 비용을 썼어요. 그때 몇 개월의 경험이 지금의 명장텐을 만들었다고 생각합니다. 현재 가장 인기 있는 품목인 5가지 소금빵, 대형 베이커리 카페에 납품하는 생지들이 그때 만든 제품입니다.” 명장텐 쇼핑몰을 통해 B2B 시장을 공략하고 있는 송영광 명장은 편의점 CU와 손잡고 명장빵을 전국적으로 선보이고 있다. 명장의 고퀄리티 레시피와 편의점 유통 채널의 시너지 효과를 기대한 프로젝트다. “백종원이 편의점 도시락의 품질을 높여놨듯, 명장텐이 편의점 빵의 수준을 끌어올리고 싶어요. 언젠가는 우리나라에도 일본 편의점처럼 합리적인 가격에 좋은 품질을 갖춘 빵들로 매대가 가득차기를 바랍니다.” 목표를 설정하고, 목표한 바를 이루고, 그 목표에 걸맞은 사람이 되도록 노력하는 송영광 명장. 수년 내로는 제과 제빵 아카데미를 설립할 계획이다. 그리고 국제 제빵대회에 참가할 국가대표 선수반에는 학비를 지원할 계획이라고 한다. “사회가 명장에 기대하는 바가 있을 거예요. 그게 무엇일지 늘 고민합니다. 여러분도 가능한 한 목표를 설정하세요. 그 여정은 반드시 멋질 것이라 확신합니다.”
+            </p>
+        </div>
     </div>
-
-    <div class="mj10-brand__spacer mj10-brand__spacer--md"></div>
-
-    <div class="mj10-brand__gallery">
-      <figure class="mj10-brand__figure">
-        <img class="mj10-brand__image" src="../../img/company/branding/brand-03.jpg" alt="명장텐 베이커리 카페 내부" />
-      </figure>
-      <figure class="mj10-brand__figure">
-        <img class="mj10-brand__image" src="../../img/company/branding/brand-04.jpg" alt="명장텐 베이커리 카페 내부" />
-      </figure>
-      <figure class="mj10-brand__figure">
-        <img class="mj10-brand__image" src="../../img/company/branding/brand-05.jpg" alt="명장텐 베이커리 카페 내부" />
-      </figure>
-    </div>
-
-    <p class="mj10-brand__caption">명장텐 베이커리 카페내부 전경</p>
-
-    <div class="mj10-brand__spacer mj10-brand__spacer--sm"></div>
-  </div>
 </div>

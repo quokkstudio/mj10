@@ -29,22 +29,17 @@
         padding: 0 16px;
         box-sizing: border-box;
     }
-    .mj10-company .company-section[data-section="brand"]{
-        padding-top: 0;
-    }
     .mj10-company .company-section[data-section="brand"] .mj10-company__inner{
         max-width: none;
         padding: 0;
     }
+    .mj10-company .company-section[data-section="store"]{
+        padding-top: 0;
+    }
     .mj10-company .company-section[data-section="store"] .mj10-company__inner{
-        max-width: none;
+        max-width: 1400px;
+        margin: 0 auto;
         padding: 0;
-    }
-    .mj10-company .company-section[data-section="store"] .mj10-brand{
-        padding: 0;
-    }
-    .mj10-company .company-section[data-section="store"] .mj10-brand__inner{
-        max-width: none;
     }
     .mj10-company-hero {
         width: 100%;
@@ -191,12 +186,12 @@
     </div>
     <div class="company-section" data-section="brand">
         <div class="mj10-company__inner">
-            {=includeFile('mj10/company/location.html')}
+            {=includeFile('mj10/company/brand.html')}
         </div>
     </div>
     <div class="company-section" data-section="store">
         <div class="mj10-company__inner">
-            {=includeFile('mj10/company/brand.html')}
+            {=includeFile('mj10/company/location.html')}
         </div>
     </div>
 </div>
