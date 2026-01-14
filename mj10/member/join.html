@@ -247,9 +247,9 @@
 				$businessPanel.addClass('dn');
 				$personalPanel.removeClass('dn');
 				$('.js-personal-only').removeClass('dn').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
+				$('.base_info_box').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
 				$('.js-business-only').addClass('dn').find('input, select, textarea').prop('disabled', true).addClass('ignore');
 				$('.js-biz-company-address').removeClass('dn').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
-				$('.base_info_box').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
 				$('.js-biz-step1, .js-biz-step2').removeClass('dn');
 				$('.js_btn_join').removeClass('dn');
 				$joinRoot.attr('data-join-mode', 'personal');
