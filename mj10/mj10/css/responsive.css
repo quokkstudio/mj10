@@ -665,6 +665,15 @@
   .member_warning + .btn_center_box{
     display:flex;
   }
+  .member_cont .btn_center_box{
+    gap:5px;
+  }
+  .member_cont .btn_center_box .btn_member_cancel,
+  .member_cont .btn_center_box .btn_comfirm{
+    flex:1 1 0;
+    width:100%;
+    height:36px;
+  }
   .member_login_box,
   .nonmember_join_box,
   .nonmember_order_box{
