@@ -388,4 +388,8 @@
   .content .location_wrap + .goods_list_item{
     padding:0;
   }
+
+  .content .location_wrap + .goods_list_item .goods_pick_list{
+    display:none;
+  }
 }
