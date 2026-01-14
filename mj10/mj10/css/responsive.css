@@ -317,6 +317,9 @@
   .main_goods_cont .item_cont{
     padding:0;
   }
+  .item_cont{
+    padding:0;
+  }
   .main_goods_cont .item_photo_box,
   .main_goods_cont .item_photo_box a{
     width:100%;
