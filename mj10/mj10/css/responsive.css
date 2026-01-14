@@ -725,6 +725,7 @@
   .member_cont .btn_center_box,
   .member_warning + .btn_center_box{
     display:flex;
+    justify-content:center;
   }
   .join_ok_box .btn_member_sec ul{
     display:flex;
