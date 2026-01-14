@@ -221,6 +221,7 @@
 			var $businessPanel = $('.join_panel_business');
 			var $personalPanel = $('.join_panel_personal');
 			var $joinRoot = $('#mj10Join');
+			var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
 
 			updateBizLabels(isBusiness);
 
@@ -231,7 +232,7 @@
 				$businessinfo.removeClass('dn');
 				$businessinfo.find('input, select, textarea').prop('disabled', false).removeClass('ignore');
 				$businessPanel.removeClass('dn');
-				$personalPanel.addClass('dn');
+				$personalPanel.toggleClass('dn', isMobile);
 				$('.js-personal-only').addClass('dn').find('input, select, textarea').prop('disabled', true).addClass('ignore');
 				$('.js-business-only').removeClass('dn').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
 				$('.js-biz-company-address').addClass('dn').find('input, select, textarea').prop('disabled', true).addClass('ignore');
