@@ -569,6 +569,14 @@
   .mj10-join-v2{
     padding:0;
   }
+  .mj10-join-v2,
+  .mj10-join-v2__card,
+  .mj10-join-v2__forms,
+  .mj10-join-v2__pane{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+  }
   .mj10-join-v2__pane{
     padding:40px 30px 40px;
   }
@@ -604,12 +612,35 @@
     max-width:100% !important;
     box-sizing:border-box;
   }
+  .mj10-join-v2 .file_upload_sec{
+    flex-wrap:wrap;
+    height:auto;
+  }
+  .mj10-join-v2 .btn_upload_box,
+  .mj10-join-v2 .file_upload_sec .file_text{
+    width:100%;
+    min-width:0;
+  }
+  .mj10-join-v2 .btn_upload_box .btn_upload{
+    width:100%;
+  }
 
   .base_info_sec table{
     width:100%;
     border-collapse:collapse;
   }
   .base_info_sec table colgroup{
+    display:none;
+  }
+  .mj10-join-v2 .base_info_box table,
+  .mj10-join-v2 .business_info_box table,
+  .mj10-join-v2 .addition_info_box table{
+    width:100%;
+    border-spacing:0;
+  }
+  .mj10-join-v2 .base_info_box colgroup,
+  .mj10-join-v2 .business_info_box colgroup,
+  .mj10-join-v2 .addition_info_box colgroup{
     display:none;
   }
   .base_info_sec table input[type="text"]{
