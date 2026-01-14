@@ -111,6 +111,16 @@
         <strong class="cn-mega-title">CATEGORY</strong>
         <button class="cn-mega-close" type="button" id="cnMegaClose" aria-label="메뉴 닫기">X</button>
       </div>
+      <div class="cn-mega-user">
+        <!--{ ? gd_is_login() === false }-->
+        <a href="../member/join_method.php">회원가입</a>
+        <a href="../member/login.php">로그인</a>
+        <a href="../member/login.php?returnUrl=../mypage/index.php">마이페이지</a>
+        <!--{ : }-->
+        <a href="../member/logout.php?returnUrl={=logoutReturnUrl}">로그아웃</a>
+        <a href="../mypage/index.php">마이페이지</a>
+        <!--{ / }-->
+      </div>
       <div class="cn-mega-grid" id="cnMegaGrid"></div>
     </div>
   </div>
