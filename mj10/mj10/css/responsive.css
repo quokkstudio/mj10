@@ -298,7 +298,8 @@
     width:100% !important;
     max-width:100% !important;
   }
-  .main_goods_cont .goods_list_cont > ul:not(.slick-initialized){
+  .main_goods_cont .goods_list_cont > ul:not(.slick-initialized),
+  .main_goods_cont .item_slide_horizontal > ul:not(.slick-initialized){
     display:flex;
     gap:12px;
     overflow-x:auto;
@@ -306,7 +307,8 @@
     scroll-snap-type:x mandatory;
     padding:0 12px 10px;
   }
-  .main_goods_cont .goods_list_cont > ul:not(.slick-initialized) > li{
+  .main_goods_cont .goods_list_cont > ul:not(.slick-initialized) > li,
+  .main_goods_cont .item_slide_horizontal > ul:not(.slick-initialized) > li{
     flex:0 0 calc((100% - 12px) / 2.5);
     margin-top:20px;
     scroll-snap-align:start;
