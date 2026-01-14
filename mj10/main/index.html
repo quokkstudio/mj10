@@ -226,7 +226,10 @@
           if (!window.jQuery) return;
           var $ = window.jQuery;
           var isMobile = window.matchMedia && window.matchMedia('(max-width: 600px)').matches;
-          var $sliders = $('.main_goods_cont .item_slide_horizontal');
+          var $sliders = $('.main_goods_cont .item_slide_horizontal .slick-slider');
+          if (!$sliders.length) {
+            $sliders = $('.main_goods_cont .item_slide_horizontal > ul');
+          }
           if (!$sliders.length) return;
 
           $sliders.each(function(){
