@@ -251,28 +251,46 @@
             if ($slider.data('mj10SlidesOrigin') == null) {
               $slider.data('mj10SlidesOrigin', slick.options.slidesToShow);
               $slider.data('mj10ScrollOrigin', slick.options.slidesToScroll);
+              $slider.data('mj10RtlOrigin', slick.options.rtl);
+              $slider.data('mj10AutoOrigin', slick.options.autoplay);
             }
             if (isMobile) {
               var $wrap = $slider.closest('.item_slide_horizontal');
               if ($wrap.length) {
                 $wrap.attr('dir', 'ltr');
               }
-              $slider.slick('setOption', {
-                slidesToShow: MOBILE_SLIDES,
-                slidesToScroll: 1,
-                swipe: true,
-                touchMove: true,
-                draggable: true,
-                swipeToSlide: true,
-                rtl: false,
-                initialSlide: 0
-              }, true);
-              $slider.slick('slickGoTo', 0, true);
+              var shouldApply = $slider.data('mj10MobileApplied') !== true ||
+                slick.options.slidesToShow !== MOBILE_SLIDES ||
+                slick.options.rtl !== false;
+              if (shouldApply) {
+                $slider.slick('setOption', {
+                  slidesToShow: MOBILE_SLIDES,
+                  slidesToScroll: 1,
+                  swipe: true,
+                  touchMove: true,
+                  draggable: true,
+                  swipeToSlide: true,
+                  rtl: false,
+                  initialSlide: 0
+                }, true);
+                if ($slider.data('mj10MobileApplied') !== true) {
+                  $slider.slick('slickGoTo', 0, true);
+                }
+                $slider.data('mj10MobileApplied', true);
+              }
             } else {
               var originShow = $slider.data('mj10SlidesOrigin');
               var originScroll = $slider.data('mj10ScrollOrigin');
+              var originRtl = $slider.data('mj10RtlOrigin');
+              var originAuto = $slider.data('mj10AutoOrigin');
               if (originShow != null) {
-                $slider.slick('setOption', {slidesToShow: originShow, slidesToScroll: originScroll || 1}, true);
+                $slider.slick('setOption', {
+                  slidesToShow: originShow,
+                  slidesToScroll: originScroll || 1,
+                  rtl: originRtl === true,
+                  autoplay: originAuto === true
+                }, true);
+                $slider.data('mj10MobileApplied', false);
               }
             }
           });

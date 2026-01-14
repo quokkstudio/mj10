@@ -138,20 +138,38 @@
         $("img.gd_image_lazy").lazyload({event:'load'});
         <!--{ / }-->
 
-        $('.item_slide_horizontal .slide_horizontal_{mainData.sno}')
+        var $targets = $('.item_slide_horizontal .slide_horizontal_{mainData.sno}').not('.slick-initialized');
+        if (!$targets.length) {
+            return;
+        }
+        var isMobile = window.matchMedia && window.matchMedia('(max-width: 600px)').matches;
+        if (isMobile) {
+            $targets.closest('.item_slide_horizontal').attr('dir', 'ltr');
+        }
+        var slickOptions = {
+            draggable : isMobile,
+            autoplay: !isMobile,
+            infinite: true,
+            slidesToShow: isMobile ? 2.5 : {themeInfo.lineCnt},
+            slidesToScroll: 1,
+            swipe: true,
+            touchMove: true,
+            swipeToSlide: true,
+            rtl: false
+        };
+        <!--{ ? themeInfo.detailSet =='L' }-->
+        if (!isMobile) {
+            slickOptions.rtl = true;
+        }
+        <!--{ / }-->
+        $targets
             .on('init', function(){
                 <!--{ ? themeInfo.detailSet =='L' }-->
-                $('[dir="rtl"] .slick-slide').css({'float':'left'});
+                if (!isMobile) {
+                    $('[dir="rtl"] .slick-slide').css({'float':'left'});
+                }
                 <!--{ / }-->
-            }).slick({
-                draggable : false,
-                autoplay: true,
-                infinite: true,
-                slidesToShow: {themeInfo.lineCnt},
-                <!--{ ? themeInfo.detailSet =='L' }-->rtl : true,
-                <!--{ / }-->
-                slidesToScroll: 1
-            }).on('beforeChange', function(){
+            }).slick(slickOptions).on('beforeChange', function(){
                 <!--{ ? imageLazyFl == 'y' }-->
                 $(window).trigger('scroll');
                 <!--{ / }-->
