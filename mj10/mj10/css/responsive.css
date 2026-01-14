@@ -619,6 +619,9 @@
     padding:0 16px;
     box-sizing:border-box;
   }
+  #wrap .member_warning{
+    display:flex;
+  }
   .member_cont{
     padding:0;
     border:0;
