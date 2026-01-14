@@ -258,7 +258,13 @@
 
 
 /* ------------- 서브 컨텐츠 시작 ------------- */
-.sub_content{padding:45px 0 0 0;}
+.sub_content{
+  width:100%;
+  max-width:none;
+  margin:0 auto;
+  padding:45px 20px 0;
+  box-sizing:border-box;
+}
 .sub_content:after{display:block; clear:both; content:"";}
 /* ------------- 서브 사이드 영역 ------------- */
 .sub_content .side_cont{float:left; width:200px;}
