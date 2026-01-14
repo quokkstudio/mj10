@@ -744,6 +744,11 @@ input#quickSearchColorFFFFFF+label.active{background-image:url('../../img/icon/g
 
 /* 꾸미기 영역 */
 .addition_zone{padding:0 0 20px 0;}
+@media (max-width: 768px){
+  .addition_zone{
+    display:none;
+  }
+}
 /* 상품 나오는 영역 */
 .goods_item_view{}
 /* 추천 상품 나오는 영역 */

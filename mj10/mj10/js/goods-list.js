@@ -230,6 +230,65 @@
     };
   }
 
+  function setupPickListToggle() {
+    var $boxes = $('.goods_pick_list .pick_list_box');
+    if (!$boxes.length) return;
+    var mq = window.matchMedia('(max-width: 768px)');
+
+    $boxes.each(function () {
+      var $box = $(this);
+      if ($box.data('mj10-pick-toggle')) return;
+      $box.data('mj10-pick-toggle', true);
+      var $list = $box.children('.pick_list').first();
+      var $toggle = $('<button type="button" class="pick_list_toggle" aria-expanded="false">정렬 옵션</button>');
+      $toggle.insertBefore($list);
+      $toggle.on('click', function () {
+        if (!mq.matches) return;
+        var isOpen = $box.toggleClass('is-open').hasClass('is-open');
+        if (isOpen) {
+          $box.removeClass('is-collapsed');
+          $toggle.attr('aria-expanded', 'true');
+          $list.stop(true, true).slideDown(150, function () {
+            $list.css('display', 'flex');
+          });
+        } else {
+          $box.addClass('is-collapsed');
+          $toggle.attr('aria-expanded', 'false');
+          $list.stop(true, true).slideUp(150);
+        }
+      });
+    });
+
+    function syncPickListState() {
+      $boxes.each(function () {
+        var $box = $(this);
+        var $list = $box.children('.pick_list').first();
+        var $toggle = $box.children('.pick_list_toggle');
+        if (mq.matches) {
+          if (!$box.hasClass('is-open')) {
+            $box.addClass('is-collapsed');
+            $toggle.attr('aria-expanded', 'false');
+            $list.hide();
+          }
+        } else {
+          $box.removeClass('is-open is-collapsed');
+          $toggle.attr('aria-expanded', 'false');
+          $list.show();
+        }
+      });
+    }
+
+    if (mq.addEventListener) {
+      mq.addEventListener('change', syncPickListState);
+    } else if (mq.addListener) {
+      mq.addListener(syncPickListState);
+    } else {
+      $(window).on('resize.pickList', syncPickListState);
+    }
+
+    syncPickListState();
+  }
+
   function initGoodsList() {
     if (window.__mj10GoodsListInit) return;
     window.__mj10GoodsListInit = true;
@@ -240,6 +299,7 @@
     resetLayerVisibility();
     bindCartHandlers();
     ensureOptionResultHandler();
+    setupPickListToggle();
   }
 
   if (document.readyState === 'loading') {
