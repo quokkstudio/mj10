@@ -529,6 +529,9 @@
     width:100%;
     max-width:100%;
   }
+  .join_agreement_wrap .member_cont h3{
+    padding-top:17px;
+  }
 
   .join_base_wrap .member_cont{
     position:relative;
