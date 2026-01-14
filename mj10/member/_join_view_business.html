@@ -181,7 +181,7 @@
             loadingPlaceFiles.forEach(function(item){
                 var $li = $('<li>');
                 var $name = $('<span>').text(item.file.name || '');
-                var $remove = $('<button type="button" class="btn_remove_file" aria-label="삭제">-</button>');
+                var $remove = $('<button type="button" class="btn_remove_file" aria-label="삭제">x</button>');
                 $remove.data('key', item.key);
                 $li.append($name, $remove);
                 $loadingList.append($li);

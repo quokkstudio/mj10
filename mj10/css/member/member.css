@@ -245,7 +245,7 @@
 .loading_place_upload__list .upload_list{margin:0; padding:0; list-style:none;}
 .loading_place_upload__list .upload_list li{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:4px 0;}
 .loading_place_upload__list .upload_list li span{flex:1; min-width:0; width:20ch; max-width:20ch; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-.loading_place_upload__list .btn_remove_file{border:1px solid #ccc; background:#fff; color:#666; width:22px; height:22px; line-height:20px; text-align:center; border-radius:4px; cursor:pointer;}
+.loading_place_upload__list .btn_remove_file{border:0; background:transparent; color:#e53935; width:auto; height:auto; line-height:1; text-align:center; border-radius:0; cursor:pointer; padding:0 2px;}
 .mj10-join-v2 .file_upload_sec{border:0; padding:0; margin:0;}
 .mj10-join-v2 .upload_list_box{margin-top:0;}
 
