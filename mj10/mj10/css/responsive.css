@@ -546,7 +546,7 @@
   .mj10-join-intro{
     position:absolute;
     inset:0;
-    padding:20px 16px;
+    padding:0;
     background:#ffffff;
     display:none;
     flex-direction:column;
@@ -560,7 +560,7 @@
     display:flex;
   }
   .mj10-join-intro__btn{
-    height:54px;
+    height:50px;
     border:1px solid #111111;
     background:#ffffff;
     color:#111111;
