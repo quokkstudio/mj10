@@ -521,56 +521,8 @@
     display:none;
   }
 
-  .member_wrap,
-  .member_cont,
-  .member_login_box,
-  .nonmember_join_box,
-  .nonmember_order_box{
-    width:100%;
-    max-width:100%;
-    box-sizing:border-box;
-  }
   .member_cont{
     padding:20px 0;
-  }
-  .member_login_box .login_input_sec,
-  .nonmember_order_box .order_input_sec{
-    overflow:visible;
-  }
-  .member_login_box .login_input_sec > div,
-  .nonmember_order_box .order_input_sec > div{
-    float:none;
-    width:100%;
-  }
-  .member_login_box .login_input_sec input,
-  .nonmember_order_box .order_input_sec input{
-    width:100% !important;
-    max-width:100%;
-    box-sizing:border-box;
-  }
-  .member_login_box .login_input_sec button,
-  .nonmember_order_box .order_input_sec button{
-    float:none;
-    width:100%;
-    height:48px;
-    margin:10px 0 0 0;
-  }
-  .member_sns_login a{
-    width:100%;
-  }
-  .btn_login_box ul{
-    overflow:visible;
-  }
-  .btn_login_box li{
-    float:none;
-    width:100%;
-    margin:8px 0 0 0;
-  }
-  .btn_login_box li:first-child{
-    margin-top:0;
-  }
-  .btn_login_box li button{
-    width:100%;
   }
 
   .join_agreement_wrap .member_cont{
