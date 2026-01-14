@@ -325,6 +325,13 @@
     padding:0;
   }
 
+  .mj10-goods-view .item_photo_info_sec{
+    padding:0;
+  }
+  .mj10-goods-view .item_photo_big{
+    height:auto;
+  }
+
   .mj10-goods-view .item_choice_list table{
     width:100%;
     table-layout:fixed;
