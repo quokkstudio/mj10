@@ -2,49 +2,65 @@
 { # header }
 
 <div class="main_visual">
-    <div class="slider-wrap main_visual__slider">
-        <!--{ @dataBanner('590533407') }-->
-        <div class="main_visual__item">{.tag}</div>
-        <!--{ / }-->
+    <div class="main_visual__group main_visual__group--pc">
+        <div class="slider-wrap main_visual__slider">
+            <!--{ @dataBanner('590533407') }-->
+            <div class="main_visual__item">{.tag}</div>
+            <!--{ / }-->
+        </div>
+        <div class="main_visual__controls">
+            <div class="main_visual__arrows"></div>
+            <div class="main_visual__badge" aria-hidden="true">1 / 1</div>
+        </div>
     </div>
-    <div class="main_visual__controls">
-        <div class="main_visual__arrows"></div>
-        <div class="main_visual__badge" aria-hidden="true">1 / 1</div>
+    <div class="main_visual__group main_visual__group--mobile">
+        <div class="slider-wrap main_visual__slider">
+            <!--{ @dataBanner('MOBILE_BANNER_ID') }-->
+            <div class="main_visual__item">{.tag}</div>
+            <!--{ / }-->
+        </div>
+        <div class="main_visual__controls">
+            <div class="main_visual__arrows"></div>
+            <div class="main_visual__badge" aria-hidden="true">1 / 1</div>
+        </div>
     </div>
 </div>
 <!-- //main_visual -->
 <script>
   (function(){
-    var sliderEl = document.querySelector(".main_visual__slider");
-    var badgeEl = document.querySelector(".main_visual__badge");
-    if (!sliderEl || !badgeEl) return;
+    var groups = Array.prototype.slice.call(document.querySelectorAll(".main_visual__group"));
+    if (!groups.length) return;
 
-    var setBadge = function(index, total){
-      if (total <= 1){
-        badgeEl.style.display = "none";
-        return;
-      }
-      badgeEl.textContent = (index + 1) + " / " + total;
-      badgeEl.style.display = "";
-    };
+    var initGroup = function($, group){
+      var sliderEl = group.querySelector(".main_visual__slider");
+      if (!sliderEl) return;
+      var badgeEl = group.querySelector(".main_visual__badge");
+      var arrowsWrap = group.querySelector(".main_visual__arrows");
 
-    var bindBadge = function($wrap){
-      var update = function(e, slick, current, next){
-        if (!slick) return;
-        var slideIndex = (typeof next === "number")
-          ? next
-          : (typeof current === "number" ? current : slick.currentSlide || 0);
-        var total = slick.slideCount || 0;
-        setBadge(slideIndex, total);
+      var setBadge = function(index, total){
+        if (!badgeEl) return;
+        if (total <= 1){
+          badgeEl.style.display = "none";
+          return;
+        }
+        badgeEl.textContent = (index + 1) + " / " + total;
+        badgeEl.style.display = "";
       };
-      $wrap.on("init reInit beforeChange", update);
-      return update;
-    };
 
-    var initSlick = function($){
-      if (!$.fn || !$.fn.slick) return false;
+      var bindBadge = function($wrap){
+        var update = function(e, slick, current, next){
+          if (!slick) return;
+          var slideIndex = (typeof next === "number")
+            ? next
+            : (typeof current === "number" ? current : slick.currentSlide || 0);
+          var total = slick.slideCount || 0;
+          setBadge(slideIndex, total);
+        };
+        $wrap.on("init reInit beforeChange", update);
+        return update;
+      };
+
       var $wrap = $(sliderEl);
-      var $arrowWrap = $wrap.closest(".main_visual").find(".main_visual__arrows");
       var update = bindBadge($wrap);
       if (!$wrap.hasClass("slick-initialized")) {
         $wrap.slick({
@@ -56,7 +72,7 @@
           speed: 500,
           slidesToShow: 1,
           fade: true,
-          appendArrows: $arrowWrap.length ? $arrowWrap : $wrap,
+          appendArrows: arrowsWrap ? $(arrowsWrap) : $wrap,
           prevArrow: '<button type="button" class="main_visual__arrow main_visual__prev" aria-label="이전">&lt;</button>',
           nextArrow: '<button type="button" class="main_visual__arrow main_visual__next" aria-label="다음">&gt;</button>'
         });
@@ -65,7 +81,12 @@
         var slick = $wrap.slick("getSlick");
         update(null, slick, slick.currentSlide);
       }
-      return true;
+    };
+
+    var initAll = function($){
+      groups.forEach(function(group){
+        initGroup($, group);
+      });
     };
 
     var loadSlick = function(cb){
@@ -84,9 +105,9 @@
           clearInterval(timer);
           var $ = window.jQuery;
           if (!$.fn || !$.fn.slick) {
-            loadSlick(function(){ initSlick($); });
+            loadSlick(function(){ initAll($); });
           } else {
-            initSlick($);
+            initAll($);
           }
           return;
         }
@@ -196,6 +217,51 @@
         window.addEventListener('scroll', requestTick, { passive: true });
         window.addEventListener('resize', requestTick);
         requestTick();
+      })();
+    </script>
+    <script>
+      (function(){
+        var timer = null;
+        var applyMainGoodsSlider = function(){
+          if (!window.jQuery) return;
+          var $ = window.jQuery;
+          var isMobile = window.matchMedia && window.matchMedia('(max-width: 600px)').matches;
+          var $sliders = $('.main_goods_cont .item_slide_horizontal');
+          if (!$sliders.length) return;
+
+          $sliders.each(function(){
+            var $slider = $(this);
+            if (!$slider.hasClass('slick-initialized')) return;
+            var slick = $slider.slick('getSlick');
+            if (!slick) return;
+            if ($slider.data('mj10SlidesOrigin') == null) {
+              $slider.data('mj10SlidesOrigin', slick.options.slidesToShow);
+              $slider.data('mj10ScrollOrigin', slick.options.slidesToScroll);
+            }
+            if (isMobile) {
+              $slider.slick('setOption', {slidesToShow: 2, slidesToScroll: 1}, true);
+            } else {
+              var originShow = $slider.data('mj10SlidesOrigin');
+              var originScroll = $slider.data('mj10ScrollOrigin');
+              if (originShow != null) {
+                $slider.slick('setOption', {slidesToShow: originShow, slidesToScroll: originScroll || 1}, true);
+              }
+            }
+          });
+        };
+
+        var schedule = function(){
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(applyMainGoodsSlider, 150);
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', schedule);
+        } else {
+          schedule();
+        }
+        window.addEventListener('load', schedule);
+        window.addEventListener('resize', schedule);
       })();
     </script>
 </div>
