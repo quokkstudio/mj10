@@ -332,6 +332,28 @@
     height:auto;
   }
 
+  .mj10-goods-view .item_goods_tab ul{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding:0;
+  }
+  .mj10-goods-view .item_goods_tab ul li{
+    flex:1 1 calc(50% - 4px);
+    max-width:calc(50% - 4px);
+    margin:0;
+  }
+  .mj10-goods-view .item_goods_tab ul li a{
+    display:block;
+    width:100%;
+    padding:10px 6px;
+    font-size:13px;
+    text-align:center;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
   .mj10-goods-view .item_choice_list table{
     width:100%;
     table-layout:fixed;
