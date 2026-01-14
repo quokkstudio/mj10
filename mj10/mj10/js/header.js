@@ -245,6 +245,19 @@
         const isOpen = li.classList.toggle("is-open");
         btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
       });
+      mega.addEventListener("click", (e) => {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        if (!isMobile || mega.dataset.open !== "true") return;
+        const link = e.target.closest("a");
+        if (!link) return;
+        const li = link.closest("li.has-children");
+        if (!li || !mega.contains(li)) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = li.classList.toggle("is-open");
+        const accBtn = li.querySelector(".cn-acc-btn");
+        if (accBtn) accBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
     }
     if (mobileMenuBtn) {
       mobileMenuBtn.addEventListener("click", (e) => {
