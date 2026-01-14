@@ -794,6 +794,22 @@
   padding:0;
   background:#ffffff;
 }
+.mj10-join-v2 .loading_place_upload{
+  display:block;
+  height:auto;
+  border:0;
+  background:transparent;
+  padding:0;
+}
+.mj10-join-v2 .loading_place_upload .upload_list_box{
+  margin-top:0;
+}
+.mj10-join-v2 .loading_place_upload .upload_list_count{
+  display:block;
+}
+.mj10-join-v2 .loading_place_upload .file_text{
+  display:none;
+}
 .mj10-join-v2 .file_upload_sec .file_text{
   height:31px;
   line-height:31px;

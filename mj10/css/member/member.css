@@ -236,16 +236,18 @@
 .join_type_box .type_select_sec ul{text-align:center;}
 .join_type_box .type_select_sec li{display:inline-block; padding: 0 13px;}
 .join_type_box{display:none;}
-.loading_place_upload__row{display:flex; align-items:flex-start; gap:16px;}
-.loading_place_upload__controls{min-width:140px;}
+.loading_place_upload__row{display:flex; align-items:flex-start; gap:18px; margin:20px 0;}
+.loading_place_upload__controls{min-width:140px; display:flex; flex-direction:column; align-items:flex-start; gap:6px;}
 .loading_place_upload .btn_upload_box{display:flex; align-items:center; gap:12px;}
-.loading_place_upload .upload_list_count{margin-top:8px; font-size:13px; color:#666;}
+.loading_place_upload .upload_list_count{margin-top:0; font-size:13px; color:#666; display:block;}
 .loading_place_upload__text{display:none;}
-.loading_place_upload__list{flex:1;}
+.loading_place_upload__list{flex:1; padding-top:2px;}
 .loading_place_upload__list .upload_list{margin:0; padding:0; list-style:none;}
 .loading_place_upload__list .upload_list li{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:4px 0;}
-.loading_place_upload__list .upload_list li span{flex:1; min-width:0; max-width:10ch; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.loading_place_upload__list .upload_list li span{flex:1; min-width:0; width:20ch; max-width:20ch; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .loading_place_upload__list .btn_remove_file{border:1px solid #ccc; background:#fff; color:#666; width:22px; height:22px; line-height:20px; text-align:center; border-radius:4px; cursor:pointer;}
+.mj10-join-v2 .file_upload_sec{border:0; padding:0; margin:0;}
+.mj10-join-v2 .upload_list_box{margin-top:0;}
 
 .base_info_box h3{display:inline-block;}
 .base_info_box > span{float:right; padding:0 0 0 10px; line-height: 40px; color:#000000;}
@@ -280,6 +282,12 @@
 .business_info_sec table tr.biz-row--entry-guide td,
 .business_info_sec table tr.biz-row--loading-place th,
 .business_info_sec table tr.biz-row--loading-place td{border-bottom:none;}
+.mj10-join-v2 .biz-row--entry-guide th,
+.mj10-join-v2 .biz-row--entry-guide td,
+.mj10-join-v2 .biz-row--loading-place th,
+.mj10-join-v2 .biz-row--loading-place td{border-bottom:none !important;}
+.biz-step[data-step="3"] table th,
+.biz-step[data-step="3"] table td{border-bottom:none;}
 
 /* 부가정보 */
 .addition_info_box{margin:40px 0 0 0;}
