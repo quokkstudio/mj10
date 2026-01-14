@@ -23,6 +23,7 @@
     const backdrop = $("#cnBackdrop");
     const catSource = $("#cnCatSource");
     const catAllSource = $("#cnCatAllSource");
+    const mobileMenuBtn = $("#cnMobileMenuBtn");
 
     const ensureSearchLayer = () => {
       if (!searchWrap) return;
@@ -199,6 +200,11 @@
 
     const openMega = () => setMega(true);
     const closeMega = () => setMega(false);
+    const toggleMega = () => {
+      if (!mega) return;
+      const open = mega.dataset.open === "true";
+      setMega(!open);
+    };
 
     if (allBtn) {
       allBtn.addEventListener("mouseenter", openMega);
@@ -209,6 +215,12 @@
     if (mega) {
       mega.addEventListener("mouseenter", openMega);
       mega.addEventListener("mouseleave", closeMega);
+    }
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleMega();
+      });
     }
     if (megaClose) megaClose.addEventListener("click", closeMega);
     if (backdrop) backdrop.addEventListener("click", closeMega);
