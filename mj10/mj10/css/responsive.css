@@ -580,6 +580,8 @@
     width:100% !important;
     max-width:100%;
     box-sizing:border-box;
+    display:block;
+    min-width:0;
   }
 
   .member_wrap{
