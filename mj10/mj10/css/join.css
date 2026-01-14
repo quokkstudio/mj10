@@ -735,7 +735,7 @@
 .mj10-join-v2 select{
   width:100%;
   border:1px solid #e2e2e2;
-  border-radius:14px;
+  border-radius:5px;
   font-size:14px;
   color:var(--mj10-text);
   box-sizing:border-box;

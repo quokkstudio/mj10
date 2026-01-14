@@ -576,6 +576,11 @@
     box-sizing:border-box;
     padding:0;
   }
+  .mj10-join-v2 .base_info_box th,
+  .mj10-join-v2 .business_info_box th,
+  .mj10-join-v2 .addition_info_box th{
+    margin-bottom:10px;
+  }
   .join_base_wrap tr{
     display:block;
     margin:0;
