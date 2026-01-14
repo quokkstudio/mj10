@@ -65,15 +65,8 @@
   }
   .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group{
     animation: mj10CeoLineIn 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay:var(--line-delay, 0s);
   }
-  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(1){ animation-delay:0.1s; }
-  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(2){ animation-delay:0.24s; }
-  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(3){ animation-delay:0.38s; }
-  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(4){ animation-delay:0.52s; }
-  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(5){ animation-delay:0.66s; }
-  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(6){ animation-delay:0.8s; }
-  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(7){ animation-delay:0.94s; }
-  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(8){ animation-delay:1.08s; }
   @keyframes mj10CeoLineIn{
     to{
       opacity:1;
@@ -383,7 +376,8 @@
       transform:none;
     }
     .mj10-company-ceo__timeline-item{
-      display:block;
+      display:flex;
+      flex-direction:column;
       position:relative;
       padding-left:50px;
       opacity:1;
@@ -392,7 +386,7 @@
     }
     .mj10-company-ceo__timeline-axis{
       position:absolute;
-      left:2px;
+      left:3px;
       top:0;
       align-items:flex-start;
     }
@@ -405,10 +399,12 @@
       width:100%;
     }
     .mj10-company-ceo__timeline-side--media{
+      order:2;
       justify-content:flex-start;
       margin-bottom:12px;
     }
     .mj10-company-ceo__timeline-side--content{
+      order:1;
       justify-content:flex-start;
     }
     .mj10-company-ceo__timeline-card{
