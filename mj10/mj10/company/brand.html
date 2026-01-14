@@ -1,1 +1,131 @@
 {*** 브랜드 소개 | mj10/company/brand.html ***}
+<style>
+  .mj10-brand{
+    background:#0b0b0b;
+    color:#ffffff;
+    padding:0 16px;
+  }
+  .mj10-brand__inner{
+    max-width:1280px;
+    margin:0 auto;
+  }
+  .mj10-brand__spacer{
+    width:100%;
+  }
+  .mj10-brand__spacer--xl{ height:132px; }
+  .mj10-brand__spacer--lg{ height:81px; }
+  .mj10-brand__spacer--md{ height:64px; }
+  .mj10-brand__spacer--sm{ height:64px; }
+  .mj10-brand__title{
+    margin:0;
+    text-align:center;
+    font-size:38px;
+    font-weight:700;
+    color:#ffffff;
+    letter-spacing:0.02em;
+  }
+  .mj10-brand__subtitle{
+    margin:18px 0 0;
+    text-align:center;
+    font-size:18px;
+    line-height:1.6;
+    color:#ffffff;
+  }
+  .mj10-brand__feature{
+    display:grid;
+    grid-template-columns:5fr 1fr 6fr;
+    gap:0;
+    align-items:start;
+  }
+  .mj10-brand__gap{
+    height:100%;
+  }
+  .mj10-brand__figure{
+    margin:0;
+    text-align:center;
+  }
+  .mj10-brand__image{
+    width:100%;
+    display:block;
+    border-radius:0;
+    object-fit:cover;
+  }
+  .mj10-brand__figure--tall .mj10-brand__image{
+    height:640px;
+  }
+  .mj10-brand__caption,
+  .mj10-brand__figure figcaption{
+    margin-top:18px;
+    font-size:15px;
+    text-align:center;
+    color:#ffffff;
+  }
+  .mj10-brand__gallery{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:20px;
+  }
+  .mj10-brand__gallery .mj10-brand__image{
+    height:556px;
+  }
+  @media (max-width:1024px){
+    .mj10-brand__feature{
+      grid-template-columns:1fr;
+      gap:36px;
+    }
+    .mj10-brand__gap{
+      display:none;
+    }
+    .mj10-brand__figure--tall .mj10-brand__image,
+    .mj10-brand__gallery .mj10-brand__image{
+      height:auto;
+    }
+    .mj10-brand__gallery{
+      grid-template-columns:1fr;
+    }
+    .mj10-brand__title{
+      font-size:30px;
+    }
+  }
+</style>
+
+<div class="mj10-brand">
+  <div class="mj10-brand__inner">
+    <div class="mj10-brand__spacer mj10-brand__spacer--xl"></div>
+
+    <h1 class="mj10-brand__title">송영광 명장텐 베이커리</h1>
+    <p class="mj10-brand__subtitle">명장10 베이커리는 대한민국 10번째 제과명장 송영광 대표가 2019년에 설립하였습니다</p>
+
+    <div class="mj10-brand__spacer mj10-brand__spacer--lg"></div>
+
+    <div class="mj10-brand__feature">
+      <figure class="mj10-brand__figure mj10-brand__figure--tall">
+        <img class="mj10-brand__image" src="../../img/company/branding/brand-01.jpg" alt="명장텐 베이커리 카페내부 전경" />
+        <figcaption>명장텐 베이커리 카페내부 전경</figcaption>
+      </figure>
+      <div class="mj10-brand__gap"></div>
+      <figure class="mj10-brand__figure mj10-brand__figure--tall">
+        <img class="mj10-brand__image" src="../../img/company/branding/brand-02.jpg" alt="명장텐 베이커리 카페 인기 소금빵" />
+        <figcaption>명장텐 베이커리 카페 인기 소금빵</figcaption>
+      </figure>
+    </div>
+
+    <div class="mj10-brand__spacer mj10-brand__spacer--md"></div>
+
+    <div class="mj10-brand__gallery">
+      <figure class="mj10-brand__figure">
+        <img class="mj10-brand__image" src="../../img/company/branding/brand-03.jpg" alt="명장텐 베이커리 카페 내부" />
+      </figure>
+      <figure class="mj10-brand__figure">
+        <img class="mj10-brand__image" src="../../img/company/branding/brand-04.jpg" alt="명장텐 베이커리 카페 내부" />
+      </figure>
+      <figure class="mj10-brand__figure">
+        <img class="mj10-brand__image" src="../../img/company/branding/brand-05.jpg" alt="명장텐 베이커리 카페 내부" />
+      </figure>
+    </div>
+
+    <p class="mj10-brand__caption">명장텐 베이커리 카페내부 전경</p>
+
+    <div class="mj10-brand__spacer mj10-brand__spacer--sm"></div>
+  </div>
+</div>
