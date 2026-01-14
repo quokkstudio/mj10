@@ -85,12 +85,11 @@
 }
 
 .content .location_wrap + .goods_list_item .goods_pick_list .pick_list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 8px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
   padding: 0;
-  list-style: none;
-  width: 100%;
+  width: auto;
 }
 
 .content .location_wrap + .goods_list_item .goods_pick_list .pick_list li {
