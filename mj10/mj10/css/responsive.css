@@ -18,7 +18,7 @@
     overflow:hidden;
   }
   body.cn-menu-open .cn-header{
-    z-index:900;
+    z-index:auto;
   }
   /* header (mobile) */
   .cn-strip-banner{
