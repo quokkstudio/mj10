@@ -1,19 +1,282 @@
 {*** 매장 소개 | mj10/company/location.html ***}
 <style>
     .mj10-location{
-        background:#0b0b0b;
+        width:100%;
         color:#ffffff;
+    }
+    .mj10-location__section{
+        position:relative;
         width:100%;
     }
+    .mj10-location__section--hero{
+        background:#d46c53 url("../../img/company/location/location-bg.jpg") center/cover no-repeat;
+    }
+    .mj10-location__section--hero::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        background:rgba(212, 108, 83, 0.72);
+        z-index:0;
+    }
     .mj10-location__inner{
+        position:relative;
+        z-index:1;
         max-width:1400px;
         margin:0 auto;
-        padding:0;
+        padding:120px 16px 80px;
         box-sizing:border-box;
     }
+    .mj10-location__title{
+        margin:0;
+        font-size:36px;
+        font-weight:700;
+        text-align:center;
+        color:#ffffff;
+    }
+    .mj10-location__subtitle{
+        margin:16px auto 0;
+        font-size:18px;
+        line-height:1.6;
+        text-align:center;
+        color:#ffffff;
+        max-width:760px;
+    }
+    .mj10-location__spacer-lg{ height:81px; }
+    .mj10-location__spacer-md{ height:64px; }
+    .mj10-location__spacer-sm{ height:30px; }
+    .mj10-location__feature{
+        display:grid;
+        grid-template-columns:5fr 1fr 6fr;
+        gap:0;
+        align-items:start;
+    }
+    .mj10-location__gap{
+        height:100%;
+    }
+    .mj10-location__figure{
+        margin:0;
+        text-align:center;
+    }
+    .mj10-location__figure--tall img{
+        width:100%;
+        height:640px;
+        object-fit:cover;
+        display:block;
+    }
+    .mj10-location__caption{
+        margin-top:16px;
+        font-size:15px;
+        text-align:center;
+        color:#ffffff;
+    }
+    .mj10-location__gallery{
+        display:grid;
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:20px;
+    }
+    .mj10-location__gallery img{
+        width:100%;
+        height:556px;
+        object-fit:cover;
+        display:block;
+    }
+    .mj10-location__section--sns{
+        background:#d46c53;
+    }
+    .mj10-location__sns-title{
+        margin:0;
+        text-align:center;
+        font-size:28px;
+        font-weight:700;
+        color:#ffffff;
+    }
+    .mj10-location__sns-list{
+        list-style:none;
+        margin:32px auto 0;
+        padding:0;
+        max-width:820px;
+        display:flex;
+        flex-direction:column;
+        gap:18px;
+    }
+    .mj10-location__sns-item a{
+        display:flex;
+        align-items:center;
+        gap:16px;
+        padding:14px 18px;
+        border-radius:10px;
+        background:rgba(255,255,255,0.12);
+        color:#ffffff;
+        text-decoration:none;
+        font-size:16px;
+        font-weight:600;
+    }
+    .mj10-location__sns-icon{
+        width:40px;
+        height:40px;
+        border-radius:50%;
+        background:#ffffff;
+        color:#d46c53;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-weight:700;
+        font-size:14px;
+    }
+    .mj10-location__section--signature{
+        background:#f6efe9;
+        color:#682e06;
+    }
+    .mj10-location__signature-title{
+        margin:0;
+        text-align:center;
+        font-size:30px;
+        font-weight:700;
+        color:#682e06;
+    }
+    .mj10-location__signature-subtitle{
+        margin:10px 0 0;
+        text-align:center;
+        font-size:16px;
+        letter-spacing:0.08em;
+        text-transform:uppercase;
+        color:#8a5a33;
+    }
+    .mj10-location__signature-grid{
+        margin-top:40px;
+        display:grid;
+        grid-template-columns:repeat(4, minmax(0, 1fr));
+        gap:24px;
+    }
+    .mj10-location__signature-card{
+        background:#ffffff;
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:0 8px 24px rgba(0,0,0,0.08);
+        text-align:center;
+    }
+    .mj10-location__signature-card img{
+        width:100%;
+        height:240px;
+        object-fit:cover;
+        display:block;
+    }
+    .mj10-location__signature-name{
+        padding:16px 12px 20px;
+        font-size:17px;
+        font-weight:700;
+        color:#682e06;
+    }
+    @media (max-width:1200px){
+        .mj10-location__signature-grid{
+            grid-template-columns:repeat(2, minmax(0, 1fr));
+        }
+    }
+    @media (max-width:1024px){
+        .mj10-location__inner{
+            padding:90px 16px 60px;
+        }
+        .mj10-location__feature{
+            grid-template-columns:1fr;
+            gap:32px;
+        }
+        .mj10-location__gap{
+            display:none;
+        }
+        .mj10-location__figure--tall img,
+        .mj10-location__gallery img{
+            height:auto;
+        }
+        .mj10-location__gallery{
+            grid-template-columns:1fr;
+        }
+        .mj10-location__signature-grid{
+            grid-template-columns:1fr;
+        }
+    }
 </style>
+
 <div class="mj10-location">
-    <div class="mj10-location__inner">
-        매장 소개 영역
-    </div>
+    <section class="mj10-location__section mj10-location__section--hero">
+        <div class="mj10-location__inner">
+            <h2 class="mj10-location__title">송영광 명장텐 베이커리</h2>
+            <p class="mj10-location__subtitle">명장10 베이커리는 대한민국 10번째 제과명장 송영광 대표가 2019년에 설립하였습니다</p>
+
+            <div class="mj10-location__spacer-lg"></div>
+
+            <div class="mj10-location__feature">
+                <figure class="mj10-location__figure mj10-location__figure--tall">
+                    <img src="../../img/company/branding/brand-01.jpg" alt="명장텐 베이커리 카페내부 전경" />
+                    <figcaption class="mj10-location__caption">명장텐 베이커리 카페내부 전경</figcaption>
+                </figure>
+                <div class="mj10-location__gap"></div>
+                <figure class="mj10-location__figure mj10-location__figure--tall">
+                    <img src="../../img/company/branding/brand-02.jpg" alt="명장텐 베이커리 카페 인기 소금빵" />
+                    <figcaption class="mj10-location__caption">명장텐 베이커리 카페 인기 소금빵</figcaption>
+                </figure>
+            </div>
+
+            <div class="mj10-location__spacer-md"></div>
+
+            <div class="mj10-location__gallery">
+                <img src="../../img/company/branding/brand-03.jpg" alt="명장텐 베이커리 카페 내부" />
+                <img src="../../img/company/branding/brand-04.jpg" alt="명장텐 베이커리 카페 내부" />
+                <img src="../../img/company/branding/brand-05.jpg" alt="명장텐 베이커리 카페 내부" />
+            </div>
+
+            <p class="mj10-location__caption">명장텐 베이커리 카페내부 전경</p>
+        </div>
+    </section>
+
+    <section class="mj10-location__section mj10-location__section--sns">
+        <div class="mj10-location__inner">
+            <h3 class="mj10-location__sns-title">SNS 바로가기</h3>
+            <ul class="mj10-location__sns-list">
+                <li class="mj10-location__sns-item">
+                    <a href="https://www.youtube.com/@myungjang10" target="_blank" rel="noopener"> 
+                        <span class="mj10-location__sns-icon">YT</span>
+                        명장텐 송영광 유튜브 @myungjang10
+                    </a>
+                </li>
+                <li class="mj10-location__sns-item">
+                    <a href="https://www.instagram.com/mj10.song" target="_blank" rel="noopener">
+                        <span class="mj10-location__sns-icon">IG</span>
+                        명장텐 인스타 @mj10.song
+                    </a>
+                </li>
+                <li class="mj10-location__sns-item">
+                    <a href="https://www.mj10.co.kr" target="_blank" rel="noopener">
+                        <span class="mj10-location__sns-icon">WEB</span>
+                        명장텐 홈페이지 www.mj10.co.kr
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="mj10-location__section mj10-location__section--signature">
+        <div class="mj10-location__inner">
+            <h3 class="mj10-location__signature-title">시그니쳐 제품</h3>
+            <div class="mj10-location__signature-subtitle">Hamsbrot Bakery signature product</div>
+
+            <div class="mj10-location__signature-grid">
+                <div class="mj10-location__signature-card">
+                    <img src="../../img/company/location/signature-01.jpg" alt="소금빵" />
+                    <div class="mj10-location__signature-name">소금빵</div>
+                </div>
+                <div class="mj10-location__signature-card">
+                    <img src="../../img/company/location/signature-02.jpg" alt="유산균 초코파이" />
+                    <div class="mj10-location__signature-name">유산균 초코파이</div>
+                </div>
+                <div class="mj10-location__signature-card">
+                    <img src="../../img/company/location/signature-03.jpg" alt="쌀 롤케이크" />
+                    <div class="mj10-location__signature-name">쌀 롤케이크</div>
+                </div>
+                <div class="mj10-location__signature-card">
+                    <img src="../../img/company/location/signature-04.jpg" alt="몽블랑" />
+                    <div class="mj10-location__signature-name">몽블랑</div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
