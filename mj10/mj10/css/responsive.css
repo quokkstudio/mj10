@@ -337,7 +337,15 @@
     table-layout:fixed;
   }
   .mj10-goods-view .item_choice_list .cart_prdt_name{
-    width:auto;
+    width:100%;
+    max-width:0;
+    overflow:hidden;
+  }
+  .mj10-goods-view .item_choice_list .cart_prdt_name .cart_tit{
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
   }
   .mj10-goods-view .item_choice_list td{
     vertical-align:middle;
