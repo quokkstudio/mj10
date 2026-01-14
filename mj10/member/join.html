@@ -286,9 +286,12 @@
 
 		var $joinIntro = $('[data-join-intro]');
 		if ($joinIntro.length) {
+			var $introTarget = $joinIntro.closest('.member_cont');
 			var introMq = window.matchMedia('(max-width: 768px)');
 			var syncIntro = function () {
-				$joinIntro.attr('data-open', introMq.matches ? 'true' : 'false');
+				var openValue = introMq.matches ? 'true' : 'false';
+				$joinIntro.attr('data-open', openValue);
+				$introTarget.attr('data-intro-open', openValue);
 			};
 			if (introMq.addEventListener) {
 				introMq.addEventListener('change', syncIntro);
@@ -300,12 +303,14 @@
 				$('#memberFlBusiness').prop('checked', false);
 				setJoinMode(false);
 				$joinIntro.attr('data-open', 'false');
+				$introTarget.attr('data-intro-open', 'false');
 			});
 			$(document).on('click', '.js-join-intro-business', function () {
 				$('#memberFlBusiness').prop('checked', true);
 				$('#memberFlDefault').prop('checked', false);
 				setJoinMode(true);
 				$joinIntro.attr('data-open', 'false');
+				$introTarget.attr('data-intro-open', 'false');
 			});
 			syncIntro();
 		}

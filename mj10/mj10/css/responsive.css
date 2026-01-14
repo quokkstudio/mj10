@@ -537,6 +537,12 @@
     position:relative;
     padding:0;
   }
+  .join_base_wrap .member_cont[data-intro-open="true"]{
+    min-height:0;
+  }
+  .join_base_wrap .member_cont[data-intro-open="true"] .mj10-join-v2{
+    display:none;
+  }
   .mj10-join-intro{
     position:absolute;
     inset:0;
