@@ -216,7 +216,7 @@
 .option_layer_cont .btn_confirm:hover{border:1px solid #000000; background:#000000;}
 
 /* 장바구니/찜리스트 담기 레이어 */
-.add_cart_layer, .add_wish_layer{width:405px; min-height:312px;}
+.add_cart_layer, .add_wish_layer{width:460px; min-height:312px; padding:0 24px 24px; box-sizing:border-box;}
 .add_cart_layer p{margin:30px 0 0; padding:80px 0 0; color:#222; font-size:14px; line-height:22px; text-align:center;
     background:url('../../../img/common/layer/add_cart_success.png') no-repeat center top;}
 .add_wish_layer p{margin:30px 0 0; padding:80px 0 0; color:#222; font-size:14px; line-height:22px; text-align:center;
