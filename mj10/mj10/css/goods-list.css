@@ -71,7 +71,8 @@
   margin-left: auto;
 }
 
-.content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box {
+.content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box,
+.content .goods_list_item .goods_pick_list .pick_list_box {
   height: auto;
   margin: 0;
   padding: 0;
@@ -84,7 +85,8 @@
   position: relative;
 }
 
-.content .location_wrap + .goods_list_item .goods_pick_list .pick_list {
+.content .location_wrap + .goods_list_item .goods_pick_list .pick_list,
+.content .goods_list_item .goods_pick_list .pick_list {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 14px;
@@ -92,33 +94,39 @@
   width: auto;
 }
 
-.content .location_wrap + .goods_list_item .goods_pick_list .pick_list li {
+.content .location_wrap + .goods_list_item .goods_pick_list .pick_list li,
+.content .goods_list_item .goods_pick_list .pick_list li {
   margin: 0;
   padding: 0;
 }
 
-.content .location_wrap + .goods_list_item .goods_pick_list .pick_list input {
+.content .location_wrap + .goods_list_item .goods_pick_list .pick_list input,
+.content .goods_list_item .goods_pick_list .pick_list input {
   position: absolute;
 }
 
-.content .location_wrap + .goods_list_item .goods_pick_list .pick_list label {
+.content .location_wrap + .goods_list_item .goods_pick_list .pick_list label,
+.content .goods_list_item .goods_pick_list .pick_list label {
   padding: 0;
   background: none;
   font-size: 12px;
   color: #666;
 }
 
-.content .location_wrap + .goods_list_item .goods_pick_list .pick_list label.on {
+.content .location_wrap + .goods_list_item .goods_pick_list .pick_list label.on,
+.content .goods_list_item .goods_pick_list .pick_list label.on {
   color: #111;
   font-weight: 600;
   background: none;
 }
 
-.content .location_wrap + .goods_list_item .goods_pick_list .choice_num_view {
+.content .location_wrap + .goods_list_item .goods_pick_list .choice_num_view,
+.content .goods_list_item .goods_pick_list .choice_num_view {
   float: none;
 }
 
-  .content .location_wrap + .goods_list_item .goods_pick_list .choice_num_view select {
+.content .location_wrap + .goods_list_item .goods_pick_list .choice_num_view select,
+.content .goods_list_item .goods_pick_list .choice_num_view select {
     height: 32px;
     padding: 0 28px 0 10px;
     border: 1px solid #d0d0d0;
@@ -129,7 +137,8 @@
     box-sizing: border-box;
   }
 
-.content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list_toggle {
+.content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list_toggle,
+.content .goods_list_item .goods_pick_list .pick_list_box .pick_list_toggle {
   display: none;
   width: 100%;
   border: 1px solid #d6d6d6;
@@ -146,7 +155,8 @@
   gap: 6px;
   box-sizing: border-box;
 }
-.content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list_toggle::after {
+.content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list_toggle::after,
+.content .goods_list_item .goods_pick_list .pick_list_box .pick_list_toggle::after {
   content: "";
   width: 10px;
   height: 10px;
@@ -157,7 +167,8 @@
   display: inline-block;
   margin-left: auto;
 }
-.content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box.is-open .pick_list_toggle::after {
+.content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box.is-open .pick_list_toggle::after,
+.content .goods_list_item .goods_pick_list .pick_list_box.is-open .pick_list_toggle::after {
   transform: rotate(-135deg);
 }
 
@@ -431,7 +442,8 @@
     width: 100%;
   }
 
-  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box {
+  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box,
+  .content .goods_list_item .goods_pick_list .pick_list_box {
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
@@ -440,11 +452,14 @@
   }
 
   .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list_toggle,
-  .content .location_wrap + .goods_list_item .goods_pick_list .choice_num_view {
+  .content .goods_list_item .goods_pick_list .pick_list_box .pick_list_toggle,
+  .content .location_wrap + .goods_list_item .goods_pick_list .choice_num_view,
+  .content .goods_list_item .goods_pick_list .choice_num_view {
     flex: 0 0 calc(50% - 6px);
   }
 
-  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list {
+  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list,
+  .content .goods_list_item .goods_pick_list .pick_list_box .pick_list {
     position: absolute;
     top: calc(100% + 10px);
     left: 0;
@@ -463,11 +478,13 @@
     overflow: auto;
   }
 
-  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list li {
+  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list li,
+  .content .goods_list_item .goods_pick_list .pick_list_box .pick_list li {
     width: 100%;
   }
 
-  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list label {
+  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list label,
+  .content .goods_list_item .goods_pick_list .pick_list_box .pick_list label {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -477,15 +494,18 @@
     font-size: 13px;
   }
 
-  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list li + li {
+  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box .pick_list li + li,
+  .content .goods_list_item .goods_pick_list .pick_list_box .pick_list li + li {
     border-top: 1px solid #f2f2f2;
   }
 
-  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box.is-collapsed .pick_list {
+  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box.is-collapsed .pick_list,
+  .content .goods_list_item .goods_pick_list .pick_list_box.is-collapsed .pick_list {
     display: none;
   }
 
-  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box.is-open .pick_list {
+  .content .location_wrap + .goods_list_item .goods_pick_list .pick_list_box.is-open .pick_list,
+  .content .goods_list_item .goods_pick_list .pick_list_box.is-open .pick_list {
     display: flex;
   }
 }
