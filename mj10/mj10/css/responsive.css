@@ -20,13 +20,6 @@
   body.cn-menu-open .cn-header{
     z-index:1400;
   }
-  body.cn-menu-open .cn-strip-banner,
-  body.cn-menu-open .cn-midbar,
-  body.cn-menu-open .cn-navbar{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-  }
   /* header (mobile) */
   .cn-strip-banner{
     position:static;
@@ -295,6 +288,10 @@
     padding-right:20px;
   }
 
+  .main_goods_cont .goods_list_tit h3{
+    text-align:left;
+  }
+
   .main_content .wrap-inner.gray-bg{
     margin-left:-20px;
     margin-right:-20px;
@@ -325,7 +322,7 @@
     -webkit-overflow-scrolling:touch;
     scroll-behavior:smooth;
     scroll-snap-type:x mandatory;
-    padding:0 12px 10px;
+    padding:0;
   }
   .main_goods_cont .goods_list_cont > ul:not(.slick-initialized) > li,
   .main_goods_cont .item_slide_horizontal > ul:not(.slick-initialized) > li{
