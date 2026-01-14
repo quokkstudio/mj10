@@ -244,6 +244,13 @@
         if (!li) return;
         const isOpen = li.classList.toggle("is-open");
         btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        if (!isOpen) {
+          const sub = li.querySelector(":scope > .depth1");
+          if (sub) sub.style.display = "none";
+        } else {
+          const sub = li.querySelector(":scope > .depth1");
+          if (sub) sub.style.display = "block";
+        }
       });
       mega.addEventListener("click", (e) => {
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -257,6 +264,8 @@
         const isOpen = li.classList.toggle("is-open");
         const accBtn = li.querySelector(".cn-acc-btn");
         if (accBtn) accBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        const sub = li.querySelector(":scope > .depth1");
+        if (sub) sub.style.display = isOpen ? "block" : "none";
       });
     }
     if (mobileMenuBtn) {
