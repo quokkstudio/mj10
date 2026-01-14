@@ -332,6 +332,41 @@
     height:auto;
   }
 
+  .mj10-goods-view .item_goods_tab{
+    overflow:hidden;
+  }
+  .mj10-goods-view .item_goods_tab ul{
+    display:flex;
+    flex-wrap:nowrap;
+    gap:8px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    padding:0 16px 8px;
+    margin:0 -16px;
+    list-style:none;
+  }
+  .mj10-goods-view .item_goods_tab ul::-webkit-scrollbar{
+    height:4px;
+  }
+  .mj10-goods-view .item_goods_tab ul::-webkit-scrollbar-thumb{
+    background:#d9d9d9;
+    border-radius:999px;
+  }
+  .mj10-goods-view .item_goods_tab ul li{
+    flex:0 0 auto;
+    scroll-snap-align:start;
+    margin:0;
+  }
+  .mj10-goods-view .item_goods_tab ul li a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 14px;
+    font-size:13px;
+    white-space:nowrap;
+  }
+
 
   .mj10-goods-view .item_choice_list table{
     width:100%;
