@@ -384,4 +384,8 @@
     justify-content:center;
     margin-top:10px;
   }
+
+  .content .location_wrap + .goods_list_item{
+    padding:0;
+  }
 }
