@@ -18,6 +18,27 @@
         max-width: 1400px;
         margin: 0 auto;
     }
+    .mj10-company-page #contents .sub_content .content.mj10-company {
+        max-width: none;
+        width: 100%;
+        margin: 0;
+    }
+    .mj10-company__inner{
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+    .mj10-company .company-section[data-section="store"] .mj10-company__inner{
+        max-width: none;
+        padding: 0;
+    }
+    .mj10-company .company-section[data-section="store"] .mj10-brand{
+        padding: 0;
+    }
+    .mj10-company .company-section[data-section="store"] .mj10-brand__inner{
+        max-width: none;
+    }
     .mj10-company-hero {
         width: 100%;
         height: 600px;
@@ -157,13 +178,19 @@
 </div>
 <div class="content mj10-company">
     <div class="company-section is-active" data-section="greeting">
-        {=includeFile('mj10/company/ceo.html')}
+        <div class="mj10-company__inner">
+            {=includeFile('mj10/company/ceo.html')}
+        </div>
     </div>
     <div class="company-section" data-section="brand">
-        {=includeFile('mj10/company/brand.html')}
+        <div class="mj10-company__inner">
+            {=includeFile('mj10/company/location.html')}
+        </div>
     </div>
     <div class="company-section" data-section="store">
-        {=includeFile('mj10/company/location.html')}
+        <div class="mj10-company__inner">
+            {=includeFile('mj10/company/brand.html')}
+        </div>
     </div>
 </div>
 
