@@ -325,13 +325,6 @@
     padding:0;
   }
 
-  .mj10-goods-view .item_photo_info_sec{
-    padding:0;
-  }
-  .mj10-goods-view .item_photo_big{
-    height:auto;
-  }
-
   .mj10-goods-view .item_choice_list table{
     width:100%;
     table-layout:fixed;
@@ -371,7 +364,6 @@
     white-space:nowrap;
     text-align:right;
   }
-
   .main_goods_cont .item_photo_box,
   .main_goods_cont .item_photo_box a{
     width:100%;
