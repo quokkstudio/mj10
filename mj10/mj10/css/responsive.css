@@ -585,7 +585,7 @@
     display:block;
     width:100% !important;
     box-sizing:border-box;
-    padding:0;
+    padding:5px 0;
   }
   .mj10-join-v2 .base_info_box th,
   .mj10-join-v2 .business_info_box th,
@@ -597,17 +597,17 @@
     display:block;
     width:100% !important;
     box-sizing:border-box;
-    padding:0;
+    padding:5px 0;
   }
   .mj10-join-v2 .business_info_box tr{
-    display:block;
+    display:block !important;
     margin:0;
-    padding:5px 0;
+    padding:0;
   }
   .join_base_wrap tr{
-    display:block;
+    display:block !important;
     margin:0;
-    padding:5px 0;
+    padding:0;
   }
   .js-biz-step3 table{
     width:100%;
