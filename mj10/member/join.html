@@ -273,10 +273,14 @@
 			setJoinMode(this.value === 'business');
 		});
 		$(document).on('click', '.js-switch-business', function () {
-			$('#memberFlBusiness').prop('checked', true).trigger('change');
+			$('#memberFlBusiness').prop('checked', true);
+			$('#memberFlDefault').prop('checked', false);
+			setJoinMode(true);
 		});
 		$(document).on('click', '.js-switch-personal', function () {
-			$('#memberFlDefault').prop('checked', true).trigger('change');
+			$('#memberFlDefault').prop('checked', true);
+			$('#memberFlBusiness').prop('checked', false);
+			setJoinMode(false);
 		});
 		setJoinMode($(':radio[name="memberFl"]:checked').val() === 'business');
 
@@ -391,10 +395,9 @@
 		gd_member2.init($formJoin);
 
 		$('.js_btn_join').click({form: $formJoin}, function (e) {
-			if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
-				if ($('#mj10Join').attr('data-join-mode') === 'business') {
-					$('#memberFlBusiness').prop('checked', true);
-				}
+			if ($('#mj10Join').attr('data-join-mode') === 'business') {
+				$('#memberFlBusiness').prop('checked', true);
+				$('#memberFlDefault').prop('checked', false);
 			}
 			if (typeof syncBizHiddenFields === 'function') {
 				syncBizHiddenFields();
