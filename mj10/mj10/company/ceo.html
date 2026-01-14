@@ -1,0 +1,853 @@
+{*** 대표 인사말 | mj10/company/ceo.html ***}
+<style>
+  .mj10-company-ceo{
+    max-width:1400px;
+    margin:0 auto;
+    padding:40px 16px 80px;
+    box-sizing:border-box;
+  }
+  .mj10-company-ceo__media{
+    position:relative;
+    overflow:hidden;
+  }
+  .mj10-company-ceo__img{
+    width:100%;
+    height:auto;
+    display:block;
+    opacity:0;
+    transform:translateY(60px);
+    transition:opacity .9s ease, transform .9s ease;
+  }
+  .mj10-company-ceo__text{
+    position:absolute;
+    left:6%;
+    top:50%;
+    transform:translateY(-50%);
+    max-width:520px;
+    text-align:left;
+    font-size:18px;
+    line-height:1.9;
+    color:#ffffff;
+    text-shadow:0 6px 16px rgba(0,0,0,0.35);
+  }
+  .mj10-company-ceo__line-group{
+    margin:0 0 14px;
+    opacity:0;
+    transform:translateY(-12px);
+    transition:none;
+    will-change:opacity, transform;
+    filter:blur(6px);
+  }
+  .mj10-company-ceo__line-group:last-child{
+    margin-bottom:0;
+  }
+  .mj10-company-ceo.is-img-in .mj10-company-ceo__img{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group{
+    animation: mj10CeoLineIn 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(1){ animation-delay:0.1s; }
+  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(2){ animation-delay:0.24s; }
+  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(3){ animation-delay:0.38s; }
+  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(4){ animation-delay:0.52s; }
+  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(5){ animation-delay:0.66s; }
+  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(6){ animation-delay:0.8s; }
+  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(7){ animation-delay:0.94s; }
+  .mj10-company-ceo.is-text-in .mj10-company-ceo__line-group:nth-child(8){ animation-delay:1.08s; }
+  @keyframes mj10CeoLineIn{
+    to{
+      opacity:1;
+      transform:translateY(0);
+      filter:blur(0);
+    }
+  }
+  .mj10-company-ceo__timeline{
+    margin-top:120px;
+    padding:80px 0 40px;
+    position:relative;
+  }
+  .mj10-company-ceo__timeline-list{
+    margin:0;
+    padding:4px 0 12px;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:102px;
+    position:relative;
+    --timeline-line-top: 0px;
+    --timeline-line-height: 100%;
+  }
+  .mj10-company-ceo__timeline-list::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:var(--timeline-line-top);
+    height:var(--timeline-line-height);
+    width:1px;
+    background:linear-gradient(180deg, rgba(19, 36, 85, 0.08), rgba(19, 36, 85, 0.28), rgba(19, 36, 85, 0.08));
+    transform:translateX(-50%);
+    z-index:1;
+  }
+  .mj10-company-ceo__timeline-list::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:var(--timeline-line-top);
+    width:2px;
+    height:var(--timeline-progress, 0px);
+    background:#1a2a5a;
+    border-radius:2px;
+    transform:translateX(-50%);
+    z-index:2;
+  }
+  .mj10-company-ceo__timeline-item{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) 52px minmax(0, 1fr);
+    column-gap:12px;
+    align-items:center;
+    grid-auto-flow:row dense;
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .6s ease, transform .6s ease;
+    will-change:opacity, transform;
+    position:relative;
+    z-index:3;
+  }
+  .mj10-company-ceo__timeline-item > *{
+    grid-row:1;
+  }
+  .mj10-company-ceo__timeline-item.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .mj10-company-ceo__timeline-side{
+    display:flex;
+    min-width:0;
+    align-items:center;
+  }
+  .mj10-company-ceo__timeline-side--media{
+    justify-content:flex-end;
+  }
+  .mj10-company-ceo__timeline-side--content{
+    justify-content:flex-start;
+  }
+  .mj10-company-ceo__timeline-year{
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    color:#9aa3b1;
+    text-transform:uppercase;
+  }
+  .mj10-company-ceo__timeline-axis{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    grid-column:2;
+    z-index:4;
+    padding-top:0;
+  }
+  .mj10-company-ceo__timeline-dot{
+    position:relative;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#ffffff;
+    border:2px solid #1a2a5a;
+    box-shadow:0 0 0 6px rgba(26, 42, 90, 0.12);
+    transition:background .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .mj10-company-ceo__timeline-item.is-active .mj10-company-ceo__timeline-dot{
+    background:#1a2a5a;
+    border-color:#1a2a5a;
+    box-shadow:0 0 0 7px rgba(26, 42, 90, 0.2);
+  }
+  .mj10-company-ceo__timeline-card{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    width:100%;
+    max-width:360px;
+    z-index:3;
+  }
+  .mj10-company-ceo__timeline-year-only{
+    width:100%;
+    text-align:right;
+  }
+  .mj10-company-ceo__timeline-card > .mj10-company-ceo__timeline-gallery{
+    margin-top:10px;
+  }
+  .mj10-company-ceo__timeline-inline-media{
+    margin-top:10px;
+  }
+  .mj10-company-ceo__timeline-media{
+    width:100%;
+    border-radius:14px;
+    overflow:hidden;
+    max-width:260px;
+  }
+  .mj10-company-ceo__timeline-media.is-portrait{
+    max-width:190px;
+  }
+  .mj10-company-ceo__timeline-media img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+    display:block;
+    transform:none;
+    transition:none;
+  }
+  .mj10-company-ceo__timeline-item.is-visible .mj10-company-ceo__timeline-media img{
+    transform:scale(1);
+  }
+  .mj10-company-ceo__timeline-card .mj10-company-ceo__timeline-year{
+    margin-bottom:4px;
+  }
+  .mj10-company-ceo__timeline-details{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    color:#1b2238;
+    font-size:16px;
+    line-height:1.6;
+    font-weight:600;
+  }
+  .mj10-company-ceo__timeline-gallery{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 200px));
+    gap:12px 16px;
+    justify-content:start;
+  }
+  .mj10-company-ceo__timeline-gallery.is-3col{
+    grid-template-columns:repeat(3, minmax(0, 140px));
+    gap:10px 12px;
+  }
+  .mj10-company-ceo__timeline-figure{
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .mj10-company-ceo__timeline-figure img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+    border-radius:12px;
+    display:block;
+  }
+  .mj10-company-ceo__timeline-gallery.is-stack{
+    grid-template-columns:minmax(0, 220px);
+  }
+  .mj10-company-ceo__timeline-figure.is-landscape img{
+    max-height:180px;
+  }
+  .mj10-company-ceo__timeline-figure.is-portrait img{
+    max-height:260px;
+  }
+  .mj10-company-ceo__timeline-caption{
+    font-size:14px;
+    line-height:1.45;
+    color:#1b2238;
+    font-weight:600;
+  }
+  .mj10-company-ceo__timeline-media img,
+  .mj10-company-ceo__timeline-figure img{
+    cursor:pointer;
+  }
+  .mj10-company-ceo__lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(10, 12, 20, 0.72);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease;
+    z-index:9999;
+  }
+  .mj10-company-ceo__lightbox.is-open{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .mj10-company-ceo__lightbox-inner{
+    position:relative;
+    max-width:92vw;
+    max-height:88vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+  }
+  .mj10-company-ceo__lightbox-img{
+    max-width:92vw;
+    max-height:80vh;
+    width:auto;
+    height:auto;
+    border-radius:12px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    background:#fff;
+  }
+  .mj10-company-ceo__lightbox-caption{
+    font-size:14px;
+    color:#fff;
+  }
+  .mj10-company-ceo__lightbox-close{
+    position:absolute;
+    top:-40px;
+    right:0;
+    background:rgba(255,255,255,0.12);
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.4);
+    border-radius:999px;
+    padding:6px 12px;
+    font-size:13px;
+    cursor:pointer;
+  }
+  .mj10-company-ceo__timeline-item:nth-child(even) .mj10-company-ceo__timeline-card{
+    text-align:right;
+  }
+  .mj10-company-ceo__timeline-item:nth-child(even) .mj10-company-ceo__timeline-side--media{
+    justify-content:flex-start;
+    grid-column:3;
+  }
+  .mj10-company-ceo__timeline-item:nth-child(even) .mj10-company-ceo__timeline-side--content{
+    justify-content:flex-end;
+    grid-column:1;
+  }
+  .mj10-company-ceo__timeline-item:nth-child(odd) .mj10-company-ceo__timeline-side--media{
+    grid-column:1;
+  }
+  .mj10-company-ceo__timeline-item:nth-child(odd) .mj10-company-ceo__timeline-side--content{
+    grid-column:3;
+  }
+  .mj10-company-ceo__timeline-item--right .mj10-company-ceo__timeline-side--media{
+    justify-content:flex-end;
+    grid-column:1;
+  }
+  .mj10-company-ceo__timeline-item--right .mj10-company-ceo__timeline-side--content{
+    justify-content:flex-start;
+    grid-column:3;
+    text-align:left;
+  }
+  @media (max-width: 768px){
+    .mj10-company-ceo__text{
+      font-size:16px;
+      left:6%;
+      right:6%;
+      max-width:none;
+      top:50%;
+    }
+    .mj10-company-ceo__timeline{
+      margin-top:80px;
+      padding:60px 0 20px;
+    }
+    .mj10-company-ceo__timeline-list{
+      gap:66px;
+      padding:0 0 8px;
+    }
+    .mj10-company-ceo__timeline-list::before{
+      left:14px;
+      transform:none;
+    }
+    .mj10-company-ceo__timeline-list::after{
+      left:14px;
+      transform:none;
+    }
+    .mj10-company-ceo__timeline-item{
+      grid-template-columns:28px minmax(0, 1fr);
+      column-gap:14px;
+      opacity:1;
+      transform:none;
+      align-items:flex-start;
+    }
+    .mj10-company-ceo__timeline-axis{
+      grid-column:1;
+      align-items:flex-start;
+    }
+    .mj10-company-ceo__timeline-dot{
+      width:10px;
+      height:10px;
+      box-shadow:0 0 0 5px rgba(26, 42, 90, 0.12);
+    }
+    .mj10-company-ceo__timeline-side{
+      grid-column:2;
+    }
+    .mj10-company-ceo__timeline-side--media{
+      justify-content:flex-start;
+      margin-bottom:12px;
+    }
+    .mj10-company-ceo__timeline-side--content{
+      justify-content:flex-start;
+    }
+    .mj10-company-ceo__timeline-card{
+      max-width:100%;
+      align-items:flex-start;
+      text-align:left;
+    }
+    .mj10-company-ceo__timeline-media{
+      max-width:100%;
+      border-radius:12px;
+    }
+    .mj10-company-ceo__timeline-year{
+      font-size:13px;
+    }
+    .mj10-company-ceo__timeline-details{
+      font-size:16px;
+      gap:6px;
+    }
+    .mj10-company-ceo__timeline-gallery{
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:12px 14px;
+    }
+    .mj10-company-ceo__timeline-gallery.is-3col{
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+    .mj10-company-ceo__timeline-figure img{
+      border-radius:10px;
+    }
+    .mj10-company-ceo__timeline-caption{
+      font-size:13px;
+    }
+  }
+
+</style>
+
+<div class="mj10-company-ceo" data-ceo>
+  <div class="mj10-company-ceo__media" data-ceo-media>
+    <img class="mj10-company-ceo__img" src="../../img/company/ceo/ceoFill.jpg" alt="대표 인사말" />
+    <div class="mj10-company-ceo__text" data-ceo-text>
+      <div class="mj10-company-ceo__line-group">안녕하세요.</div>
+      <div class="mj10-company-ceo__line-group">대한민국 10번째 명장 송영광입니다.</div>
+      <div class="mj10-company-ceo__line-group">첫 목표는 기능장이었고 10년간의 노력으로 명장이라는</div>
+      <div class="mj10-company-ceo__line-group">목표에 도달하게 되었습니다.</div>
+      <div class="mj10-company-ceo__line-group">저는 빵을 정말 좋아하는 한 사람으로</div>
+      <div class="mj10-company-ceo__line-group">제가 가르치는 후배와 제자들에게</div>
+      <div class="mj10-company-ceo__line-group">내가 사랑하는 가족들을 위해 어머니와 같은 마음으로</div>
+      <div class="mj10-company-ceo__line-group">빵을 만들라고 말합니다.</div>
+    </div>
+  </div>
+  <section class="mj10-company-ceo__timeline" data-ceo-timeline>
+    <ol class="mj10-company-ceo__timeline-list">
+      <li class="mj10-company-ceo__timeline-item">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-media">
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">1988</div>
+            <div class="mj10-company-ceo__timeline-details">
+              <div class="mj10-company-ceo__timeline-detail">제과 입문</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="mj10-company-ceo__timeline-item">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-media">
+            <img src="../../img/company/ceo/2002.JPG" alt="2002 한국제과기능장 취득" />
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">2002</div>
+            <div class="mj10-company-ceo__timeline-details">
+              <div class="mj10-company-ceo__timeline-detail">한국제과기능장 취득</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="mj10-company-ceo__timeline-item">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-gallery">
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/2008.jpg" alt="2008 이미지" />
+            </figure>
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/2008%20(2).jpg" alt="2008 추가 이미지" />
+            </figure>
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">2008</div>
+            <div class="mj10-company-ceo__timeline-details">
+              <div class="mj10-company-ceo__timeline-detail">프랑스 국제제과제빵학교(INBP) 졸업</div>
+              <div class="mj10-company-ceo__timeline-detail">프랑스 제빵자격증(CAP) 취득</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="mj10-company-ceo__timeline-item">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-media">
+            <img src="../../img/company/ceo/2009.JPG" alt="2009 국제 대회 및 연수" />
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">2009</div>
+            <div class="mj10-company-ceo__timeline-details">
+              <div class="mj10-company-ceo__timeline-detail">세계 제빵 대회(프랑스) 한국 국가대표</div>
+              <div class="mj10-company-ceo__timeline-detail">미국 캘리포니아 제과 대회 금상 수상</div>
+              <div class="mj10-company-ceo__timeline-detail">미국제빵요리학교(CIA) 연수</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="mj10-company-ceo__timeline-item">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-gallery">
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/201104.jpg" alt="201104 이미지" />
+            </figure>
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/201210.jpg" alt="201210 이미지" />
+            </figure>
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/201009.jpg" alt="201009 이미지" />
+            </figure>
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/201010.jpg" alt="201010 이미지" />
+            </figure>
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">2010</div>
+            <div class="mj10-company-ceo__timeline-details">
+              <div class="mj10-company-ceo__timeline-detail">(사)한국 기능장협회 기술자 위원장</div>
+              <div class="mj10-company-ceo__timeline-detail">한국관광대학교 제과제빵학과 교수 역임</div>
+              <div class="mj10-company-ceo__timeline-detail">중소기업 우수 기능인 고용노동부 장관</div>
+              <div class="mj10-company-ceo__timeline-detail">제1회 코리아 마스터 베이커리 페스티벌 우승</div>
+              <div class="mj10-company-ceo__timeline-detail">농림수산식품부 장관상 수상</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="mj10-company-ceo__timeline-item">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-media">
+            <img src="../../img/company/ceo/2014.jpg" alt="2014 대한민국 제과명장" />
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">2014</div>
+            <div class="mj10-company-ceo__timeline-details">
+              <div class="mj10-company-ceo__timeline-detail">대한민국 제과명장 대통령</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="mj10-company-ceo__timeline-item">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-media">
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">2016</div>
+            <div class="mj10-company-ceo__timeline-details">
+              <div class="mj10-company-ceo__timeline-detail">대한민국 산업현장 교수</div>
+              <div class="mj10-company-ceo__timeline-detail">고용노동부 장관</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="mj10-company-ceo__timeline-item mj10-company-ceo__timeline-item--right">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-gallery is-3col">
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/2017.jpg" alt="2017 이미지" />
+            </figure>
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/201810.jpg" alt="201810 이미지" />
+            </figure>
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/201812.jpg" alt="201812 이미지" />
+            </figure>
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">2017~2018</div>
+          </div>
+        </div>
+      </li>
+      <li class="mj10-company-ceo__timeline-item">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-gallery">
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/201903.jpg" alt="201903 이미지" />
+            </figure>
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/201908.jpg" alt="201908 이미지" />
+            </figure>
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/201909.jpg" alt="201909 이미지" />
+            </figure>
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/201910.jpg" alt="201910 이미지" />
+            </figure>
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">2019</div>
+            <div class="mj10-company-ceo__timeline-details">
+              <div class="mj10-company-ceo__timeline-detail">~ 현재 베이커리 카페 명장10 운영</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="mj10-company-ceo__timeline-item">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-gallery">
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/2021.04.jpg" alt="2021.04 이미지" />
+            </figure>
+            <figure class="mj10-company-ceo__timeline-figure">
+              <img src="../../img/company/ceo/2021.12.jpg" alt="2021.12 이미지" />
+            </figure>
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">2021</div>
+            <div class="mj10-company-ceo__timeline-details">
+              <div class="mj10-company-ceo__timeline-detail">제로니모 콜라보 협약</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="mj10-company-ceo__timeline-item">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-media">
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">2022</div>
+            <div class="mj10-company-ceo__timeline-details">
+              <div class="mj10-company-ceo__timeline-detail">조양방직 콜라보 협약</div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="mj10-company-ceo__timeline-item">
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--media">
+          <div class="mj10-company-ceo__timeline-media">
+          </div>
+        </div>
+        <div class="mj10-company-ceo__timeline-axis"><span class="mj10-company-ceo__timeline-dot"></span></div>
+        <div class="mj10-company-ceo__timeline-side mj10-company-ceo__timeline-side--content">
+          <div class="mj10-company-ceo__timeline-card">
+            <div class="mj10-company-ceo__timeline-year">2025</div>
+            <div class="mj10-company-ceo__timeline-details">
+              <div class="mj10-company-ceo__timeline-detail">올리텍 콜라보 협약</div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+</div>
+
+<script>
+  (function(){
+    var root = document.querySelector('[data-ceo]');
+    if (!root) return;
+    var media = root.querySelector('[data-ceo-media]');
+    var text = root.querySelector('[data-ceo-text]');
+    if (!media) return;
+    var hasScrolled = window.scrollY > 0;
+    var onFirstScroll = function(){
+      hasScrolled = true;
+      window.removeEventListener('scroll', onFirstScroll);
+    };
+    window.addEventListener('scroll', onFirstScroll, { passive: true });
+
+    if (!('IntersectionObserver' in window)) {
+      root.classList.add('is-img-in', 'is-text-in');
+      return;
+    }
+
+    var imgObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.intersectionRatio >= 0.2 && hasScrolled) {
+          root.classList.add('is-img-in');
+          imgObserver.disconnect();
+        }
+      });
+    }, { threshold: [0.2] });
+
+    imgObserver.observe(media);
+
+    var textTriggered = false;
+    var triggerText = function(){
+      if (textTriggered || !text) return;
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var doc = document.documentElement;
+      var maxScroll = Math.max(0, (doc.scrollHeight || 0) - vh);
+      var stepPx = Math.round(Math.min(140, Math.max(70, vh * 0.12)));
+      var startY = stepPx * 4;
+      if (maxScroll <= startY) {
+        startY = maxScroll * (4 / 9);
+      }
+      if (window.scrollY >= startY) {
+        root.classList.add('is-text-in');
+        textTriggered = true;
+        window.removeEventListener('scroll', triggerText);
+        window.removeEventListener('resize', triggerText);
+      }
+    };
+    window.addEventListener('scroll', triggerText, { passive: true });
+    window.addEventListener('resize', triggerText);
+    triggerText();
+
+    var timeline = root.querySelector('[data-ceo-timeline]');
+    if (timeline) {
+      var list = timeline.querySelector('.mj10-company-ceo__timeline-list');
+      var items = list ? Array.prototype.slice.call(list.querySelectorAll('.mj10-company-ceo__timeline-item')) : [];
+      var dots = list ? Array.prototype.slice.call(list.querySelectorAll('.mj10-company-ceo__timeline-dot')) : [];
+      var ticking = false;
+      var updateTimeline = function(){
+        ticking = false;
+        if (!list) return;
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var scrollY = window.scrollY || window.pageYOffset || 0;
+        var listRect = list.getBoundingClientRect();
+        var listTop = listRect.top + scrollY;
+        var start = listTop;
+        var end = listRect.bottom + scrollY;
+        if (dots.length) {
+          var firstDotRect = dots[0].getBoundingClientRect();
+          var lastDotRect = dots[dots.length - 1].getBoundingClientRect();
+          start = firstDotRect.top + scrollY + (firstDotRect.height / 2);
+          end = lastDotRect.top + scrollY + (lastDotRect.height / 2);
+        }
+        var lineTop = Math.max(0, start - listTop);
+        var lineHeight = Math.max(0, end - start);
+        var marker = scrollY + (vh * 0.55);
+        var progress = Math.min(Math.max(marker - start, 0), lineHeight);
+        list.style.setProperty('--timeline-line-top', lineTop + 'px');
+        list.style.setProperty('--timeline-line-height', lineHeight + 'px');
+        list.style.setProperty('--timeline-progress', progress + 'px');
+
+        items.forEach(function(item){
+          var dot = item.querySelector('.mj10-company-ceo__timeline-dot');
+          if (!dot) return;
+          var dotRect = dot.getBoundingClientRect();
+          var dotPoint = dotRect.top + scrollY + (dotRect.height / 2);
+          if (marker >= dotPoint) {
+            item.classList.add('is-active');
+          } else {
+            item.classList.remove('is-active');
+          }
+        });
+      };
+      var onTimelineScroll = function(){
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(updateTimeline);
+      };
+      window.addEventListener('scroll', onTimelineScroll, { passive: true });
+      window.addEventListener('resize', onTimelineScroll);
+      window.addEventListener('load', onTimelineScroll);
+      if (dots.length) {
+        dots.forEach(function(dot){
+          var img = dot.closest('.mj10-company-ceo__timeline-item');
+          var mediaImg = img ? img.querySelector('.mj10-company-ceo__timeline-media img') : null;
+          if (mediaImg && !mediaImg.complete) {
+            mediaImg.addEventListener('load', onTimelineScroll, { once: true });
+          }
+        });
+      }
+      updateTimeline();
+
+      if ('IntersectionObserver' in window) {
+        var itemObserver = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, { threshold: 0.15 });
+        items.forEach(function(item){ itemObserver.observe(item); });
+      } else {
+        items.forEach(function(item){ item.classList.add('is-visible'); });
+      }
+
+      var galleryImages = list ? Array.prototype.slice.call(list.querySelectorAll('.mj10-company-ceo__timeline-media img, .mj10-company-ceo__timeline-figure img')) : [];
+      var setOrientation = function(img){
+        var wrapper = img.closest('.mj10-company-ceo__timeline-media, .mj10-company-ceo__timeline-figure');
+        if (!wrapper) return;
+        var isPortrait = (img.naturalHeight || 0) > (img.naturalWidth || 0);
+        wrapper.classList.add(isPortrait ? 'is-portrait' : 'is-landscape');
+      };
+      galleryImages.forEach(function(img){
+        if (img.complete) {
+          setOrientation(img);
+        } else {
+          img.addEventListener('load', function(){ setOrientation(img); }, { once: true });
+        }
+      });
+
+      var lightbox = document.querySelector('.mj10-company-ceo__lightbox');
+      if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.className = 'mj10-company-ceo__lightbox';
+        lightbox.innerHTML = '' +
+          '<div class="mj10-company-ceo__lightbox-inner">' +
+            '<button type="button" class="mj10-company-ceo__lightbox-close">닫기</button>' +
+            '<img class="mj10-company-ceo__lightbox-img" alt="확대 이미지" />' +
+            '<div class="mj10-company-ceo__lightbox-caption"></div>' +
+          '</div>';
+        document.body.appendChild(lightbox);
+      }
+      var lbImg = lightbox.querySelector('.mj10-company-ceo__lightbox-img');
+      var lbCaption = lightbox.querySelector('.mj10-company-ceo__lightbox-caption');
+      var lbClose = lightbox.querySelector('.mj10-company-ceo__lightbox-close');
+      var closeLightbox = function(){
+        lightbox.classList.remove('is-open');
+        if (lbImg) lbImg.src = '';
+      };
+      if (lbClose) lbClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function(e){
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keyup', function(e){
+        if (e.key === 'Escape') closeLightbox();
+      });
+
+      galleryImages.forEach(function(img){
+        img.addEventListener('click', function(){
+          if (!lbImg) return;
+          var caption = '';
+          var fig = img.closest('figure');
+          var figcap = fig ? fig.querySelector('.mj10-company-ceo__timeline-caption') : null;
+          if (figcap) caption = figcap.textContent.trim();
+          lbImg.src = img.src;
+          if (lbCaption) lbCaption.textContent = caption;
+          lightbox.classList.add('is-open');
+        });
+      });
+    }
+
+  })();
+</script>

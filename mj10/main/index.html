@@ -1,0 +1,424 @@
+{*** 쇼핑몰 메인본문 | main/index.php ***}
+{ # header }
+
+<div class="main_visual">
+    <div class="slider-wrap main_visual__slider">
+        <!--{ @dataBanner('590533407') }-->
+        <div class="main_visual__item">{.tag}</div>
+        <!--{ / }-->
+    </div>
+    <div class="main_visual__controls">
+        <div class="main_visual__arrows"></div>
+        <div class="main_visual__badge" aria-hidden="true">1 / 1</div>
+    </div>
+</div>
+<!-- //main_visual -->
+<script>
+  (function(){
+    var sliderEl = document.querySelector(".main_visual__slider");
+    var badgeEl = document.querySelector(".main_visual__badge");
+    if (!sliderEl || !badgeEl) return;
+
+    var setBadge = function(index, total){
+      if (total <= 1){
+        badgeEl.style.display = "none";
+        return;
+      }
+      badgeEl.textContent = (index + 1) + " / " + total;
+      badgeEl.style.display = "";
+    };
+
+    var bindBadge = function($wrap){
+      var update = function(e, slick, current, next){
+        if (!slick) return;
+        var slideIndex = (typeof next === "number")
+          ? next
+          : (typeof current === "number" ? current : slick.currentSlide || 0);
+        var total = slick.slideCount || 0;
+        setBadge(slideIndex, total);
+      };
+      $wrap.on("init reInit beforeChange", update);
+      return update;
+    };
+
+    var initSlick = function($){
+      if (!$.fn || !$.fn.slick) return false;
+      var $wrap = $(sliderEl);
+      var $arrowWrap = $wrap.closest(".main_visual").find(".main_visual__arrows");
+      var update = bindBadge($wrap);
+      if (!$wrap.hasClass("slick-initialized")) {
+        $wrap.slick({
+          autoplay: true,
+          dots: true,
+          arrows: true,
+          infinite: true,
+          autoplaySpeed: 4000,
+          speed: 500,
+          slidesToShow: 1,
+          fade: true,
+          appendArrows: $arrowWrap.length ? $arrowWrap : $wrap,
+          prevArrow: '<button type="button" class="main_visual__arrow main_visual__prev" aria-label="이전">&lt;</button>',
+          nextArrow: '<button type="button" class="main_visual__arrow main_visual__next" aria-label="다음">&gt;</button>'
+        });
+      }
+      if ($wrap.hasClass("slick-initialized")) {
+        var slick = $wrap.slick("getSlick");
+        update(null, slick, slick.currentSlide);
+      }
+      return true;
+    };
+
+    var loadSlick = function(cb){
+      var script = document.createElement("script");
+      script.src = "../js/slider/slick/slick.js";
+      script.onload = cb;
+      script.onerror = cb;
+      document.head.appendChild(script);
+    };
+
+    var waitForJQ = function(){
+      var attempts = 0;
+      var timer = setInterval(function(){
+        attempts += 1;
+        if (window.jQuery) {
+          clearInterval(timer);
+          var $ = window.jQuery;
+          if (!$.fn || !$.fn.slick) {
+            loadSlick(function(){ initSlick($); });
+          } else {
+            initSlick($);
+          }
+          return;
+        }
+        if (attempts >= 100) clearInterval(timer);
+      }, 100);
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", waitForJQ);
+    } else {
+      waitForJQ();
+    }
+  })();
+</script>
+<div class="main_content">
+    <div class="main_goods_cont">
+        <!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html','sno','1')}<!-- 메인 상품 노출 -->
+    </div>
+    <!-- //main_goods_cont -->
+
+    <!-- MJ10 mission section (wrap-inner gray-bg) -->
+    <section class="wrap-inner gray-bg mj10-mission">
+        <div class="mt-80">
+            <div class="mbox mj10-mission__box" data-bottom-top="width:30%;border-radius:100px" data-500-top="width:100%;border-radius:0">
+                <h1 class="IropkeBatang">MISSOIN<br></h1><br><br>
+                <div class="lineV bg-white"></div><br><br>
+                <h3>
+                    대형 베이커리 업체와 협약하여 더 많은 분들이 <br>
+                    명장10 베이커리 제품을 맛보실 수 있습니다.<br>
+                    산학 연계사업을 통하여 산업인력 양성에 이바지 합니다.<br>
+                    "나눔이 곧 기업성장의 밑거림"이라는 믿음으로<br>
+                    지역사회발전에 기여하고 있습니다.
+                </h3>
+                <div class="mt-80 txt3 viewMore">
+                    <a href="../main/html.php?htmid=mj10/company/company.html">
+                        <div class="icon-btn add-btn text-center">
+                            <div class="add-icon"></div>
+                            <div class="btn-txt MontserratB">MORE</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //MJ10 mission section -->
+    <div class="main_goods_cont">
+        <!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html','sno','1')}<!-- 메인 상품 노출 -->
+    </div>
+
+    <div class="main_goods_cont">
+        <!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html','sno','1')}<!-- 메인 상품 노출 -->
+    </div>
+
+    <div class="main_goods_cont">
+        <!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html','sno','1')}<!-- 메인 상품 노출 -->
+    </div>
+
+    <!--메인 유튜브 영역-->
+    {=includeFile('mj10/main_youtube.html')}
+    <!--메인 유튜브 영역-->
+
+
+    <script>
+        $(window).scroll(function(){
+            if($(window).scrollTop() >= 165){
+                $('.scroll_wrap').css({'top':'842px'});
+            }else{
+                $('.scroll_wrap').css({'top':'891px'});
+            }
+        });
+    </script>
+    <script>
+      (function(){
+        var box = document.querySelector('.mj10-mission .mj10-mission__box');
+        if (!box) return;
+
+        var clamp = function(v, min, max){ return Math.min(max, Math.max(min, v)); };
+        var ticking = false;
+
+        var update = function(){
+          var rect = box.getBoundingClientRect();
+          var vh = window.innerHeight || document.documentElement.clientHeight;
+          var start = vh;
+          // Fully open within ~5–6 scroll ticks (~600px).
+          var openRange = 600;
+          var end = start - openRange;
+          var progress = (start - rect.top) / (start - end);
+          progress = clamp(progress, 0, 1);
+          // Make the box open more per scroll step (ease-out curve).
+          var eased = 1 - Math.pow(1 - progress, 1.6);
+
+          var width = 30 + (70 * eased);
+          var radius = 100 - (100 * eased);
+          box.style.width = width.toFixed(2) + '%';
+          box.style.borderRadius = radius.toFixed(0) + 'px';
+        };
+
+        var requestTick = function(){
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function(){
+            update();
+            ticking = false;
+          });
+        };
+
+        window.addEventListener('scroll', requestTick, { passive: true });
+        window.addEventListener('resize', requestTick);
+        requestTick();
+      })();
+    </script>
+</div>
+<!-- //main_content -->
+
+<!-- option/cart layers for main goods -->
+<div id="optionViewLayer" class="layer_wrap dn"></div>
+<div id="addCartLayer" class="layer_wrap dn">
+    <div class="box add_cart_layer" style="position: absolute; margin: 0px;">
+        <div class="view">
+            <h2>{=__('장바구니 담기')}</h2>
+            <div class="scroll_box">
+                <p class="success"><strong>{=__('상품이 장바구니에 담겼습니다.')}</strong><br>{=__('바로 확인하시겠습니까?')}</p>
+            </div>
+            <div class="btn_box">
+                <button type="button" class="btn_cancel"><span>{=__('취소')}</span></button>
+                <button type="button" class="btn_confirm btn_move_cart"><span>{=__('확인')}</span></button>
+            </div>
+            <button title="{=__('닫기')}" class="close" type="button">{=__('닫기')}</button>
+        </div>
+    </div>
+</div>
+<script>
+  (function(){
+    function initMainCart() {
+      if (window.__mj10MainCartInit) return;
+      window.__mj10MainCartInit = true;
+    // 일부 환경에서 옵션 레이어가 초기 노출되는 문제 방지
+    if ($('#optionViewLayer').is(':visible') || $('#addCartLayer').is(':visible')) {
+      $('#optionViewLayer, #addCartLayer').addClass('dn');
+      $('#layerDim').addClass('dn');
+      if ($('body').css('overflow') === 'hidden') {
+        $('body').css('overflow', '');
+      }
+    }
+
+    function autoSelectFirstOptions($root) {
+      if ($root.data('auto-option-done')) {
+        return false;
+      }
+      if ($root.find('.option_display_area tr').length) {
+        $root.data('auto-option-done', true);
+        return false;
+      }
+
+      var changed = false;
+      $root.find('select[name="optionSnoInput"]').each(function(){
+        var $sel = $(this);
+        if ($sel.val()) return;
+        var $opt = $sel.find('option[value!=""]:not(:disabled)').first();
+        if ($opt.length) {
+          $sel.val($opt.val()).trigger('change');
+          if ($sel.hasClass('chosen-select')) {
+            $sel.trigger('chosen:updated');
+          }
+          changed = true;
+        }
+      });
+
+      $root.find('select[name^="optionNo_"]').each(function(){
+        var $sel = $(this);
+        if ($sel.prop('disabled') || $sel.val()) return;
+        var $opt = $sel.find('option[value!=""]:not(:disabled)').first();
+        if ($opt.length) {
+          $sel.val($opt.val()).trigger('change');
+          if ($sel.hasClass('chosen-select')) {
+            $sel.trigger('chosen:updated');
+          }
+          changed = true;
+        }
+      });
+
+      if ($root.find('.option_display_area tr').length) {
+        $root.data('auto-option-done', true);
+      }
+
+      return changed;
+    }
+
+    function updateLayerTexts($root) {
+      var goodsName = $.trim($root.find('.option_tit_box dd strong').first().text());
+      if (goodsName) {
+        $root.find('.option_display_area .cart_tit_box .cart_tit > span').text(goodsName);
+      }
+      $root.find('h4').text('장바구니');
+    }
+
+    function runLayerScripts($scripts) {
+      if (!$scripts || !$scripts.length) return;
+      var loaded = window.__mj10LoadedScripts || (window.__mj10LoadedScripts = {});
+      $scripts.each(function(){
+        var type = (this.getAttribute('type') || '').toLowerCase();
+        if (type && type !== 'text/javascript' && type !== 'application/javascript') {
+          return;
+        }
+        var src = this.getAttribute('src');
+        if (src) {
+          if (loaded[src] || document.querySelector('script[src="' + src + '"]')) return;
+          loaded[src] = true;
+          $.ajax({
+            url: src,
+            dataType: 'script',
+            cache: true,
+            async: false
+          });
+          return;
+        }
+        var code = this.text || this.textContent || this.innerHTML;
+        if (!code) return;
+        if ($.globalEval) {
+          $.globalEval(code);
+        } else {
+          (0, eval)(code);
+        }
+      });
+    }
+
+    function renderOptionLayer(html) {
+      var $layer = $('#optionViewLayer');
+      var $tmp = $('<div />').html(html);
+      var $scripts = $tmp.find('script');
+      $scripts.remove();
+      $layer.empty().append($tmp.contents());
+      runLayerScripts($scripts);
+      return $layer;
+    }
+
+    $(document).on('click', '.js-main-cart', function(e){
+      e.preventDefault();
+      var $btn = $(this);
+      var goodsNo = $btn.data('goodsNo');
+      if (!goodsNo) goodsNo = $btn.data('goods-no');
+      if (!goodsNo) goodsNo = $btn.attr('data-goods-no') || $btn.attr('data-goodsno');
+      if (!goodsNo) return;
+      var params = { page: 'goods', type: 'goods', goodsNo: goodsNo };
+
+      $.ajax({
+        method: "POST",
+        cache: false,
+        url: "../goods/layer_option.php",
+        data: params,
+        success: function (data) {
+          var $layer = renderOptionLayer(data);
+          $layer.data('auto-option-done', false);
+          $layer.removeClass('dn');
+          $('#layerDim').removeClass('dn');
+          $('body').css('overflow', 'hidden');
+          $layer.find('>div').center();
+          updateLayerTexts($layer);
+          // 옵션 노출 최소화: 첫 번째 옵션 자동 선택 → 수량만 노출
+          var tries = 0;
+          (function runAutoSelect(){
+            if ($layer.data('auto-option-done') || $layer.find('.option_display_area tr').length) {
+              $layer.data('auto-option-done', true);
+              updateLayerTexts($layer);
+              $layer.find('>div').center();
+              return;
+            }
+
+            var changed = autoSelectFirstOptions($layer);
+            tries += 1;
+            if (changed && tries < 6) {
+              setTimeout(runAutoSelect, 60);
+              return;
+            }
+            $layer.data('auto-option-done', true);
+            updateLayerTexts($layer);
+            $layer.find('>div').center();
+          })();
+        },
+        error: function (data) {
+          alert(data.message || '장바구니 처리 중 오류가 발생했습니다.');
+        }
+      });
+    });
+
+    $(document).on('click', '.btn_move_cart', function() {
+      location.href = '../order/cart.php';
+    });
+
+    $(document).on('click', '#addCartLayer .btn_cancel, #addCartLayer .close', function() {
+      $('#addCartLayer').addClass('dn');
+      if (!$('.layer_wrap').is(':visible')) {
+        $('#layerDim').addClass('dn');
+        $('body').removeAttr('style');
+      }
+    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMainCart);
+    } else {
+      initMainCart();
+    }
+  })();
+
+  function gd_goods_option_view_result(params) {
+    params += "&mode=cartIn";
+
+    $.ajax({
+      method: "POST",
+      cache: false,
+      url: "../order/cart_ps.php",
+      data: params,
+      success: function (data) {
+        <!--{ ? cartInfo.moveCartPageFl == 'y' || (cartInfo.moveCartPageFl == 'n' && cartInfo.moveCartPageDeviceFl == 'mobile') }-->
+        gd_close_layer();
+        location.href="../order/cart.php";
+        <!--{ : }-->
+        $("#optionViewLayer").addClass('dn');
+        $("#addCartLayer").removeClass('dn');
+        $('#layerDim').removeClass('dn');
+        $('body').css('overflow', 'hidden');
+        $("#addCartLayer").find('> div').center();
+        <!--{ / }-->
+      },
+      error: function (data) {
+        alert(data.message || '장바구니 처리 중 오류가 발생했습니다.');
+      }
+    });
+  }
+</script>
+
+
+
+{ # footer }

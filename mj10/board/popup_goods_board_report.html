@@ -1,0 +1,90 @@
+{*** 상품상세 - 게시글 신고(팝업) | board/popup_goods_board_report.php ***}
+{#header}
+<div class="board_write_popup">
+    <div class="ly_tit"><h4>게시글 신고</h4></div>
+    <div class="ly_cont">
+        <form name="frmWrite" id="frmWrite" action="../board/board_ps.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="mode" value="report"/>
+            <input type="hidden" name="bdId" value="{=req.bdId}"/>
+            <input type="hidden" name="bdSno" value="{=req.bdSno}"/>
+            <input type="hidden" name="memoSno" value="{=req.memoSno}"/>
+            <input type="hidden" name="goodsNo" value="{=req.goodsNo}"/>
+        <div class="scroll_box">
+            <div class="board_write_box">
+                <table class="board_write_table">
+                    <colgroup>
+                        <col style="width:15%" />
+                        <col style="width:85%" />
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th scope="row">신고자</th>
+                        <td>
+                            {=memId}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">신고사유</th>
+                        <td class="">
+                            <textarea title="신고사유 입력" style="width:100%;" name="reportMemo" cols="50" rows="5" maxlength="300"></textarea>
+                            <p class="text_length"><span class="js_textCount">0</span> / 300</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">개인정보수집<br />동의</th>
+                        <td>
+                            <div class="form_element">
+                                <input type="checkbox" name="checkCollectAgreeFl" value="y" id="checkCollectAgreeFl" class="checkbox">
+                                <label for="checkCollectAgreeFl" class="check_s">동의함</label>
+                            </div>
+                            <div class="textarea_txt">
+                                - 수집목적 : 게시물 신고 데이터 관리<br />
+                                - 수집정보 : 회원 아이디<br />
+                                - 보유 기간 : 게시물 삭제 시 삭제<br />
+                                수집 된 개인 정보는 데이터 관리를 위해서만 사용 되며, 수집 목적 이외의 용도로 사용되지 않습니다.
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- //board_wirte_box -->
+        </div>
+        <!-- //scroll_box -->
+        <div class="btn_center_box">
+            <a href="javascript:window.close();"><button class="btn_ly_cancel" type="button"><strong>취소</strong></button></a>
+            <a href="javascript:save();" class="btn_ly_write_ok"><strong>신고</strong></a>
+        </div>
+        </form>
+    </div>
+    <!-- //ly_cont -->
+</div>
+<script>
+    $(document).ready(function () {
+        $('#frmWrite').find('textarea[name=reportMemo]').keyup(function() {
+            var textLength = $(this).val().length;
+            textLength = textLength >= 300 ? 300 : textLength;
+            $(this).closest('#frmWrite').find('.js_textCount').text(textLength);
+        });
+
+        // 폼 체크
+        $('#frmWrite').validate({
+            submitHandler: function (form) {
+                if(!$("#checkCollectAgreeFl").is(":checked")) {
+                    alert("게시글 신고를 위한 개인정보 수집에 동의하여 주세요.");
+                    return false;
+                }
+                form.submit();
+            },
+            rules: {
+                'reportMemo': 'required'
+            },
+            messages: {
+                'reportMemo': '게시글 신고 사유를 작성하여 주세요.'
+            }
+        });
+    });
+    function save() {
+        $('#frmWrite').submit();
+    }
+</script>

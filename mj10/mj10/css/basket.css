@@ -1,0 +1,179 @@
+@charset "utf-8";
+/* basket modal overrides (main only) */
+
+.body-main #optionViewLayer .option_layer_cont{
+  width:420px;
+  min-height:320px;
+  padding:24px;
+  border:0;
+  border-radius:18px;
+  background:#ffffff;
+  box-sizing:border-box;
+  box-shadow:0 18px 40px rgba(0,0,0,.18);
+  display:flex;
+}
+.body-main #optionViewLayer .option_layer_cont > form{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  min-height:100%;
+}
+
+.body-main #optionViewLayer .option_layer_scroll{
+  height:auto;
+  overflow:visible;
+  flex:1 1 auto;
+  min-height:0;
+}
+
+/* hide option selections / add-goods blocks */
+.body-main #optionViewLayer .option_chosen,
+.body-main #optionViewLayer .option_select_box > .option_chosen{
+  display:none;
+}
+
+/* hide delivery info in header */
+.body-main #optionViewLayer .item_delivery{
+  display:none;
+}
+
+/* clean header area */
+.body-main #optionViewLayer h4{
+  display:block;
+  margin:0 0 14px 0;
+  padding:0 0 12px 0;
+  border-bottom:1px solid #ececec;
+  font-size:16px;
+  font-weight:700;
+  color:#222222;
+}
+.body-main #optionViewLayer .option_tit_box{
+  display:none;
+}
+.body-main #optionViewLayer .option_tit_box dt img,
+.body-main #optionViewLayer .item_choice_photo img{
+  border:0;
+  border-radius:4px;
+}
+
+/* one-line layout for qty + price */
+.body-main #optionViewLayer .option_list{
+  margin-top:12px;
+}
+.body-main #optionViewLayer .option_list.item_choice_list table{
+  background:transparent;
+}
+.body-main #optionViewLayer .option_display_area,
+.body-main #optionViewLayer .option_display_area tbody{
+  display:block;
+  width:100%;
+}
+.body-main #optionViewLayer .option_display_area colgroup{
+  display:none;
+}
+.body-main #optionViewLayer .option_display_area tr{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-top:0;
+  background:transparent;
+}
+.body-main #optionViewLayer .option_display_area td{
+  padding:0;
+  border:0;
+  display:block;
+  text-align:left;
+}
+.body-main #optionViewLayer .option_display_area td:last-child{
+  display:none;
+}
+.body-main #optionViewLayer .cart_prdt_name{
+  flex:1;
+  width:auto;
+  min-width:0;
+  padding:0;
+  text-align:left;
+}
+.body-main #optionViewLayer .cart_tit_box{
+  display:block;
+  font-size:14px;
+  font-weight:600;
+  color:#222222;
+  line-height:1.3;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.body-main #optionViewLayer [id^="option_text_display_"]{
+  display:none;
+}
+.body-main #optionViewLayer .count{
+  display:flex;
+  align-items:center;
+  padding:0;
+}
+.body-main #optionViewLayer .option_list .goods_qty{
+  display:flex;
+  align-items:center;
+}
+.body-main #optionViewLayer .option_list .goods_qty .text{
+  float:none;
+  width:44px;
+  height:32px;
+  line-height:30px;
+  border-radius:6px;
+  border:1px solid #cccccc;
+  font-size:13px;
+  text-align:center;
+}
+.body-main #optionViewLayer .option_list .goods_qty span{
+  float:none;
+  display:flex;
+  flex-direction:column;
+  margin-left:4px;
+}
+.body-main #optionViewLayer .item_choice_price{
+  margin-left:auto;
+  font-weight:700;
+  color:#222222;
+  text-align:right;
+  white-space:nowrap;
+}
+
+/* buttons */
+.body-main #optionViewLayer .btn_box{
+  margin-top:auto;
+  width:100%;
+  padding:24px 0 0 0;
+  border-top:0;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+.body-main #optionViewLayer .btn_cancel,
+.body-main #optionViewLayer .btn_confirm{
+  flex:1;
+  width:auto;
+  height:48px;
+  padding:0;
+  font-size:15px;
+  font-weight:700;
+  border-radius:6px;
+}
+.body-main #optionViewLayer .btn_cancel{
+  border:1px solid #cccccc;
+  background:#ffffff;
+  color:#3e3d3c;
+}
+.body-main #optionViewLayer .btn_confirm{
+  border:1px solid #4c4c4c;
+  background:#4c4c4c;
+  color:#ffffff;
+}
+
+@media (max-width:520px){
+  .body-main #optionViewLayer .option_layer_cont{
+    width:90vw;
+    padding:20px;
+  }
+}

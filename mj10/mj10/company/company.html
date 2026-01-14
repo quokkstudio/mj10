@@ -1,0 +1,210 @@
+{*** 명장10 소개 | mj10/company/company.html ***}
+{ # header }
+
+<script>
+    document.documentElement.classList.add('mj10-company-page');
+</script>
+<style>
+    #scroll_right{display:none;}
+    .sub_content{
+    padding:0;        
+    }
+    .mj10-company-page #contents .sub_content {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+    }
+    .mj10-company-page #contents .sub_content .content {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    .mj10-company-hero {
+        width: 100%;
+        height: 600px;
+        background: url("../../img/banner/bgbox.jpg") center center / cover no-repeat;
+        border-radius: 0;
+        position: relative;
+        opacity: 0;
+        transform: scale(1.06);
+        transform-origin: center;
+        animation: mj10HeroIn 1.2s ease forwards;
+    }
+    .mj10-company-hero__label{
+        position:absolute;
+        left:50%;
+        top:50%;
+        transform:translate(-50%, -50%);
+        z-index:2;
+        color:#ffffff;
+    }
+    .mj10-company-hero__label-inner{
+        max-width:1400px;
+        margin:0 auto;
+        padding:0 16px;
+        box-sizing:border-box;
+    }
+    .mj10-company-hero__label-text{
+        font-size:36px;
+        font-weight:700;
+        letter-spacing:-0.4px;
+        text-align:center;
+        text-shadow:0 6px 18px rgba(0,0,0,0.35);
+        opacity:1;
+        transform:translateY(0);
+    }
+    .mj10-company-hero__label-text.is-anim{
+        animation:mj10HeroLabelIn .6s ease forwards;
+    }
+    @keyframes mj10HeroLabelIn{
+        from{
+            opacity:0;
+            transform:translateY(14px);
+        }
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
+    @keyframes mj10HeroIn {
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    .companyMenu {
+        background: rgba(0, 0, 0, 0.55);
+        color: #fff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: mj10MenuIn 0.9s ease forwards;
+        animation-delay: 0.8s;
+    }
+    .companyMenu ul {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 25px 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        list-style: none;
+    }
+    .companyMenu li {
+        padding: 0 60px;
+        position: relative;
+        font-size: 15px;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+    }
+    .companyMenu li + li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 2px;
+        height: 22px;
+        background: rgba(255, 255, 255, 0.45);
+        transform: translateY(-50%);
+    }
+    .companyMenu li.is-active {
+        color: #ffffff;
+    }
+    .companyMenu li.is-active::after {
+        content: none;
+    }
+    .mj10-company .company-section {
+        display: none;
+        padding: 40px 0 80px;
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    .mj10-company .company-section.is-active {
+        display: block;
+        animation: mj10SectionIn 0.9s ease forwards;
+    }
+    @keyframes mj10SectionIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes mj10MenuIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="mj10-company-hero">
+    <div class="mj10-company-hero__label">
+        <div class="mj10-company-hero__label-inner">
+            <div class="mj10-company-hero__label-text">대표 인사말</div>
+        </div>
+    </div>
+    <div class="companyMenu">
+        <ul>
+            <li class="is-active" data-target="greeting">대표 인사말</li>
+            <li data-target="brand">브랜드 소개</li>
+            <li data-target="store">매장 소개</li>
+        </ul>
+    </div>
+</div>
+<div class="content mj10-company">
+    <div class="company-section is-active" data-section="greeting">
+        {=includeFile('mj10/company/ceo.html')}
+    </div>
+    <div class="company-section" data-section="brand">
+        {=includeFile('mj10/company/brand.html')}
+    </div>
+    <div class="company-section" data-section="store">
+        {=includeFile('mj10/company/location.html')}
+    </div>
+</div>
+
+<script>
+    (function () {
+        const menuItems = document.querySelectorAll('.companyMenu li[data-target]');
+        const sections = document.querySelectorAll('.mj10-company .company-section');
+        const heroLabel = document.querySelector('.mj10-company-hero__label-text');
+        const labelMap = {
+            greeting: '대표 인사말',
+            brand: '브랜드 소개',
+            store: '매장 소개'
+        };
+        if (!menuItems.length || !sections.length) return;
+
+        const setLabel = (key) => {
+            if (!heroLabel) return;
+            const text = labelMap[key] || heroLabel.textContent;
+            heroLabel.textContent = text;
+            heroLabel.classList.remove('is-anim');
+            void heroLabel.offsetWidth;
+            heroLabel.classList.add('is-anim');
+        };
+
+        menuItems.forEach((item) => {
+            item.addEventListener('click', () => {
+                const target = item.getAttribute('data-target');
+                menuItems.forEach((el) => el.classList.remove('is-active'));
+                item.classList.add('is-active');
+                sections.forEach((section) => {
+                    section.classList.toggle('is-active', section.getAttribute('data-section') === target);
+                });
+                setLabel(target);
+            });
+        });
+
+        const active = document.querySelector('.companyMenu li.is-active');
+        if (active) {
+            setLabel(active.getAttribute('data-target'));
+        }
+    })();
+</script>
+
+{ # footer }

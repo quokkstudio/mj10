@@ -1,0 +1,11 @@
+# Ignore everything by default
+*
+
+# Allow Git control files
+!/.gitignore
+
+# Track only these directories
+!/mj10/
+!/mj10/**
+!/link/
+!/link/**

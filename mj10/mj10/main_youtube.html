@@ -1,0 +1,160 @@
+{*** 메인 유튜브 섹션 ***}
+<section class="mj10-video-area" aria-label="유튜브 하이라이트">
+    <div class="mj10-video-wrap">
+        <ul class="mj10-video-slides">
+            <li class="mj10-video-slide is-active">
+                <div class="mj10-video-banner">
+                    <a href="https://www.youtube.com/watch?v=f5qRCcskfZQ">
+                        <img src="../img/banner/pure-main-banner01.png" alt="영상 배너 01" />
+                    </a>
+                </div>
+                <div class="mj10-video-frame">
+                    <iframe title="유튜브 영상 01" data-src="https://www.youtube.com/embed/f5qRCcskfZQ?controls=0&rel=0&enablejsapi=1" src="about:blank" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </li>
+            <li class="mj10-video-slide">
+                <div class="mj10-video-banner">
+                    <a href="https://www.youtube.com/watch?v=Sgt67RfM-Xc">
+                        <img src="../img/banner/pure-main-banner02.png" alt="영상 배너 02" />
+                    </a>
+                </div>
+                <div class="mj10-video-frame">
+                    <iframe title="유튜브 영상 02" data-src="https://www.youtube.com/embed/Sgt67RfM-Xc?controls=0&rel=0&enablejsapi=1" src="about:blank" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </li>
+            <li class="mj10-video-slide">
+                <div class="mj10-video-banner">
+                    <a href="https://www.youtube.com/watch?v=GGoryQRkgdI">
+                        <img src="../img/banner/pure-main-banner03.png" alt="영상 배너 03" />
+                    </a>
+                </div>
+                <div class="mj10-video-frame">
+                    <iframe title="유튜브 영상 03" data-src="https://www.youtube.com/embed/GGoryQRkgdI?controls=0&rel=0&enablejsapi=1" src="about:blank" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </li>
+        </ul>
+        <div class="mj10-video-pager" role="tablist" aria-label="영상 선택">
+            <button type="button" class="mj10-video-dot is-active" data-index="0" aria-selected="true">01</button>
+            <button type="button" class="mj10-video-dot" data-index="1" aria-selected="false">02</button>
+            <button type="button" class="mj10-video-dot" data-index="2" aria-selected="false">03</button>
+        </div>
+    </div>
+</section>
+<script>
+  (function(){
+    var wrap = document.querySelector('.mj10-video-area');
+    if (!wrap) return;
+    var slidesWrap = wrap.querySelector('.mj10-video-slides');
+    var pager = wrap.querySelector('.mj10-video-pager');
+    var slides = Array.prototype.slice.call(wrap.querySelectorAll('.mj10-video-slide'));
+    var dots = Array.prototype.slice.call(wrap.querySelectorAll('.mj10-video-dot'));
+    if (!slides.length || slides.length !== dots.length) return;
+
+    var setWrapHeight = function(index){
+      if (!slidesWrap) return;
+      var activeSlide = slides[index];
+      if (!activeSlide) return;
+      slidesWrap.style.height = activeSlide.offsetHeight + 'px';
+    };
+
+    var pauseIframe = function(iframe){
+      try {
+        if (iframe && iframe.contentWindow) {
+          iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+      } catch (e) {}
+    };
+
+    var setActive = function(index){
+      slides.forEach(function(slide, i){
+        var active = i === index;
+        slide.classList.toggle('is-active', active);
+        var iframe = slide.querySelector('iframe');
+        if (!iframe) return;
+        if (active) {
+          var src = iframe.getAttribute('data-src');
+          if (src && iframe.getAttribute('src') !== src) {
+            iframe.setAttribute('src', src);
+          }
+        } else {
+          pauseIframe(iframe);
+        }
+      });
+
+      if (pager && slides[index] && pager.parentNode !== slides[index]) {
+        slides[index].appendChild(pager);
+      }
+
+      dots.forEach(function(dot, i){
+        var active = i === index;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      setWrapHeight(index);
+    };
+
+    dots.forEach(function(dot, idx){
+      var activate = function(){ setActive(idx); };
+      dot.addEventListener('click', function(e){
+        e.preventDefault();
+        activate();
+      });
+    });
+
+    var preload = function(){
+      slides.forEach(function(slide){
+        var iframe = slide.querySelector('iframe');
+        if (!iframe) return;
+        var src = iframe.getAttribute('data-src');
+        if (src && iframe.getAttribute('src') !== src) {
+          iframe.setAttribute('src', src);
+        }
+      });
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(preload);
+    } else {
+      setTimeout(preload, 400);
+    }
+
+    setActive(0);
+    window.addEventListener('load', function(){
+      var activeIndex = slides.findIndex(function(slide){
+        return slide.classList.contains('is-active');
+      });
+      if (activeIndex < 0) activeIndex = 0;
+      setWrapHeight(activeIndex);
+    });
+    window.addEventListener('resize', function(){
+      var activeIndex = slides.findIndex(function(slide){
+        return slide.classList.contains('is-active');
+      });
+      if (activeIndex < 0) activeIndex = 0;
+      setWrapHeight(activeIndex);
+    });
+
+    slides.forEach(function(slide, index){
+      var imgs = slide.querySelectorAll('img');
+      for (var i = 0; i < imgs.length; i += 1) {
+        var img = imgs[i];
+        if (img.complete) continue;
+        img.addEventListener('load', function(){
+          if (slide.classList.contains('is-active')) {
+            setWrapHeight(index);
+          }
+        });
+      }
+
+      var iframe = slide.querySelector('iframe');
+      if (iframe) {
+        iframe.addEventListener('load', function(){
+          if (slide.classList.contains('is-active')) {
+            setWrapHeight(index);
+          }
+        });
+      }
+    });
+  })();
+</script>

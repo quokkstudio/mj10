@@ -1,0 +1,121 @@
+{*** MJ10 커스텀 헤더(partial) | mj10/header.html ***}
+
+<header class="cn-header" id="cnHeader">
+  <div class="cn-strip-banner" aria-label="띠배너">
+    <div class="cn-container">띠배너 영역입니다.</div>
+  </div>
+  <!-- TOP BAR -->
+  <div class="cn-topbar" aria-label="상단 유틸">
+    <div class="cn-container">
+      <ul class="cn-toplinks">
+        <!--{ ? gd_is_login() === false }-->
+        <li><a href="../member/join_method.php" role="link">회원가입</a></li>
+        <li><a href="../member/login.php" role="link">로그인</a></li>
+        <li class="cn-dd" data-dd="cs">
+          <a href="../service/index.php" role="link" aria-haspopup="menu" aria-expanded="false" data-dd-btn="cs">고객센터</a>
+          <div class="cn-dd-panel" role="menu" aria-label="고객센터 메뉴">
+            <a href="../service/notice.php" role="menuitem">공지사항</a>
+            <a href="../mypage/mypage_qa.php" role="menuitem">1:1 문의</a>
+            <a href="../service/faq.php" role="menuitem">자주하는 질문</a>
+            <a href="../service/event.php" role="menuitem">이벤트</a>
+          </div>
+        </li>
+        <!--{ : }-->
+        <li><a href="../member/logout.php?returnUrl={=logoutReturnUrl}" role="link">로그아웃</a></li>
+        <li class="cn-dd" data-dd="cs">
+          <a href="../service/index.php" role="link" aria-haspopup="menu" aria-expanded="false" data-dd-btn="cs">고객센터</a>
+          <div class="cn-dd-panel" role="menu" aria-label="고객센터 메뉴">
+            <a href="../service/notice.php" role="menuitem">공지사항</a>
+            <a href="../mypage/mypage_qa.php" role="menuitem">1:1 문의</a>
+            <a href="../service/faq.php" role="menuitem">자주하는 질문</a>
+            <a href="../service/event.php" role="menuitem">이벤트</a>
+          </div>
+        </li>
+        <!--{ / }-->
+      </ul>
+
+      <div style="font-size:13px;color:var(--cn-muted);">
+        <!-- 우측 유틸 영역 (필요 시 교체) -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MID BAR -->
+  <div class="cn-midbar">
+    <div class="cn-container">
+      <a class="cn-logo" href="../main/index.php" aria-label="홈으로">
+        <img src="../img/logo/mjLogo.png" alt="MJ10 로고" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="cn-brandtext">MJ10</span>
+      </a>
+
+      <div class="cn-search" role="search" id="cnSearchWrap">
+        <div class="cn-searchwidget">
+          {=includeWidget('proc/_header_search.html')}
+        </div>
+      </div>
+
+      <div class="cn-icons">
+        <!--{ ? gd_is_login() === false }-->
+        <a class="cn-ico" href="../member/login.php?returnUrl=../mypage/index.php" aria-label="마이페이지">
+        <!--{ : }-->
+        <a class="cn-ico" href="../mypage/index.php" aria-label="마이페이지">
+        <!--{ / }-->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z" stroke="#111" stroke-width="2"/>
+            <path d="M4 21a8 8 0 0 1 16 0" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <a class="cn-ico" href="../order/cart.php" aria-label="장바구니">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 7h15l-2 11H7L6 7Z" stroke="#111" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M6 7 5 3H2" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM17 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="#111"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV BAR -->
+  <div class="cn-navbar" aria-label="주요 내비게이션" id="cnNavbar">
+    <div class="cn-container">
+      <button class="cn-allcat" type="button" id="cnAllCatBtn" aria-expanded="false" aria-controls="cnMega">
+        <span class="cn-burger" aria-hidden="true"><span></span><span></span><span></span></span>
+        전체 카테고리
+      </button>
+
+      <div class="cn-gnb-wrap" aria-label="GNB">
+        <nav class="cn-gnb" aria-label="GNB">
+          <ul class="depth0 gnb_menu0">
+              <li><a href="../main/html.php?htmid=mj10/company/company.html">명장10</a></li>
+              <li><a href="/member/join_method.php">대량/사업자</a></li>
+              <li><a href="/board/list.php?bdId=qa">컨설팅 문의</a></li>
+              <li><a href="/board/list.php?bdId=recipe">레시피</a></li>
+              <li><a href="../main/html.php?htmid=mj10/youtube/list.html">유튜브</a></li>
+              <li><a href="/board/list.php?bdId=news">뉴스</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="cn-navsearch" id="cnNavSearchSlot"></div>
+    </div>
+  </div>
+
+  <!-- MEGA -->
+  <div class="cn-mega" id="cnMega" data-open="false" aria-label="전체 카테고리 메뉴">
+    <div class="cn-container">
+      <button class="cn-mega-close" type="button" id="cnMegaClose">닫기</button>
+      <div class="cn-mega-grid" id="cnMegaGrid"></div>
+    </div>
+  </div>
+</header>
+
+<div class="cn-backdrop" id="cnBackdrop" data-open="false" aria-hidden="true"></div>
+
+<!-- Hidden source: 고도몰 카테고리 위젯 원본 -->
+<div id="cnCatSource" style="display:none;">
+  {=includeWidget('proc/category_side', 'type', 'top','cateType','cate','menuType','all')}
+</div>
+<div id="cnCatAllSource" style="display:none;">
+  {=includeWidget("proc/category_all.html")}
+</div>

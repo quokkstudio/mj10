@@ -1,0 +1,58 @@
+{*** 사은품 선택 | order/ajax_add_gift.html ***}
+<!--{ ? count(giftInfo)}-->
+<div class="order_zone_tit">
+    <h4>{=__('사은품 선택')}<span>{=__('함께 받으실 사은품을 선택해주세요.')}</span></h4>
+</div>
+<div class="order_freebie_list">
+    <!--{ @ giftInfo }-->
+    <dl>
+        <!--{ @ .gift }-->
+        <!--{ ? ..total > 0 }-->
+        <dt>{giftInfo.title}<span>(<strong><!--{ ? ..selectCnt == 0 }-->{.total}<!--{ : }-->0<!--{ / }--></strong>/<!--{ ? ..selectCnt == 0 }-->{.total}<!--{ : }-->{..selectCnt}<!--{ / }-->)</span></dt>
+        <dd>
+            <div class="form_element">
+                <ul>
+                    <!--{ @ ..multiGiftNo }-->
+                    <li>
+                        <input type="hidden" name="gift[{.key_}][{...index_}][goodsNo]" value="{.goodsNo}" />
+                        <input type="hidden" name="gift[{.key_}][{...index_}][scmNo]" value="{...scmNo}" />
+                        <input type="hidden" name="gift[{.key_}][{...index_}][selectCnt]" value="{..selectCnt}" class="gift_select_cnt" />
+                        <input type="hidden" name="gift[{.key_}][{...index_}][giveCnt]" value="{..giveCnt}" />
+                        <input type="hidden" name="gift[{.key_}][{...index_}][minusStockFl]" value="{...stockFl}" />
+                        <input type="checkbox" id="line{.key_}_gift{...index_}" name="gift[{.key_}][{...index_}][giftNo]" value="{...giftNo}" <!--{ ? ..selectCnt == 0 }--> checked="checked" readonly="readonly"<!--{ / }--> />
+                        <label for="line{.key_}_gift{...index_}" class="check_s <!--{ ? ..selectCnt == 0 }--> on<!--{ / }-->">
+                            <b>{...imageUrl}</b>
+                            <em>{...giftNm} <span>({=__('%s개', ..giveCnt)})</span></em>
+                            <span class="icon_freebie_check"><!-- 선택한경우 활성 --></span>
+                        </label>
+                    </li>
+                    <!--{ / }-->
+                </ul>
+            </div>
+        </dd>
+        <!--{ / }-->
+        <!--{ / }-->
+    </dl>
+    <!--{ / }-->
+</div>
+<!--{ / }-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input[name="giftSelectCnt"]').val($('.order_freebie_list input[type=checkbox]').closest('dl').find('.gift_select_cnt').val());
+        // 사은품 체크 및 체크된 수량 출력
+        $('.order_freebie_list input[type=checkbox]').click(function(e){
+            if($(this).prop('readonly') == false) {
+                var selectCnt = $(this).closest('dl').find('.gift_select_cnt').val();
+                var checkedCnt = $(this).closest('dl').find('input[type=checkbox]:checked').length;
+                if (checkedCnt > selectCnt) {
+                    alert("{사은품은 최대 " + selectCnt + "개만 선택하실 수 있습니다.");
+                    $(this).prop('checked', false).next('label').removeClass('on');
+
+                    return false;
+                }
+                $('input[name="giftCheckCnt"]').val(checkedCnt);
+                $(this).closest('dd').prev('dt').find('strong').text(checkedCnt);
+            }
+        });
+    });
+</script>

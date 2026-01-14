@@ -1,0 +1,373 @@
+{*** 회원가입 > 정보입력 | member/join.php ***}
+{ # header }
+<div class="content_box">
+	<div class="join_base_wrap">
+		<div class="member_tit">
+			<h2>{=__('회원가입')}</h2>
+			<ol>
+				<li><span>01</span> {=__('약관동의')}<span><img src="../img/member/icon_join_step_off.png" alt="{=__('약관동의')}{=__('완료')}"></span></li>
+				<li class="page_on"><span>02</span> {=__('정보입력')}<span><img src="../img/member/icon_join_step_on.png" alt="{=__('정보입력')}{=__('진행중')}"></span></li>
+				<li><span>03</span> {=__('가입완료')}</li>
+			</ol>
+		</div>
+		<!-- //member_tit -->
+		<div class="member_cont">
+			<form id="formJoin" name="formJoin" action="{joinActionUrl}" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="rncheck" value="{data.rncheck}"/>
+				<input type="hidden" name="dupeinfo" value="{data.dupeinfo}"/>
+				<input type="hidden" name="pakey" value="{data.pakey}"/>
+				<input type="hidden" name="foreigner" value="{data.foreigner}"/>
+				<input type="hidden" name="adultFl" value="{data.adultFl}"/>
+				<input type="hidden" name="mode" value="join"/>
+				<!--{?joinField.businessinfo.use == 'y'}-->
+				<div class="join_type_box">
+					<h3>회원종류</h3>
+					<div class="type_select_sec">
+						<div class="form_element">
+							<ul>
+								<li>
+									<input type="radio" id="memberFlDefault" name="memberFl" class="ignore" value="personal" checked="checked"/>
+									<label for="memberFlDefault" class="choice_s on" >{=__('개인회원')}</label>
+								</li>
+								<li>
+									<input type="radio" id="memberFlBusiness" name="memberFl" class="ignore" value="business"/>
+									<label for="memberFlBusiness" class="choice_s" >{=__('사업자회원')}</label>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- //type_select_sec -->
+				</div>
+				<!-- //join_type_box -->
+				<!--{/}-->
+
+				<div class="mj10-join-v2" id="mj10Join" data-join-mode="personal">
+					<div class="mj10-join-v2__card">
+						<div class="mj10-join-v2__forms">
+							<div class="mj10-join-v2__pane join_panel join_panel_personal">
+								<div class="mj10-join-v2__header">
+									<h3 class="mj10-join-v2__title">{=__('일반회원 가입')}</h3>
+									<p class="mj10-join-v2__desc">{=__('필수 정보만 입력하고 빠르게 가입하세요.')}</p>
+								</div>
+								<div class="mj10-join-v2__form" id="joinPersonalBody">
+									<div id="joinBaseInfo">
+										<!-- 회원가입/정보 기본정보 -->{=includeWidget('member/_join_view.html')}<!-- 회원가입/정보 기본정보 -->
+										<!-- 회원가입/정보 부가정보 -->{=includeWidget('member/_join_view_other.html')}<!-- 회원가입/정보 부가정보 -->
+									</div>
+								</div>
+							</div>
+							<div class="mj10-join-v2__pane mj10-join-v2__pane--business join_panel join_panel_business">
+								<div class="mj10-join-v2__header">
+									<h3 class="mj10-join-v2__title">{=__('사업자 회원 가입')}</h3>
+									<p class="mj10-join-v2__desc">{=__('로그인 정보를 입력해주세요.')}</p>
+								</div>
+								<div class="mj10-join-v2__form" id="joinBusinessBody">
+									<div id="joinBizInfo">
+										<!-- 회원가입/정보 사업자정보 -->{=includeWidget('member/_join_view_business.html')}<!-- 회원가입/정보 사업자정보 -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mj10-join-v2__overlay">
+							<div class="mj10-join-v2__overlay-panel mj10-join-v2__overlay-panel--left">
+								<h3>{=__('일반 회원')}</h3>
+								<p>{=__('일반 회원을 위한 간단 회원가입')}</p>
+								<button type="button" class="mj10-join-v2__ghost js-switch-personal">{=__('일반회원으로 전환')}</button>
+							</div>
+							<div class="mj10-join-v2__overlay-panel mj10-join-v2__overlay-panel--right">
+								<h3>{=__('사업자 회원')}</h3>
+								<p>{=__('사업자를 위한 사업자 전용 회원가입')}</p>
+								<button type="button" class="mj10-join-v2__ghost js-switch-business">{=__('사업자회원으로 전환')}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 회원가입/자동등록 방지 -->{=includeWidget('member/_join_view_captcha.html')}<!-- 회원가입/회원가입/자동등록 방지 -->
+
+				<div class="btn_center_box">
+					<button type="button" id="btnCancel" class="btn_member_cancel">{=__('취소')}</button>
+					<button type="button" class="btn_comfirm js_btn_join" value="{=__('회원가입')}">{=__('회원가입')}</button>
+				</div>
+				<!-- //btn_center_box -->
+			</form>
+		</div>
+		<!-- //member_cont -->
+	</div>
+	<!-- //join_base_wrap -->
+</div>
+<!-- //content_box -->
+<script type="text/javascript">
+	var paycoProfile = {paycoProfile};
+    var naverProfile = {naverProfile};
+	var thirdPartyProfile = {thirdPartyProfile};
+	var kakaoProfile = {kakaoProfile};
+	var appleProfile = {appleProfile};
+	var googleProfile = {googleProfile};
+
+	$(document).ready(function () {
+		var $formJoin = $('#formJoin');
+
+		$(':text:first', $formJoin).focus();
+
+		$('#btnCancel', $formJoin).click(function (e) {
+			e.preventDefault();
+			top.location.href = '/';
+		});
+
+		if ($('.js_datepicker').length) {
+			$('.js_datepicker').datetimepicker({
+				locale: '{=gGlobal.locale}',
+				format: 'YYYY-MM-DD',
+				dayViewHeaderFormat: 'YYYY MM',
+				viewMode: 'days',
+				ignoreReadonly: true,
+				debug: false,
+				keepOpen: false
+			});
+		}
+
+		$('#btnPostcode').click(function (e) {
+			e.preventDefault();
+			$('#address-error, #addressSub-error').remove();
+			$(':text[name=address], :text[name=addressSub]').removeClass('text_warning');
+			gd_postcode_search('zonecode', 'address', 'zipcode');
+		});
+
+		$('#btnCompanyPostcode').click(function (e) {
+			e.preventDefault();
+			$('#comAddress-error, #comAddressSub-error').remove();
+			$(':text[name=comAddress], :text[name=comAddressSub]').removeClass('text_warning');
+			gd_postcode_search('comZonecode', 'comAddress', 'comZipcode');
+		});
+
+		<!--{?joinField.businessinfo.use == 'y'}-->
+		var bizStep = 1;
+
+		function setStepInputsEnabled(selector, enabled) {
+			var $inputs = $(selector).find('input, select, textarea');
+			$inputs.prop('disabled', !enabled);
+			if (enabled) {
+				$inputs.removeClass('ignore');
+			} else {
+				$inputs.addClass('ignore');
+			}
+		}
+
+		function updateBizLabels(isBusiness) {
+			var $nameLabel = $('.js-memNm-label');
+			if ($nameLabel.length) {
+				$nameLabel.text(isBusiness ? $nameLabel.data('biz-label') : $nameLabel.data('personal-label'));
+			}
+			var $cellLabel = $('.js-cellPhone-label');
+			if ($cellLabel.length) {
+				$cellLabel.text(isBusiness ? $cellLabel.data('biz-label') : $cellLabel.data('personal-label'));
+			}
+			var $emailLabel = $('.js-email-label');
+			if ($emailLabel.length) {
+				$emailLabel.text(isBusiness ? $emailLabel.data('biz-label') : $emailLabel.data('personal-label'));
+			}
+		}
+
+		function syncBizHiddenFields() {
+			if ($(':radio[name="memberFl"]:checked').val() !== 'business') {
+				return;
+			}
+			$('#orderManagerNameHidden').val($('input[name="memNm"]').val());
+			$('#orderManagerPhoneHidden').val($('input[name="cellPhone"]').val());
+		}
+
+		function setBizStep(step) {
+			bizStep = step;
+			$('.js-biz-step').addClass('dn');
+			$('.js-biz-step[data-step="' + bizStep + '"]').removeClass('dn');
+
+			if (bizStep === 1) {
+				$('.js-biz-step1').removeClass('dn');
+				$('.js-biz-step2').addClass('dn');
+			} else if (bizStep === 2) {
+				$('.js-biz-step1').addClass('dn');
+				$('.js-biz-step2').removeClass('dn');
+			} else {
+				$('.js-biz-step1').addClass('dn');
+				$('.js-biz-step2').addClass('dn');
+			}
+
+			setStepInputsEnabled('.js-biz-step1', true);
+			setStepInputsEnabled('.js-biz-step2', bizStep >= 2);
+			setStepInputsEnabled('.js-biz-step3', bizStep >= 3);
+
+			$('.js_btn_join').toggleClass('dn', bizStep !== 3);
+		}
+
+		function setJoinMode(isBusiness) {
+			var $businessinfo = $('.business_info_box');
+			var $businessPanel = $('.join_panel_business');
+			var $joinRoot = $('#mj10Join');
+
+			updateBizLabels(isBusiness);
+
+			if (isBusiness) {
+				if ($('#joinBaseInfo').length) {
+					$('#joinBaseInfo').prependTo('#joinBusinessBody');
+				}
+				$businessinfo.removeClass('dn');
+				$businessinfo.find('input, select, textarea').prop('disabled', false).removeClass('ignore');
+				$businessPanel.removeClass('dn');
+				$('.js-personal-only').addClass('dn').find('input, select, textarea').prop('disabled', true).addClass('ignore');
+				$('.js-business-only').removeClass('dn').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
+				$('.js-biz-company-address').addClass('dn').find('input, select, textarea').prop('disabled', true).addClass('ignore');
+				setBizStep(1);
+				$joinRoot.attr('data-join-mode', 'business');
+			} else {
+				if ($('#joinBaseInfo').length) {
+					$('#joinBaseInfo').appendTo('#joinPersonalBody');
+				}
+				$businessinfo.addClass('dn');
+				$businessinfo.find('input, select, textarea').prop('disabled', true).addClass('ignore');
+				$businessPanel.addClass('dn');
+				$('.js-personal-only').removeClass('dn').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
+				$('.js-business-only').addClass('dn').find('input, select, textarea').prop('disabled', true).addClass('ignore');
+				$('.js-biz-company-address').removeClass('dn').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
+				$('.base_info_box').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
+				$('.js-biz-step1, .js-biz-step2').removeClass('dn');
+				$('.js_btn_join').removeClass('dn');
+				$joinRoot.attr('data-join-mode', 'personal');
+			}
+		}
+
+		$(document).on('click', '.js-biz-next', function () {
+			if (typeof $formJoin.valid === 'function' && !$formJoin.valid()) {
+				return;
+			}
+			var next = parseInt($(this).data('next'), 10);
+			setBizStep(next);
+		});
+
+		$(document).on('click', '.js-biz-prev', function () {
+			var prev = parseInt($(this).data('prev'), 10);
+			setBizStep(prev);
+		});
+
+		$(':radio[name="memberFl"]').change(function () {
+			setJoinMode(this.value === 'business');
+		});
+		$(document).on('click', '.js-switch-business', function () {
+			$('#memberFlBusiness').prop('checked', true).trigger('change');
+		});
+		$(document).on('click', '.js-switch-personal', function () {
+			$('#memberFlDefault').prop('checked', true).trigger('change');
+		});
+		setJoinMode($(':radio[name="memberFl"]:checked').val() === 'business');
+		<!--{/}-->
+
+        <!--{? (joinField.marriFl.use == 'y' && joinField.marriDate.use == 'y') || joinField.birthDt.use == 'y' }-->
+        function sendDateData(year, month, type) {
+            var dayType = '';
+            var params = {
+                year: year,
+                month: month,
+            };
+            $.ajax('../share/date_select_json.php', {
+                data: params,
+                method: "POST",
+                success: function (data) {
+                    if (data !='' && data != null) {
+                        if (type == 'marry') {
+                            dayType = 'marriDay';
+                        }else {
+                            dayType = 'birthDay';
+                        }
+                        $('#'+dayType).empty();
+                        $('#'+dayType).append(data);
+                    }
+                }
+            });
+        }
+        <!--{/}-->
+
+		<!--{? joinField.marriFl.use == 'y' && joinField.marriDate.use == 'y'}-->
+        $(':radio[name="marriFl"]').change(function () {
+			var $marridateinfo = $('.js_marridateinfo');
+			if (this.value == 'y') {
+				$marridateinfo.removeClass('dn');
+            } else {
+				$marridateinfo.addClass('dn');
+                $('#marriYear option:eq(0)').prop('selected', true);
+                $('#marriMonth option:eq(0)').prop('selected', true);
+                $('#marriDay option:eq(0)').prop('selected', true);
+            }
+		});
+
+        $('#marriYear').change(function () {
+            var marriMonthVal = $('#marriMonth').val();
+            if (marriMonthVal != '') {
+                sendDateData($('#marriYear').val(), $('#marriMonth').val(), 'marry');
+            }
+        });
+
+        $('#marriMonth').change(function () {
+            var marriYearVal = $('#marriYear').val();
+            if (marriYearVal != '') {
+                sendDateData($('#marriYear').val(), $('#marriMonth').val(), 'marry');
+            }
+        });
+        <!--{/}-->
+
+        <!--{? joinField.birthDt.use == 'y'}-->
+        $('#birthYear').change(function () {
+            var birthMonthVal = $('#birthMonth').val();
+            if ( birthMonthVal != '') {
+                sendDateData($('#birthYear').val(), $('#birthMonth').val(), 'birth');
+            }
+        });
+        $('#birthMonth').change(function () {
+            var birthYearVal = $('#birthYear').val();
+            if ( birthYearVal != '') {
+                sendDateData($('#birthYear').val(), $('#birthMonth').val(), 'birth');
+            }
+        });
+        <!--{/}-->
+
+		<!--{? joinField.captcha.use == 'y'}-->
+		$('#reload_captcha').click(function (e) {
+			$('#captchaImg').removeAttr('src');
+			setTimeout(function () {
+				var someDate = new Date();
+				someDate = someDate.getTime();
+				$('#captchaImg').attr('src', '../member/captcha.php?ch=' + someDate);
+			}, 1);
+		}).trigger('click');
+		<!--{/}-->
+
+        gd_select_email_domain('email');
+
+		gd_member2.init($formJoin);
+
+		$('.js_btn_join').click({form: $formJoin}, function (e) {
+			if (typeof syncBizHiddenFields === 'function') {
+				syncBizHiddenFields();
+			}
+			gd_member2.save(e);
+		});
+
+		$(window).on('message', function(event) {
+			if (event.originalEvent.data === 'callback_not_disabled') {
+				callback_not_disabled();
+			}
+		});
+	});
+
+	var join_field = <!--{= json_encode(joinField)}-->;
+	var join_data = <!--{= json_encode(data)}-->;
+	var certificationMaxFileSize = {certificationMaxFileSize};
+
+    /**
+     * 회원가입시 Exception 발생하는 경우 회원가입 버튼 복원
+     */
+    function callback_not_disabled()
+    {
+        $('.js_btn_join').prop("disabled", false);
+        $('.js_btn_join em').html("{=__('회원가입')}");
+    }
+</script>
+{ # footer }

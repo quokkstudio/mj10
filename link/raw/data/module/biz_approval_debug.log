@@ -1,0 +1,5 @@
+[2026-01-08 02:03:05] insertPhotoRow.insert | Unknown column 'regDt' in 'field list' | {"memNo":5,"fields":["memNo","sortNo","storagePath","savedName","originName","mimeType","fileSize","createdAt"]}
+[2026-01-08 02:18:08] insertPhotoRow.insert | Unknown column 'regDt' in 'field list' | {"memNo":7,"fields":["memNo","sortNo","storagePath","savedName","originName","mimeType","fileSize","createdAt"]}
+[2026-01-08 02:20:15] insertPhotoRow.insert | Unknown column 'regDt' in 'field list' | {"memNo":8,"fields":["memNo","sortNo","storagePath","savedName","originName","mimeType","fileSize","createdAt"]}
+[2026-01-08 02:25:16] insertPhotoRow.insert | Unknown column 'regDt' in 'field list' | {"memNo":11,"fields":["memNo","sortNo","storagePath","savedName","originName","mimeType","fileSize","createdAt"]}
+[2026-01-08 02:38:55] insertPhotoRow.insert | Unknown column 'regDt' in 'field list' | {"memNo":12,"fields":["memNo","sortNo","storagePath","savedName","originName","mimeType","fileSize","createdAt"]}

@@ -1,0 +1,28 @@
+{*** 유튜브 리스트 | youtube/list.html ***}
+{ # header }
+<link rel="stylesheet" href="./list.css"/>
+
+<div class="content mj10-youtube">
+    <div class="yt-banner">
+        <!-- 배너 이미지 교체 -->
+        <img src="../img/banner/youtube-banner.jpg" alt="유튜브 배너" onerror="this.style.display='none';"/>
+    </div>
+
+    <div class="yt-tabs">
+        <button type="button" class="yt-tab is-active" data-target="youtube">YOUTUBE</button>
+        <button type="button" class="yt-tab" data-target="shorts">SHORTS</button>
+    </div>
+
+    <div class="yt-panel is-active" data-panel="youtube">
+        <div class="yt-grid" id="ytList"></div>
+        <div class="yt-pagination" id="ytPagination"></div>
+    </div>
+
+    <div class="yt-panel" data-panel="shorts">
+        <div class="yt-grid is-shorts" id="ytShortsList"></div>
+        <div class="yt-pagination" id="ytShortsPagination"></div>
+    </div>
+</div>
+
+<script src="./list.js"></script>
+{ # footer }

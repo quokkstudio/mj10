@@ -1,0 +1,160 @@
+{*** [위젯] 회원가입/정보 사업자 | member/_join_view_business.html ***}
+<!--{? joinField.businessinfo.use == 'y'}-->
+<div class="business_info_box {? !isMyPage}dn{/}">
+    <h3>{=__('사업자 회원 가입')}</h3>
+    <input type="hidden" name="orderManagerName" id="orderManagerNameHidden" value="{data.orderManagerName}"/>
+    <input type="hidden" name="orderManagerPhone" id="orderManagerPhoneHidden" value="{data.orderManagerPhone}"/>
+
+    <div class="business_info_sec">
+        <!-- STEP 3: 출입/적재 -->
+        <div class="biz-step js-biz-step js-biz-step3 dn" data-step="3">
+            <h4 class="mgb10">{=__('3단계')} {=__('출입/적재')}</h4>
+            <table border="0" cellpadding="0" cellspacing="0">
+                <colgroup>
+                    <col width="25%">
+                    <col width="75%">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th><span>{=__('출입키 유무')}</span></th>
+                    <td>
+                        <div class="member_warning">
+                            <label class="check_s">
+                                <input type="checkbox" name="entryKeyYn" value="y" {? data.entryKeyYn == 'y'}checked="checked"{/}/>
+                                {=__('출입키 있음')}
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><span>{=__('출입안내')}</span></th>
+                    <td>
+                        <div class="member_warning">
+                            <textarea name="entryGuide" rows="4" class="text" placeholder="{=__('카드키 / 열쇠 & 보관장소 / 비밀번호')}">{data.entryGuide}</textarea>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><span>{=__('적재장소 / 사진')}</span></th>
+                    <td>
+                        <div class="member_warning">
+                            <textarea name="loadingPlaceText" rows="3" class="text" placeholder="{=__('적재장소 안내를 입력하세요.')}">{data.loadingPlaceText}</textarea>
+                        </div>
+                        <div class="file_upload_sec member_warning">
+                            <div class="btn_upload_box">
+                                <button type="button" class="btn_upload" title="{=__('찾아보기')}"><em>{=__('찾아보기')}</em></button>
+                                <input type="file" id="loadingPlacePhotos" name="loadingPlacePhotos[]" class="file" multiple="multiple" />
+                            </div>
+                            <label for="loadingPlacePhotos">
+                                <input type="text" class="file_text" title="{=__('파일 첨부하기')}" readonly="readonly"/>
+                            </label>
+                        </div>
+                        <div class="upload_list_box">
+                            <div class="upload_list_count" id="loadingPlacePhotoCount">{=__('선택된 파일 없음')}</div>
+                            <ul class="upload_list" id="loadingPlacePhotoList"></ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><span>{=__('특이사항')}</span></th>
+                    <td>
+                        <div class="member_warning">
+                            <textarea name="specialNote" rows="4" class="text" placeholder="{=__('예: 사진 순서로 들어오시면 됩니다...')}">{data.specialNote}</textarea>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="btn_center_box">
+                <button type="button" class="btn_member_cancel js-biz-prev" data-prev="2">{=__('이전')}</button>
+            </div>
+        </div>
+    </div>
+    <!-- //business_info_sec -->
+</div>
+<!-- //business_info_box -->
+<!--{/}-->
+
+<script type="text/javascript">
+    function setUploadFilename($input) {
+        const files = $input[0] && $input[0].files ? $input[0].files : [];
+        const fallback = '';
+        if ($input.attr('id') === 'loadingPlacePhotos') {
+            const text = files.length ? __('선택된 파일: ') + files.length + __('개') : __('선택된 파일 없음');
+            $input.closest('.file_upload_sec').find('.file_text').val(text);
+            return;
+        }
+        const names = [];
+        for (let i = 0; i < files.length; i += 1) {
+            names.push(files[i].name);
+        }
+        const text = names.length ? names.join(', ') : fallback;
+        $input.closest('.file_upload_sec').find('.file_text').val(text);
+    }
+
+    function renderFileList($input, $listEl, $countEl) {
+        const files = $input[0] && $input[0].files ? $input[0].files : [];
+        $listEl.empty();
+        if (!files.length) {
+            $countEl.text(__('선택된 파일 없음'));
+            return;
+        }
+        $countEl.text(__('선택된 파일: ') + files.length + __('개'));
+        for (let i = 0; i < files.length; i += 1) {
+            const name = files[i].name || '';
+            const li = $('<li>').text(name);
+            $listEl.append(li);
+        }
+    }
+    <!--{? joinField.comCertification.use == 'y'}-->
+    $('#comCertification').change(function (e) {
+        const $fileInput = $(this);
+        const file = $fileInput[0].files[0];
+        if (!file) {
+            setUploadFilename($fileInput);
+            return;
+        }
+        const fileMaxSize = certificationMaxFileSize || 2; // MB
+        const allowedExt = ['pdf', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg'];
+
+        // 확장자 검사
+        const ext = file.name.split('.').pop().toLowerCase();
+        if (!allowedExt.includes(ext)) {
+            e.target.value = '';
+            setUploadFilename($fileInput);
+            alert(__('등록이 불가한 파일 형식입니다.'));
+            return;
+        }
+
+        // 파일 크기 검사
+        const fileSizeMB = file.size / (1024 * 1024);
+        if (fileSizeMB > fileMaxSize) {
+            e.target.value = '';
+            setUploadFilename($fileInput);
+            alert(__('파일은 최대 %1$sMB 이하로만 등록 가능합니다.', fileMaxSize.toString()));
+        }
+        setUploadFilename($fileInput);
+    });
+
+    $('#certificationDeleteSno').change(function (e) {
+        const isChecked = $(this).is(':checked');
+        $label = $('label[for="certificationDeleteSno"]');
+        if (isChecked) {
+            const confirmDelete = confirm('등록된 사업자등록증을 삭제하시겠습니까?\n회원정보 최종 저장 시 삭제되며, 복구가 불가합니다.');
+            if (!confirmDelete) {
+                $label.removeClass('on')
+                $(this).prop('checked', false);
+            }
+        }
+    });
+    <!--{/}-->
+
+    $(document).on('change', '#loadingPlacePhotos', function () {
+        const $input = $(this);
+        setTimeout(function () {
+            setUploadFilename($input);
+            renderFileList($input, $('#loadingPlacePhotoList'), $('#loadingPlacePhotoCount'));
+        }, 0);
+    });
+</script>
