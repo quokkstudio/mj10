@@ -576,6 +576,12 @@
     display:block;
   }
 
+  .base_info_sec table input[type="text"]{
+    width:100% !important;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+
   .member_wrap{
     width:100%;
     max-width:100%;
