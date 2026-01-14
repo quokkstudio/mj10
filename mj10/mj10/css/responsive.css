@@ -574,14 +574,35 @@
     display:block;
     width:100% !important;
     box-sizing:border-box;
+    padding:0;
   }
   .join_base_wrap tr{
     display:block;
+    margin:0;
+    padding:5px 0;
   }
 
+  .base_info_sec table{
+    width:100%;
+    border-collapse:collapse;
+  }
+  .base_info_sec table colgroup{
+    display:none;
+  }
   .base_info_sec table input[type="text"]{
     width:100% !important;
-    max-width:100%;
+    max-width:100% !important;
+    box-sizing:border-box;
+    display:block;
+    min-width:0;
+  }
+  .base_info_sec table input[type="password"],
+  .base_info_sec table input[type="tel"],
+  .base_info_sec table input[type="email"],
+  .base_info_sec table select,
+  .base_info_sec table textarea{
+    width:100% !important;
+    max-width:100% !important;
     box-sizing:border-box;
     display:block;
     min-width:0;
