@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-#wrap{position:relative; min-width:1450px}/* 전체 감싸고 있는 영역에 position:relative, min-width를 주어 scroll배너도 보이게 한다. */
+#wrap{position:relative; min-width:0}/* 전체 감싸고 있는 영역에 position:relative, min-width를 주어 scroll배너도 보이게 한다. */
 .gnb,.header_top_cont,.header_search_cont,.main_goods_cont,.sub_content,.content_info,.foot_list > ul,.foot_cont,.foot_certify{position:relative; width:1400px; margin:0 auto;}/* 컨텐츠 사이즈 + 센터정렬 */
 
 /* ------------- 상단 디자인 ------------- */
