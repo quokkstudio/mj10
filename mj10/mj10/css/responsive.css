@@ -332,6 +332,38 @@
     height:auto;
   }
 
+  .mj10-goods-view .item_choice_list table{
+    width:100%;
+    table-layout:fixed;
+  }
+  .mj10-goods-view .item_choice_list .cart_prdt_name{
+    width:auto;
+  }
+  .mj10-goods-view .item_choice_list td{
+    vertical-align:middle;
+  }
+  .mj10-goods-view .item_choice_list .count{
+    display:flex;
+    justify-content:flex-end;
+  }
+  .mj10-goods-view .item_choice_list .goods_qty{
+    display:flex;
+    align-items:center;
+  }
+  .mj10-goods-view .item_choice_list .goods_qty .text{
+    width:44px;
+    min-width:44px;
+  }
+  .mj10-goods-view .item_choice_list .goods_qty span{
+    display:flex;
+    flex-direction:column;
+    margin-left:4px;
+  }
+  .mj10-goods-view .item_choice_list .item_choice_price{
+    white-space:nowrap;
+    text-align:right;
+  }
+
   .main_goods_cont .item_photo_box,
   .main_goods_cont .item_photo_box a{
     width:100%;
