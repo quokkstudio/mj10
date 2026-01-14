@@ -154,15 +154,15 @@
     </section>
     <!-- //MJ10 mission section -->
     <div class="main_goods_cont">
-        <!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html','sno','1')}<!-- 메인 상품 노출 -->
+        <!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html','sno','2')}<!-- 메인 상품 노출 -->
     </div>
 
     <div class="main_goods_cont">
-        <!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html','sno','1')}<!-- 메인 상품 노출 -->
+        <!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html','sno','3')}<!-- 메인 상품 노출 -->
     </div>
 
     <div class="main_goods_cont">
-        <!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html','sno','1')}<!-- 메인 상품 노출 -->
+        <!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html','sno','4')}<!-- 메인 상품 노출 -->
     </div>
 
     <!--메인 유튜브 영역-->
@@ -253,7 +253,21 @@
               $slider.data('mj10ScrollOrigin', slick.options.slidesToScroll);
             }
             if (isMobile) {
-              $slider.slick('setOption', {slidesToShow: MOBILE_SLIDES, slidesToScroll: 1, swipe: true, touchMove: true, draggable: true}, true);
+              var $wrap = $slider.closest('.item_slide_horizontal');
+              if ($wrap.length) {
+                $wrap.attr('dir', 'ltr');
+              }
+              $slider.slick('setOption', {
+                slidesToShow: MOBILE_SLIDES,
+                slidesToScroll: 1,
+                swipe: true,
+                touchMove: true,
+                draggable: true,
+                swipeToSlide: true,
+                rtl: false,
+                initialSlide: 0
+              }, true);
+              $slider.slick('slickGoTo', 0, true);
             } else {
               var originShow = $slider.data('mj10SlidesOrigin');
               var originScroll = $slider.data('mj10ScrollOrigin');
