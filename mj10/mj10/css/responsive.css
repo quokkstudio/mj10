@@ -538,6 +538,7 @@
   }
   .member_cont{
     padding:0;
+    border:0;
   }
   .member_login_box,
   .nonmember_join_box,
@@ -565,7 +566,7 @@
   .nonmember_order_box .order_input_sec button{
     float:none;
     width:100%;
-    height:48px;
+    height:36px;
     margin:10px 0 0 0;
   }
   .member_sns_login a{
