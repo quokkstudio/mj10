@@ -292,11 +292,15 @@
 				introMq.addListener(syncIntro);
 			}
 			$(document).on('click', '.js-join-intro-personal', function () {
-				$('.js-switch-personal').trigger('click');
+				$('#memberFlDefault').prop('checked', true);
+				$('#memberFlBusiness').prop('checked', false);
+				setJoinMode(false);
 				$joinIntro.attr('data-open', 'false');
 			});
 			$(document).on('click', '.js-join-intro-business', function () {
-				$('.js-switch-business').trigger('click');
+				$('#memberFlBusiness').prop('checked', true);
+				$('#memberFlDefault').prop('checked', false);
+				setJoinMode(true);
 				$joinIntro.attr('data-open', 'false');
 			});
 			syncIntro();
