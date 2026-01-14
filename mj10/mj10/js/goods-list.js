@@ -242,6 +242,12 @@
       var $list = $box.children('.pick_list').first();
       var $toggle = $('<button type="button" class="pick_list_toggle" aria-expanded="false">정렬 옵션</button>');
       $toggle.insertBefore($list);
+      var closeList = function () {
+        if (!mq.matches) return;
+        $box.removeClass('is-open').addClass('is-collapsed');
+        $toggle.attr('aria-expanded', 'false');
+        $list.stop(true, true).slideUp(150);
+      };
       $toggle.on('click', function () {
         if (!mq.matches) return;
         var isOpen = $box.toggleClass('is-open').hasClass('is-open');
@@ -257,6 +263,7 @@
           $list.stop(true, true).slideUp(150);
         }
       });
+      $list.find('input').on('change', closeList);
     });
 
     function syncPickListState() {
