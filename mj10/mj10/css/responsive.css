@@ -391,6 +391,10 @@
     border-color:#bbbbbb;
   }
 
+  .mj10-goods-view #exchange{
+    margin-top:50px;
+  }
+
 
   .mj10-goods-view .item_choice_list table{
     width:100%;
