@@ -531,7 +531,7 @@
     box-sizing:border-box;
   }
   .member_cont{
-    padding:0 16px;
+    padding:20px 0;
   }
   .member_login_box .login_input_sec,
   .nonmember_order_box .order_input_sec{
@@ -571,5 +571,10 @@
   }
   .btn_login_box li button{
     width:100%;
+  }
+
+  .join_agreement_wrap .member_cont{
+    width:100%;
+    max-width:100%;
   }
 }
