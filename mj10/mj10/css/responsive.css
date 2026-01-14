@@ -592,6 +592,18 @@
   .js-biz-step3 table{
     width:100%;
   }
+  .js-biz-step3 .member_warning,
+  .js-biz-step3 .member_warning textarea,
+  .js-biz-step3 .member_warning input[type="text"],
+  .js-biz-step3 .file_upload_sec,
+  .js-biz-step3 .loading_place_upload__row,
+  .js-biz-step3 .loading_place_upload__controls,
+  .js-biz-step3 .loading_place_upload__text,
+  .js-biz-step3 .file_text{
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box;
+  }
 
   .base_info_sec table{
     width:100%;
@@ -648,6 +660,10 @@
   .member_cont{
     padding:0;
     border:0;
+  }
+  .member_cont .btn_center_box,
+  .member_warning + .btn_center_box{
+    display:flex;
   }
   .member_login_box,
   .nonmember_join_box,
