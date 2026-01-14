@@ -624,6 +624,23 @@
     max-width:100% !important;
     box-sizing:border-box;
   }
+  .js-biz-step3 .loading_place_upload__controls{
+    min-width:0 !important;
+  }
+  .js-biz-step3 .loading_place_upload .btn_upload_box{
+    width:100%;
+    min-width:0;
+  }
+  .js-biz-step3 .loading_place_upload .btn_upload{
+    width:100%;
+    min-width:0;
+  }
+  .js-biz-step3 .loading_place_upload .btn_upload em{
+    display:block;
+    width:100%;
+    text-align:center;
+    white-space:nowrap;
+  }
   .mj10-join-v2 .file_upload_sec{
     flex-wrap:wrap;
     height:auto;
