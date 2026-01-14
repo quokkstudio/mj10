@@ -239,6 +239,7 @@
         const btn = e.target.closest(".cn-acc-btn");
         if (!btn) return;
         e.preventDefault();
+        e.stopPropagation();
         const li = btn.closest("li");
         if (!li) return;
         const isOpen = li.classList.toggle("is-open");
