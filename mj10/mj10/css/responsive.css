@@ -532,6 +532,7 @@
 
   .join_base_wrap .member_cont{
     position:relative;
+    padding:0;
   }
   .mj10-join-intro{
     position:absolute;
@@ -560,6 +561,19 @@
   }
   .mj10-join-intro__btn + .mj10-join-intro__btn{
     border-color:#444444;
+  }
+
+  .mj10-join-v2{
+    padding:0;
+  }
+  .join_base_wrap th,
+  .join_base_wrap td{
+    display:block;
+    width:100% !important;
+    box-sizing:border-box;
+  }
+  .join_base_wrap tr{
+    display:block;
   }
 
   .member_wrap{
