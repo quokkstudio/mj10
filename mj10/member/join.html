@@ -219,6 +219,7 @@
 		function setJoinMode(isBusiness) {
 			var $businessinfo = $('.business_info_box');
 			var $businessPanel = $('.join_panel_business');
+			var $personalPanel = $('.join_panel_personal');
 			var $joinRoot = $('#mj10Join');
 
 			updateBizLabels(isBusiness);
@@ -230,6 +231,7 @@
 				$businessinfo.removeClass('dn');
 				$businessinfo.find('input, select, textarea').prop('disabled', false).removeClass('ignore');
 				$businessPanel.removeClass('dn');
+				$personalPanel.addClass('dn');
 				$('.js-personal-only').addClass('dn').find('input, select, textarea').prop('disabled', true).addClass('ignore');
 				$('.js-business-only').removeClass('dn').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
 				$('.js-biz-company-address').addClass('dn').find('input, select, textarea').prop('disabled', true).addClass('ignore');
@@ -242,6 +244,7 @@
 				$businessinfo.addClass('dn');
 				$businessinfo.find('input, select, textarea').prop('disabled', true).addClass('ignore');
 				$businessPanel.addClass('dn');
+				$personalPanel.removeClass('dn');
 				$('.js-personal-only').removeClass('dn').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
 				$('.js-business-only').addClass('dn').find('input, select, textarea').prop('disabled', true).addClass('ignore');
 				$('.js-biz-company-address').removeClass('dn').find('input, select, textarea').prop('disabled', false).removeClass('ignore');
