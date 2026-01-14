@@ -622,6 +622,10 @@
   #wrap .member_warning{
     display:flex;
   }
+  #contents .member_address .address_input{
+    float:none;
+    width:100%;
+  }
   .member_cont{
     padding:0;
     border:0;
