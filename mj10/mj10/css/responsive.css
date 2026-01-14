@@ -398,7 +398,13 @@
 
   .mj10-goods-view .item_choice_list table{
     width:100%;
-    table-layout:fixed;
+    table-layout:auto;
+  }
+  .mj10-goods-view .item_choice_list colgroup{
+    display:none;
+  }
+  .mj10-goods-view .item_choice_list td{
+    white-space:nowrap;
   }
   .mj10-goods-view .item_choice_list .cart_prdt_name{
     width:100%;
