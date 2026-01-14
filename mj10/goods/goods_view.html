@@ -1917,7 +1917,7 @@
                         <!--{ ?goodsView['restockUsableFl'] === 'y' && !gGlobal.isFront }-->
                         <button type="button" class="btn_restock_notice_v2 restockSelector">{=__('재입고알림')}</button>
                         <!--{ / }-->
-                        <button type="button" class="btn_add_soldout" disabled="disabled">{=__('구매 불가')}</button>
+                        <button type="button" class="btn_add_soldout js-biz-join" data-join-url="/member/join_agreement.php" aria-disabled="true">{=__('사업자 회원만 구매가능')}</button>
                     </div>
                     <!--{ : }-->
                     <!--{ ? goodsView['optionFl'] == 'y' }-->
@@ -2389,6 +2389,22 @@
 <!--//플러스리뷰 레이어 --><div id="writePop" class="layer_wrap plus_review_edit_layer dn"></div>
 
 <script type="text/javascript" src="\{=c.PATH_SKIN}js/gd_board_goods.js" charset="utf-8"></script>
+
+<script>
+    (function(){
+        if (window.__mj10BizJoinBound) return;
+        window.__mj10BizJoinBound = true;
+        document.addEventListener('click', function(event){
+            var button = event.target.closest('.js-biz-join');
+            if (!button) return;
+            event.preventDefault();
+            var url = button.getAttribute('data-join-url') || '/member/join_agreement.php';
+            if (confirm('사업자 회원가입을 진행하시겠습니까?')) {
+                window.location.href = url;
+            }
+        });
+    })();
+</script>
 
 {=fbGoodsViewScript}
 { # footer }
