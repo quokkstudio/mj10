@@ -342,9 +342,12 @@
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
     scroll-snap-type:x mandatory;
+    width:100%;
+    height:auto;
     padding:0 16px 8px;
-    margin:0 -16px;
+    margin:0;
     list-style:none;
+    box-sizing:border-box;
   }
   .mj10-goods-view .item_goods_tab ul::-webkit-scrollbar{
     height:4px;
@@ -357,6 +360,8 @@
     flex:0 0 auto;
     scroll-snap-align:start;
     margin:0;
+    float:none;
+    width:auto;
   }
   .mj10-goods-view .item_goods_tab ul li a{
     display:inline-flex;
@@ -365,6 +370,10 @@
     padding:10px 14px;
     font-size:13px;
     white-space:nowrap;
+    margin:0;
+  }
+  .mj10-goods-view .item_goods_tab ul li.on{
+    margin-top:0;
   }
 
 
