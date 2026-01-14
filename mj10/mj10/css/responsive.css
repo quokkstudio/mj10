@@ -566,6 +566,9 @@
   .mj10-join-v2{
     padding:0;
   }
+  .mj10-join-v2__pane{
+    padding:40px 30px 40px;
+  }
   .join_base_wrap th,
   .join_base_wrap td{
     display:block;
