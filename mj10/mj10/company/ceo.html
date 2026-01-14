@@ -1,14 +1,28 @@
 {*** 대표 인사말 | mj10/company/ceo.html ***}
 <style>
   .mj10-company-ceo{
-    max-width:1400px;
-    margin:0 auto;
-    padding:40px 16px 80px;
+    width:100%;
+    max-width:none;
+    margin:0;
+    padding:0;
     box-sizing:border-box;
   }
   .mj10-company-ceo__media{
     position:relative;
     overflow:hidden;
+  }
+  .mj10-company-ceo__overlay{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+  .mj10-company-ceo__overlay-inner{
+    position:relative;
+    height:100%;
+    max-width:1400px;
+    margin:0 auto;
+    padding:0 16px;
+    box-sizing:border-box;
   }
   .mj10-company-ceo__img{
     width:100%;
@@ -29,6 +43,7 @@
     line-height:1.9;
     color:#ffffff;
     text-shadow:0 6px 16px rgba(0,0,0,0.35);
+    pointer-events:auto;
   }
   .mj10-company-ceo__line-group{
     margin:0 0 14px;
@@ -64,9 +79,11 @@
     }
   }
   .mj10-company-ceo__timeline{
-    margin-top:120px;
-    padding:80px 0 40px;
+    max-width:1400px;
+    margin:120px auto 0;
+    padding:80px 16px 40px;
     position:relative;
+    box-sizing:border-box;
   }
   .mj10-company-ceo__timeline-list{
     margin:0;
@@ -418,15 +435,19 @@
 <div class="mj10-company-ceo" data-ceo>
   <div class="mj10-company-ceo__media" data-ceo-media>
     <img class="mj10-company-ceo__img" src="../../img/company/ceo/ceo_pc1.jpg" alt="대표 인사말" />
-    <div class="mj10-company-ceo__text" data-ceo-text>
-      <div class="mj10-company-ceo__line-group">안녕하세요.</div>
-      <div class="mj10-company-ceo__line-group">대한민국 10번째 명장 송영광입니다.</div>
-      <div class="mj10-company-ceo__line-group">첫 목표는 기능장이었고 10년간의 노력으로 명장이라는</div>
-      <div class="mj10-company-ceo__line-group">목표에 도달하게 되었습니다.</div>
-      <div class="mj10-company-ceo__line-group">저는 빵을 정말 좋아하는 한 사람으로</div>
-      <div class="mj10-company-ceo__line-group">제가 가르치는 후배와 제자들에게</div>
-      <div class="mj10-company-ceo__line-group">내가 사랑하는 가족들을 위해 어머니와 같은 마음으로</div>
-      <div class="mj10-company-ceo__line-group">빵을 만들라고 말합니다.</div>
+    <div class="mj10-company-ceo__overlay">
+      <div class="mj10-company-ceo__overlay-inner">
+        <div class="mj10-company-ceo__text" data-ceo-text>
+          <div class="mj10-company-ceo__line-group">안녕하세요.</div>
+          <div class="mj10-company-ceo__line-group">대한민국 10번째 명장 송영광입니다.</div>
+          <div class="mj10-company-ceo__line-group">첫 목표는 기능장이었고 10년간의 노력으로 명장이라는</div>
+          <div class="mj10-company-ceo__line-group">목표에 도달하게 되었습니다.</div>
+          <div class="mj10-company-ceo__line-group">저는 빵을 정말 좋아하는 한 사람으로</div>
+          <div class="mj10-company-ceo__line-group">제가 가르치는 후배와 제자들에게</div>
+          <div class="mj10-company-ceo__line-group">내가 사랑하는 가족들을 위해 어머니와 같은 마음으로</div>
+          <div class="mj10-company-ceo__line-group">빵을 만들라고 말합니다.</div>
+        </div>
+      </div>
     </div>
   </div>
   <section class="mj10-company-ceo__timeline" data-ceo-timeline>
