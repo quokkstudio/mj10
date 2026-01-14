@@ -213,6 +213,8 @@
   }
   .cn-mega-grid .depth0 > li > a,
   .cn-mega-grid .gnb_menu0 > li > a{
+    position:relative;
+    z-index:1;
     padding:12px 40px 12px 16px;
     white-space:normal;
   }
@@ -238,6 +240,7 @@
     border:0;
     background:transparent;
     color:#111;
+    z-index:2;
   }
   .cn-acc-icon{
     display:block;
