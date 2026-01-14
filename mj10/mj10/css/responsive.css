@@ -632,6 +632,17 @@
     float:none;
     width:100%;
   }
+  .member_email .member_warning{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .member_email .member_warning input[type="text"],
+  .member_email .member_warning select{
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box;
+  }
   .member_cont{
     padding:0;
     border:0;
