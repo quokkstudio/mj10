@@ -26,7 +26,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr class="biz-row biz-row--entry-guide">
                     <th><span>{=__('출입안내')}</span></th>
                     <td>
                         <div class="member_warning">
@@ -34,24 +34,28 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr class="biz-row biz-row--loading-place">
                     <th><span>{=__('적재장소 / 사진')}</span></th>
                     <td>
                         <div class="member_warning">
                             <textarea name="loadingPlaceText" rows="3" class="text" placeholder="{=__('적재장소 안내를 입력하세요.')}">{data.loadingPlaceText}</textarea>
                         </div>
-                        <div class="file_upload_sec member_warning">
-                            <div class="btn_upload_box">
-                                <button type="button" class="btn_upload" title="{=__('찾아보기')}"><em>{=__('찾아보기')}</em></button>
-                                <input type="file" id="loadingPlacePhotos" name="loadingPlacePhotos[]" class="file" multiple="multiple" />
+                        <div class="file_upload_sec member_warning loading_place_upload">
+                            <div class="loading_place_upload__row">
+                                <div class="loading_place_upload__controls">
+                                    <div class="btn_upload_box">
+                                        <button type="button" class="btn_upload" title="{=__('찾아보기')}"><em>{=__('찾아보기')}</em></button>
+                                        <input type="file" id="loadingPlacePhotos" name="loadingPlacePhotos[]" class="file" multiple="multiple" />
+                                    </div>
+                                    <div class="upload_list_count" id="loadingPlacePhotoCount">{=__('선택된 파일 없음')}</div>
+                                    <label for="loadingPlacePhotos" class="loading_place_upload__text">
+                                        <input type="text" class="file_text" title="{=__('파일 첨부하기')}" readonly="readonly"/>
+                                    </label>
+                                </div>
+                                <div class="upload_list_box loading_place_upload__list">
+                                    <ul class="upload_list" id="loadingPlacePhotoList"></ul>
+                                </div>
                             </div>
-                            <label for="loadingPlacePhotos">
-                                <input type="text" class="file_text" title="{=__('파일 첨부하기')}" readonly="readonly"/>
-                            </label>
-                        </div>
-                        <div class="upload_list_box">
-                            <div class="upload_list_count" id="loadingPlacePhotoCount">{=__('선택된 파일 없음')}</div>
-                            <ul class="upload_list" id="loadingPlacePhotoList"></ul>
                         </div>
                     </td>
                 </tr>
@@ -150,11 +154,60 @@
     });
     <!--{/}-->
 
-    $(document).on('change', '#loadingPlacePhotos', function () {
-        const $input = $(this);
-        setTimeout(function () {
-            setUploadFilename($input);
-            renderFileList($input, $('#loadingPlacePhotoList'), $('#loadingPlacePhotoCount'));
-        }, 0);
-    });
+    (function(){
+        var $loadingInput = $('#loadingPlacePhotos');
+        if (!$loadingInput.length) return;
+        var loadingPlaceFiles = [];
+        var $loadingList = $('#loadingPlacePhotoList');
+        var $loadingCount = $('#loadingPlacePhotoCount');
+
+        var getFileKey = function(file){
+            return [file.name, file.size, file.lastModified].join('::');
+        };
+
+        var syncLoadingFiles = function(){
+            if (!$loadingInput[0]) return;
+            var dataTransfer = new DataTransfer();
+            loadingPlaceFiles.forEach(function(item){
+                dataTransfer.items.add(item.file);
+            });
+            $loadingInput[0].files = dataTransfer.files;
+            setUploadFilename($loadingInput);
+            $loadingList.empty();
+            if (!loadingPlaceFiles.length) {
+                $loadingCount.text(__('선택된 파일 없음'));
+                return;
+            }
+            $loadingCount.text(__('선택된 파일: ') + loadingPlaceFiles.length + __('개'));
+            loadingPlaceFiles.forEach(function(item){
+                var $li = $('<li>');
+                var $name = $('<span>').text(item.file.name || '');
+                var $remove = $('<button type="button" class="btn_remove_file" aria-label="삭제">-</button>');
+                $remove.data('key', item.key);
+                $li.append($name, $remove);
+                $loadingList.append($li);
+            });
+        };
+
+        $loadingInput.on('change', function(){
+            var files = $loadingInput[0] && $loadingInput[0].files ? Array.prototype.slice.call($loadingInput[0].files) : [];
+            if (!files.length) return;
+            files.forEach(function(file){
+                var key = getFileKey(file);
+                var exists = loadingPlaceFiles.some(function(item){ return item.key === key; });
+                if (!exists) {
+                    loadingPlaceFiles.push({ file: file, key: key });
+                }
+            });
+            syncLoadingFiles();
+        });
+
+        $loadingList.on('click', '.btn_remove_file', function(){
+            var key = $(this).data('key');
+            loadingPlaceFiles = loadingPlaceFiles.filter(function(item){ return item.key !== key; });
+            syncLoadingFiles();
+        });
+
+        syncLoadingFiles();
+    })();
 </script>

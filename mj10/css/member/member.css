@@ -235,6 +235,17 @@
 .join_type_box .type_select_sec .form_element{display:block;}
 .join_type_box .type_select_sec ul{text-align:center;}
 .join_type_box .type_select_sec li{display:inline-block; padding: 0 13px;}
+.join_type_box{display:none;}
+.loading_place_upload__row{display:flex; align-items:flex-start; gap:16px;}
+.loading_place_upload__controls{min-width:140px;}
+.loading_place_upload .btn_upload_box{display:flex; align-items:center; gap:12px;}
+.loading_place_upload .upload_list_count{margin-top:8px; font-size:13px; color:#666;}
+.loading_place_upload__text{display:none;}
+.loading_place_upload__list{flex:1;}
+.loading_place_upload__list .upload_list{margin:0; padding:0; list-style:none;}
+.loading_place_upload__list .upload_list li{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:4px 0;}
+.loading_place_upload__list .upload_list li span{flex:1; min-width:0; max-width:10ch; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.loading_place_upload__list .btn_remove_file{border:1px solid #ccc; background:#fff; color:#666; width:22px; height:22px; line-height:20px; text-align:center; border-radius:4px; cursor:pointer;}
 
 .base_info_box h3{display:inline-block;}
 .base_info_box > span{float:right; padding:0 0 0 10px; line-height: 40px; color:#000000;}
@@ -265,6 +276,10 @@
 .business_info_sec table td:first-child{border-left:none;}
 .business_info_sec table td{padding:15px 0 15px 15px; border-bottom:1px solid #dcdcdc;}
 .business_info_sec table input[type="text"]{width:380px;}
+.business_info_sec table tr.biz-row--entry-guide th,
+.business_info_sec table tr.biz-row--entry-guide td,
+.business_info_sec table tr.biz-row--loading-place th,
+.business_info_sec table tr.biz-row--loading-place td{border-bottom:none;}
 
 /* 부가정보 */
 .addition_info_box{margin:40px 0 0 0;}
