@@ -363,19 +363,19 @@
     }
     .mj10-company-ceo__timeline-list{
       gap:66px;
-      padding:0 0 8px;
+      padding:0 0 8px 6px;
     }
     .mj10-company-ceo__timeline-list::before{
-      left:14px;
+      left:10px;
       transform:none;
     }
     .mj10-company-ceo__timeline-list::after{
-      left:14px;
+      left:10px;
       transform:none;
     }
     .mj10-company-ceo__timeline-item{
-      grid-template-columns:28px minmax(0, 1fr);
-      column-gap:14px;
+      grid-template-columns:20px minmax(0, 1fr);
+      column-gap:12px;
       opacity:1;
       transform:none;
       align-items:flex-start;
@@ -391,6 +391,7 @@
     }
     .mj10-company-ceo__timeline-side{
       grid-column:2;
+      width:100%;
     }
     .mj10-company-ceo__timeline-side--media{
       justify-content:flex-start;
@@ -405,7 +406,7 @@
       text-align:left;
     }
     .mj10-company-ceo__timeline-media{
-      max-width:100%;
+      max-width:220px;
       border-radius:12px;
     }
     .mj10-company-ceo__timeline-year{
@@ -417,7 +418,8 @@
     }
     .mj10-company-ceo__timeline-gallery{
       grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:12px 14px;
+      gap:8px 10px;
+      max-width:260px;
     }
     .mj10-company-ceo__timeline-gallery.is-3col{
       grid-template-columns:repeat(2, minmax(0, 1fr));
