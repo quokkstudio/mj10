@@ -687,7 +687,7 @@ body.cn-stuck #container{
 .cn-mega-grid .depth1{
   position:absolute;
   top:0;
-  left:100%;
+  left:calc(100% - 1px);
   min-width:200px;
   background:#fff;
   border:1px solid var(--cn-line);

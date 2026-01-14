@@ -81,7 +81,7 @@
         box-sizing:border-box;
     }
     .mj10-company-hero__label-text{
-        font-size:20px;
+        font-size:36px;
         font-weight:700;
         letter-spacing:-0.4px;
         text-align:center;
@@ -131,7 +131,7 @@
         list-style: none;
     }
     .companyMenu li {
-        padding: 0 20px;
+        padding: 0 60px;
         position: relative;
         font-size: 15px;
         font-weight: 600;
@@ -153,6 +153,14 @@
     }
     .companyMenu li.is-active::after {
         content: none;
+    }
+    @media (max-width: 768px){
+        .mj10-company-hero__label-text{
+            font-size:20px;
+        }
+        .companyMenu li{
+            padding: 0 20px;
+        }
     }
     .mj10-company .company-section {
         display: none;

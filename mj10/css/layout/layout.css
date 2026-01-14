@@ -259,11 +259,17 @@
 
 /* ------------- 서브 컨텐츠 시작 ------------- */
 .sub_content{
-  width:100%;
-  max-width:none;
+  width:1400px;
+  max-width:1400px;
   margin:0 auto;
   padding:45px 20px 0;
   box-sizing:border-box;
+}
+@media (max-width: 768px){
+  .sub_content{
+    width:100%;
+    max-width:none;
+  }
 }
 .sub_content:after{display:block; clear:both; content:"";}
 /* ------------- 서브 사이드 영역 ------------- */

@@ -257,6 +257,7 @@
         if (!isMobile || mega.dataset.open !== "true") return;
         const link = e.target.closest("a");
         if (!link) return;
+        if (link.closest(".depth1, .depth2, .depth3, .depth4")) return;
         const li = link.closest("li.has-children");
         if (!li || !mega.contains(li)) return;
         e.preventDefault();
