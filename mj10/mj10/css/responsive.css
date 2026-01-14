@@ -334,6 +334,8 @@
 
   .mj10-goods-view .item_goods_tab{
     overflow:hidden;
+    padding:0;
+    border-bottom:1px solid #e5e5e5;
   }
   .mj10-goods-view .item_goods_tab ul{
     display:flex;
@@ -348,6 +350,8 @@
     margin:0;
     list-style:none;
     box-sizing:border-box;
+    justify-content:flex-start;
+    max-width:100%;
   }
   .mj10-goods-view .item_goods_tab ul::-webkit-scrollbar{
     height:4px;
@@ -371,9 +375,20 @@
     font-size:13px;
     white-space:nowrap;
     margin:0;
+    border:1px solid #dadada;
+    border-radius:6px;
+    background:#ffffff;
+    color:#666666;
   }
   .mj10-goods-view .item_goods_tab ul li.on{
     margin-top:0;
+  }
+  .mj10-goods-view .item_goods_tab ul li.on a{
+    margin-top:0;
+    padding-top:10px;
+    color:#111111;
+    font-weight:600;
+    border-color:#bbbbbb;
   }
 
 
