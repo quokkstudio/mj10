@@ -12,6 +12,12 @@
 		</div>
 		<!-- //member_tit -->
 		<div class="member_cont">
+			<!--{?joinField.businessinfo.use == 'y'}-->
+			<div class="mj10-join-intro" data-join-intro>
+				<button type="button" class="mj10-join-intro__btn js-join-intro-personal">{=__('개인회원')}</button>
+				<button type="button" class="mj10-join-intro__btn js-join-intro-business">{=__('사업자 회원')}</button>
+			</div>
+			<!--{/}-->
 			<form id="formJoin" name="formJoin" action="{joinActionUrl}" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="rncheck" value="{data.rncheck}"/>
 				<input type="hidden" name="dupeinfo" value="{data.dupeinfo}"/>
@@ -269,6 +275,28 @@
 			$('#memberFlDefault').prop('checked', true).trigger('change');
 		});
 		setJoinMode($(':radio[name="memberFl"]:checked').val() === 'business');
+
+		var $joinIntro = $('[data-join-intro]');
+		if ($joinIntro.length) {
+			var introMq = window.matchMedia('(max-width: 768px)');
+			var syncIntro = function () {
+				$joinIntro.attr('data-open', introMq.matches ? 'true' : 'false');
+			};
+			if (introMq.addEventListener) {
+				introMq.addEventListener('change', syncIntro);
+			} else if (introMq.addListener) {
+				introMq.addListener(syncIntro);
+			}
+			$(document).on('click', '.js-join-intro-personal', function () {
+				$('.js-switch-personal').trigger('click');
+				$joinIntro.attr('data-open', 'false');
+			});
+			$(document).on('click', '.js-join-intro-business', function () {
+				$('.js-switch-business').trigger('click');
+				$joinIntro.attr('data-open', 'false');
+			});
+			syncIntro();
+		}
 		<!--{/}-->
 
         <!--{? (joinField.marriFl.use == 'y' && joinField.marriDate.use == 'y') || joinField.birthDt.use == 'y' }-->
