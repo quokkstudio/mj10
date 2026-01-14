@@ -387,6 +387,11 @@
 		gd_member2.init($formJoin);
 
 		$('.js_btn_join').click({form: $formJoin}, function (e) {
+			if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
+				if ($('#mj10Join').attr('data-join-mode') === 'business') {
+					$('#memberFlBusiness').prop('checked', true);
+				}
+			}
 			if (typeof syncBizHiddenFields === 'function') {
 				syncBizHiddenFields();
 			}
