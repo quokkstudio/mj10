@@ -222,6 +222,7 @@
     <script>
       (function(){
         var timer = null;
+        var retryCount = 0;
         var applyMainGoodsSlider = function(){
           if (!window.jQuery) return;
           var $ = window.jQuery;
@@ -231,12 +232,19 @@
             $sliders = $('.main_goods_cont .item_slide_horizontal > ul');
           }
           if (!$sliders.length) return;
+          var needsRetry = false;
 
           $sliders.each(function(){
             var $slider = $(this);
-            if (!$slider.hasClass('slick-initialized')) return;
+            if (!$slider.hasClass('slick-initialized')) {
+              needsRetry = true;
+              return;
+            }
             var slick = $slider.slick('getSlick');
-            if (!slick) return;
+            if (!slick) {
+              needsRetry = true;
+              return;
+            }
             if ($slider.data('mj10SlidesOrigin') == null) {
               $slider.data('mj10SlidesOrigin', slick.options.slidesToShow);
               $slider.data('mj10ScrollOrigin', slick.options.slidesToScroll);
@@ -251,6 +259,10 @@
               }
             }
           });
+          if (needsRetry && retryCount < 8) {
+            retryCount += 1;
+            setTimeout(applyMainGoodsSlider, 300);
+          }
         };
 
         var schedule = function(){

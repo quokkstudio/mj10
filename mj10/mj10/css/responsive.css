@@ -8,6 +8,9 @@
   body.cn-menu-open{
     overflow:hidden;
   }
+  body.cn-menu-open .cn-header{
+    z-index:1000;
+  }
   /* header (mobile) */
   .cn-strip-banner{
     position:static;
@@ -105,6 +108,15 @@
     -webkit-overflow-scrolling:touch;
     justify-content:flex-start;
   }
+  body.cn-stuck .cn-navbar.cn-fixed .cn-gnb,
+  body.cn-stuck .cn-navbar.cn-fixed .cn-gnb .sub_menu0,
+  body.cn-stuck .cn-navbar.cn-fixed .cn-gnb .depth0,
+  body.cn-stuck .cn-navbar.cn-fixed .cn-gnb .gnb_menu0{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    justify-content:flex-start;
+    touch-action:pan-x;
+  }
 
   .cn-backdrop{
     display:none !important;
@@ -112,6 +124,7 @@
     pointer-events:none;
     transition:opacity .2s ease;
     background:rgba(0,0,0,.6);
+    z-index:900;
   }
   .cn-backdrop[data-open="true"]{
     display:block !important;
