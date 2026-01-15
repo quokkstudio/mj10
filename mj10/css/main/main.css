@@ -217,7 +217,7 @@
   margin:0 auto;
   position:relative;
   text-align:left;
-  --mj10-banner-width:40%;
+  --mj10-banner-width:44%;
   --mj10-pager-offset:0px;
 }
 .mj10-video-slides{
@@ -231,7 +231,7 @@
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:6%;
+  gap:3%;
   position:absolute;
   left:0;
   top:0;
@@ -250,6 +250,9 @@
   flex:0 0 var(--mj10-banner-width);
   max-width:var(--mj10-banner-width);
   position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:370px;
 }
 .mj10-video-banner img{
   display:block;
