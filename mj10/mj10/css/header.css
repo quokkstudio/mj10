@@ -36,8 +36,13 @@ html{
 a{ color:inherit; text-decoration:none; }
 button, input{ font:inherit; }
 .cn-container{ max-width:var(--cn-container); margin:0 auto; padding:0 16px; }
-#cnMobileMenuBtn{ display:none; }
-.cn-acc-btn{ display:none; }
+@media (min-width: 769px){
+  #cnMobileMenuBtn{ display:none; }
+  .cn-acc-btn{ display:none; }
+  .cn-mega-grid li.is-open > .depth1{ display:none; }
+  .cn-mega-grid .depth0 > li:hover > .depth1,
+  .cn-mega-grid .gnb_menu0 > li:hover > .depth1{ display:block; }
+}
 
 /* ===== Header layout ===== */
 /* header 자체는 relative, navbar만 sticky */
