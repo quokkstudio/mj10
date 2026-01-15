@@ -231,7 +231,7 @@
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:5%;
+  gap:6%;
   position:absolute;
   left:0;
   top:0;
@@ -258,8 +258,8 @@
   object-fit:cover;
 }
 .mj10-video-frame{
-  flex:0 0 55%;
-  max-width:55%;
+  flex:0 0 53%;
+  max-width:53%;
   aspect-ratio:2 / 1;
 }
 .mj10-video-frame iframe{
