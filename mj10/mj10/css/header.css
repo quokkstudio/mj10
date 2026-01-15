@@ -491,10 +491,12 @@ body.cn-stuck #container{
 .cn-burger{
   width: 18px;
   height: 14px;
-  display:grid;
-  gap: 3px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
 .cn-burger span{
+  display:block;
   height: 2px;
   background:black;
   border-radius: 2px;
