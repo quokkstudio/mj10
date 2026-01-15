@@ -230,7 +230,7 @@
 .mj10-video-slide{
   display:grid;
   grid-template-columns: var(--mj10-banner-width) 53%;
-  column-gap:3%;
+  column-gap:8%;
   align-items:start;
   align-content:space-between;
   position:absolute;
