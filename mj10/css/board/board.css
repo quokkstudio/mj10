@@ -92,6 +92,7 @@
 /* 게시판 이미지 */
 .board_list_table .board_img{overflow:hidden; position:relative; display:inline-block; text-align:center;}
 .board_list_table .board_img a{display:table-cell; height:100%; vertical-align:middle; border:1px solid #ebebeb;}
+.board_img > img{width:100%;}
 /* 게시판 제목 */
 .board_list_table .board_tit{text-align:left; vertical-align:middle;}
 .board_list_table .board_tit strong{font-weight:normal;}
