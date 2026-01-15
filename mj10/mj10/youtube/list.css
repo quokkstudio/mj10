@@ -203,8 +203,8 @@
 .yt-modal-close,
 .mj10-youtube .yt-modal-close {
   position: absolute;
-  top: -15px;
-  right: -50px;
+  top: -50px;
+  right: 0;
   width: 34px;
   height: 34px;
   border: none;
