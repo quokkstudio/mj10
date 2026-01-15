@@ -459,6 +459,24 @@
     .mj10-company-ceo__timeline-gallery.is-col4{
       grid-template-columns:repeat(2, minmax(0, 1fr));
     }
+    .mj10-company-ceo__timeline-gallery.is-swipe{
+      max-width:none;
+    }
+    .mj10-company-ceo__timeline-gallery.is-swipe .slick-track{
+      display:flex;
+      align-items:center;
+    }
+    .mj10-company-ceo__timeline-gallery.is-swipe .slick-slide{
+      width:auto !important;
+    }
+    .mj10-company-ceo__timeline-gallery.is-swipe .mj10-company-ceo__timeline-figure{
+      margin-right:12px;
+    }
+    .mj10-company-ceo__timeline-media img,
+    .mj10-company-ceo__timeline-figure img{
+      height:170px;
+      width:auto;
+    }
     .mj10-company-ceo__timeline-figure img{
       border-radius:10px;
     }
@@ -915,6 +933,43 @@
         });
       });
     }
+
+    var initTimelineSwipe = function(){
+      if (!window.jQuery || !window.jQuery.fn || !window.jQuery.fn.slick) return;
+      var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+      var $galleries = window.jQuery('.mj10-company-ceo__timeline-gallery');
+      if (!$galleries.length) return;
+
+      if (isMobile) {
+        $galleries.each(function(){
+          var $el = window.jQuery(this);
+          if ($el.hasClass('slick-initialized')) return;
+          $el.addClass('is-swipe');
+          $el.slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: false,
+            arrows: false,
+            dots: false,
+            swipeToSlide: true,
+            variableWidth: true,
+            touchThreshold: 8,
+            speed: 300
+          });
+        });
+      } else {
+        $galleries.each(function(){
+          var $el = window.jQuery(this);
+          if ($el.hasClass('slick-initialized')) {
+            $el.slick('unslick');
+          }
+          $el.removeClass('is-swipe');
+        });
+      }
+    };
+
+    window.addEventListener('load', initTimelineSwipe);
+    window.addEventListener('resize', initTimelineSwipe);
 
   })();
 </script>
