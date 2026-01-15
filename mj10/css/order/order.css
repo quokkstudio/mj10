@@ -412,6 +412,9 @@ th > .important{margin: 0 0 0 -10px; padding:0 0 0 10px; background:url('../../i
         font-weight:600;
         min-width:70px;
     }
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td.td_delivery{
+        white-space:nowrap;
+    }
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout .pick_add_cont{
         display:flex;
         align-items:flex-start;
