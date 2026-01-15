@@ -462,6 +462,24 @@
     height:auto !important;
     display:block;
   }
+  .board_bd_recipe0 .board_list_gallery ul{
+    display:flex;
+    flex-wrap:nowrap;
+    gap:16px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    float:none;
+    width:100%;
+    padding:0 20px 10px;
+    box-sizing:border-box;
+  }
+  .board_bd_recipe0 .board_list_gallery ul li{
+    flex:0 0 66.666%;
+    width:66.666% !important;
+    scroll-snap-align:start;
+    margin:0;
+  }
   .main_goods_cont .goods_list_cont > ul:not(.slick-initialized),
   .main_goods_cont .item_slide_horizontal > ul:not(.slick-initialized){
     display:flex;
