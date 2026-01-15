@@ -565,6 +565,9 @@
     position:relative;
     padding:0;
   }
+  .join_base_wrap .member_tit ol{
+    display:none;
+  }
   .join_base_wrap .member_cont[data-intro-open="true"]{
     min-height:0;
   }
