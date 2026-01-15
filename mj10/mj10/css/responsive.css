@@ -568,6 +568,37 @@
   .join_base_wrap .member_tit ol{
     display:none;
   }
+  .mj10-mypage-mobile-nav{
+    display:block;
+    margin:20px 0 30px;
+  }
+  .mj10-mypage-mobile-nav__list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:10px;
+  }
+  .mj10-mypage-mobile-nav__item a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:44px;
+    padding:10px 12px;
+    border:1px solid #e5e5e5;
+    border-radius:8px;
+    background:#ffffff;
+    font-size:13px;
+    text-align:center;
+    box-sizing:border-box;
+  }
+  .mypage_order_info,
+  .mypage_lately_info,
+  .mypage_lately_goods,
+  .sub_content .side_cont{
+    display:none;
+  }
   .join_base_wrap .member_cont[data-intro-open="true"]{
     min-height:0;
   }
