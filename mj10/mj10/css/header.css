@@ -350,7 +350,7 @@ body.cn-stuck .cn-navbar{
   top: 0;
   left: 0;
   right: 0;
-  padding: 10px 0;
+  padding: 0;
   width: 100%;
   box-sizing: border-box;
 }
@@ -478,7 +478,7 @@ body.cn-stuck #container{
 .cn-gnb-nav:focus-visible{ outline:none; box-shadow: var(--cn-focus); }
 
 .cn-allcat{
-  height: 40px;
+  height: 55px;
   color: black;
   cursor:pointer;
   display:flex;
