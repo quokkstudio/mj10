@@ -3,7 +3,8 @@
 
 
 #container{margin-top:-1px;}
-#contents .sub_content{width:100%; margin:0; padding:0;}/* 메인 */
+#contents .sub_content{width:100%; margin:0; padding:0; max-width:none;}/* 메인 */
+#contents .sub_content .content{max-width:none;}
 .main_visual{
   position:relative;
   overflow:hidden;
