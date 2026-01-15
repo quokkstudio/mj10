@@ -357,6 +357,8 @@ body.cn-stuck .cn-navbar{
 /* fixed 상태 카테고리: 여백 + 가운데 정렬 */
 .cn-navbar.cn-fixed .cn-container{
   justify-items:center;
+  grid-template-columns: 220px minmax(280px, 650px) 1fr;
+
 }
 .cn-navbar.cn-fixed .cn-allcat{
   justify-content:center;
@@ -388,7 +390,7 @@ body.cn-stuck #container{
 .cn-navbar .cn-container{
   height:100%;
   display:grid;
-  grid-template-columns: 220px minmax(280px, 650px) 1fr;
+  grid-template-columns: 220px minmax(280px, 700px) 1fr;
   align-items:center;
   gap: 12px;
 }
@@ -457,6 +459,7 @@ body.cn-stuck #container{
   align-items:center;
   gap: 8px;
   overflow:hidden;
+  width:100%;
 }
 .cn-gnb-nav{
   flex:0 0 auto;
@@ -530,13 +533,13 @@ body.cn-stuck #container{
 .cn-gnb .sub_menu0,
 .cn-gnb .depth0,
 .cn-gnb .gnb_menu0{
+  justify-content: space-between!important;
   display:flex !important;
   align-items:center;
   flex-wrap:nowrap;
-  gap:40px;
   margin:0 !important;
   padding:0 !important;
-  width:auto !important;
+  width:100%;
 }
 .cn-gnb .sub_menu0 > li,
 .cn-gnb .depth0 > li,
