@@ -371,4 +371,44 @@ th > .important{margin: 0 0 0 -10px; padding:0 0 0 10px; background:url('../../i
         max-width:100%;
         box-sizing:border-box;
     }
+    .order_wrap .cart_cont_list .order_table_type{
+        overflow-x:visible;
+    }
+    .order_wrap .cart_cont_list .order_table_type table,
+    .order_wrap .cart_cont_list .order_table_type thead,
+    .order_wrap .cart_cont_list .order_table_type tbody,
+    .order_wrap .cart_cont_list .order_table_type tr,
+    .order_wrap .cart_cont_list .order_table_type td{
+        display:block;
+        width:100%;
+    }
+    .order_wrap .cart_cont_list .order_table_type thead{
+        display:none;
+    }
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout{
+        padding:12px 0;
+        border-bottom:1px solid #dbdbdb;
+    }
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td{
+        padding:6px 0;
+        border-bottom:0;
+        text-align:left;
+    }
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td.td_left{
+        padding-bottom:10px;
+    }
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:not(.td_left){
+        display:flex;
+        justify-content:space-between;
+        gap:12px;
+    }
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:nth-child(2)::before{content:"수량";}
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:nth-child(3)::before{content:"상품금액";}
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:nth-child(4)::before{content:"할인/적립";}
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:nth-child(5)::before{content:"합계금액";}
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:nth-child(6)::before{content:"배송비";}
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:not(.td_left)::before{
+        color:#555;
+        font-weight:600;
+    }
 }
