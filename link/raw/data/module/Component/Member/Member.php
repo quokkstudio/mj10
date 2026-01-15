@@ -42,7 +42,7 @@ class Member extends \Bundle\Component\Member\Member
     }
 
     // ✅ MemberVO 타입힌트 제거(네임스페이스 불일치/존재 문제 방지)
-    protected function forceBusinessPending(int $memNo, $memberVO): void
+    protected function forceBusinessPending(int $memNo, $memberVO)
     {
         $arrUpdate = [
             'appFl = ?',

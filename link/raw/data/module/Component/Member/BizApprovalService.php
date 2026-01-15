@@ -76,7 +76,7 @@ class BizApprovalService extends \Bundle\Component\Member\BizApprovalService
         return $rows ? $rows[0] : [];
     }
 
-    public function saveProfileFromJoin(int $memNo, array $params, array $memberData = []): void
+    public function saveProfileFromJoin(int $memNo, array $params, array $memberData = [])
     {
         $companyName = gd_isset($params['company']);
         if ($companyName === '' && !empty($memberData)) {
@@ -159,7 +159,7 @@ class BizApprovalService extends \Bundle\Component\Member\BizApprovalService
         return $uploadedPaths;
     }
 
-    public function deletePhotosByMemNo(int $memNo): void
+    public function deletePhotosByMemNo(int $memNo)
     {
         $photos = $this->getPhotos($memNo);
         if (!empty($photos)) {
@@ -167,7 +167,7 @@ class BizApprovalService extends \Bundle\Component\Member\BizApprovalService
         }
     }
 
-    public function deleteFiles(array $paths): void
+    public function deleteFiles(array $paths)
     {
         foreach ($paths as $path) {
             if (!empty($path)) {
@@ -176,7 +176,7 @@ class BizApprovalService extends \Bundle\Component\Member\BizApprovalService
         }
     }
 
-    protected function deletePhotoRows(array $photos): void
+    protected function deletePhotoRows(array $photos)
     {
         foreach ($photos as $photo) {
             if (!empty($photo['storagePath'])) {
@@ -190,7 +190,7 @@ class BizApprovalService extends \Bundle\Component\Member\BizApprovalService
         }
     }
 
-    public function updateApprovalStatus(array $memNos, string $status, string $managerId, string $reason = ''): void
+    public function updateApprovalStatus(array $memNos, string $status, string $managerId, string $reason = '')
     {
         $now = date('Y-m-d H:i:s');
         foreach ($memNos as $memNo) {
@@ -236,7 +236,7 @@ class BizApprovalService extends \Bundle\Component\Member\BizApprovalService
         }
     }
 
-    protected function upsertProfile(array $data): void
+    protected function upsertProfile(array $data)
     {
         $memNo = (int)$data['memNo'];
         $exists = $this->getProfile($memNo);
@@ -281,7 +281,7 @@ class BizApprovalService extends \Bundle\Component\Member\BizApprovalService
         }
     }
 
-    protected function insertPhotoRow(int $memNo, int $sortNo, array $file, array $result): void
+    protected function insertPhotoRow(int $memNo, int $sortNo, array $file, array $result)
     {
         $saveFileNm = $result['saveFileNm'] ?? '';
         $uploadFileNm = $result['uploadFileNm'] ?? ($file['name'] ?? '');
@@ -326,7 +326,7 @@ class BizApprovalService extends \Bundle\Component\Member\BizApprovalService
         }
     }
 
-    protected function logDbError(string $context, array $data, \Throwable $e): void
+    protected function logDbError(string $context, array $data, \Throwable $e)
     {
         \Logger::error('BizApprovalService DB error: ' . $context, [
             'message' => $e->getMessage(),
@@ -350,7 +350,7 @@ class BizApprovalService extends \Bundle\Component\Member\BizApprovalService
         }
     }
 
-    public function updateAdminMemo(int $memNo, string $memo): void
+    public function updateAdminMemo(int $memNo, string $memo)
     {
         $arrUpdate = [
             'adminMemo = ?',
@@ -534,7 +534,7 @@ class BizApprovalService extends \Bundle\Component\Member\BizApprovalService
         return $normalized;
     }
 
-    protected function validateUploadFile(array $file): void
+    protected function validateUploadFile(array $file)
     {
         if (!isset($file['tmp_name']) || Validator::validateIncludeEval($file['tmp_name']) === false) {
             throw new \Exception(__('업로드 할 수 없는 파일입니다.'));
