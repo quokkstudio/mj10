@@ -249,7 +249,7 @@
                                 <!--{ ? ...goodsDeliveryFl === 'y' }-->
                                 <!--{ ? ...index_ == '0' }-->
                                 <td class="td_delivery" rowspan="{=setDeliveryInfo[..key_]['goodsLineCnt']}">
-                                    {=setDeliveryInfo[..key_]['goodsDeliveryMethod']}<br/>
+                                    {=setDeliveryInfo[..key_]['goodsDeliveryMethod']}
                                     <!--{ ? setDeliveryInfo[..key_]['fixFl'] === 'free' }-->
                                     {=__('무료배송')}
                                     <!--{ : }-->
@@ -274,7 +274,6 @@
                                     <!--{ / }-->
 
                                     <!--{ ? empty(setDeliveryInfo[..key_]['goodsDeliveryMethodFlText']) === false }-->
-                                    <br />
                                     ({setDeliveryInfo[..key_]['goodsDeliveryMethodFlText']}-<!--{ ? setDeliveryInfo[..key_]['goodsDeliveryCollectFl'] === 'later' && empty(setDeliveryInfo[..key_]['goodsDeliveryCollectPrice']) === false }-->{=__('착불')}<!--{ : }-->{=__('선결제')}<!--{ / }-->)
                                     <!--{ / }-->
                                 </td>
@@ -283,7 +282,7 @@
                                 <!--{ ? ...sameGoodsDeliveryFl === 'y' }-->
                                 <!--{ ? ...equalGoodsNo === true }-->
                                 <td class="td_delivery" rowspan="{=setDeliveryInfo[..key_][...goodsNo]['goodsLineCnt']}">
-                                    {=setDeliveryInfo[..key_][...goodsNo]['goodsDeliveryMethod']}<br/>
+                                    {=setDeliveryInfo[..key_][...goodsNo]['goodsDeliveryMethod']}
                                     <!--{ ? setDeliveryInfo[..key_][...goodsNo]['fixFl'] === 'free' }-->
                                     {=__('무료배송')}
                                     <!--{ : }-->
@@ -308,14 +307,13 @@
                                     <!--{ / }-->
 
                                     <!--{ ? empty(setDeliveryInfo[..key_][...goodsNo]['goodsDeliveryMethodFlText']) === false }-->
-                                    <br/>
                                     ({setDeliveryInfo[..key_][...goodsNo]['goodsDeliveryMethodFlText']}-<!--{ ? setDeliveryInfo[..key_][...goodsNo]['goodsDeliveryCollectFl'] === 'later' && empty(setDeliveryInfo[..key_][...goodsNo]['goodsDeliveryCollectPrice']) === false }-->{=__('착불')}<!--{ : }-->{=__('선결제')}<!--{ / }-->)
                                     <!--{ / }-->
                                 </td>
                                 <!--{ / }-->
                                 <!--{ : }-->
                                 <td class="td_delivery">
-                                    {=...goodsDeliveryMethod}<br/>
+                                    {=...goodsDeliveryMethod}
                                     <!--{ ? ...goodsDeliveryFixFl === 'free' }-->
                                     {=__('무료배송')}
                                     <!--{ : }-->
@@ -340,7 +338,6 @@
                                     <!--{ / }-->
 
                                     <!--{ ? empty(...goodsDeliveryMethodFlText) === false }-->
-                                    <br />
                                     ({...goodsDeliveryMethodFlText}-<!--{ ? ...goodsDeliveryCollectFl === 'later' && empty(...price['goodsDeliveryCollectPrice']) === false }-->{=__('착불')}<!--{ : }-->{=__('선결제')}<!--{ / }-->)
                                     <!--{ / }-->
                                 </td>
