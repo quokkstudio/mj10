@@ -353,7 +353,7 @@ th > .important{margin: 0 0 0 -10px; padding:0 0 0 10px; background:url('../../i
         -webkit-overflow-scrolling:touch;
     }
     .order_table_type table{
-        min-width:720px;
+        min-width:0;
     }
     .order_table_type th,
     .order_table_type td{
@@ -399,7 +399,7 @@ th > .important{margin: 0 0 0 -10px; padding:0 0 0 10px; background:url('../../i
     }
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:not(.td_left){
         display:flex;
-        justify-content:space-between;
+        justify-content:flex-start;
         gap:12px;
     }
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:nth-child(2)::before{content:"수량";}
