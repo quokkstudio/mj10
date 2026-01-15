@@ -241,16 +241,20 @@
 .mj10-video-banner{
   position:relative;
   max-width:100%;
+  display:flex;
+  flex-direction:column;
 }
 .mj10-video-banner img{
   display:block;
   width:100%;
   height:auto;
   object-fit:contain;
+  margin-bottom:30px;
 }
 .mj10-video-frame{
   width:100%;
   aspect-ratio:2 / 1;
+  height:100%;
 }
 .mj10-video-frame iframe{
   width:100%;
@@ -259,13 +263,10 @@
   border:0;
 }
 .mj10-video-pager{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:var(--mj10-pager-offset);
+  position:static;
   display:flex;
   gap:6px;
-  width:var(--mj10-banner-width);
+  width:100%;
   justify-content:flex-start;
   z-index:2;
 }
