@@ -465,6 +465,9 @@
   .goods_list_item_tit + .list_item_category{
     margin-top:0;
   }
+  .list_item_category li{
+    font-size:12px;
+  }
   .board_bd_recipe0 .board_list_gallery ul{
     display:flex;
     flex-wrap:nowrap;
