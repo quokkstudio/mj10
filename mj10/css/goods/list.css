@@ -29,8 +29,8 @@
 
 .item_photo_box{display:inline-block !important; overflow:hidden; position:relative; text-align:center; border:0; vertical-align:middle; width:100%;}
 .item_photo_box a{display:block; height:100%; width:100%;}
-.item_photo_box a > img{width:100%; transition:transform .2s ease;}
-.item_photo_box:hover a > img{transform:scale(1.06);}
+.item_photo_box a > img{width:100%; transition:transform .3s ease;}
+.item_photo_box:hover a > img{transform:scale(1.08);}
 .item_photo_box .item_soldout_bg{display:none; position:absolute; top:0px; left:0px; width:100%; height:100%; text-align:center;
     background-color:#ffffff;
     filter:alpha(opacity=60);
