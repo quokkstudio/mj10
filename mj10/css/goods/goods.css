@@ -305,7 +305,7 @@
 .list_item_category{margin:0 0 40px 0; padding:3px 0 3px 0; border:0;}
 .list_item_category ul{display:flex; width:100%; gap:50px; padding:0; font-size:0;}
 .list_item_category li{display:inline-block; width:auto; font-size:12px; text-align:center; vertical-align:middle;}
-.list_item_category li a{display:block; padding:10px 10px 10px 10px; color:#414141; text-align:left;}
+.list_item_category li a{display:block; padding:10px 10px 10px 0; color:#414141; text-align:left;}
 .list_item_category li a img{max-width:100%; max-height:20px;}
 .list_item_category li a:hover{text-decoration:underline;}
 .list_item_category li em{color:#777;}
