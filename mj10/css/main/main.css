@@ -398,13 +398,13 @@
 }
 
 /* best goods alignment + slide image fit */
-.body-main .main_wrap_1 .goods_list_tit h3{ text-align:left; }
-.body-main .main_wrap_1 .item_cont,
-.body-main .main_wrap_1 .item_info_cont,
-.body-main .main_wrap_1 .item_tit_box,
-.body-main .main_wrap_1 .item_money_box,
-.body-main .main_wrap_1 .item_number_box,
-.body-main .main_wrap_1 .item_icon_box{
+.body-main .goods_list_tit h3{ text-align:left; }
+.body-main .item_cont,
+.body-main .item_info_cont,
+.body-main .item_tit_box,
+.body-main .item_money_box,
+.body-main .item_number_box,
+.body-main .item_icon_box{
   text-align:left !important;
 }
 .body-main .main_wrap_1 .item_slide_horizontal .item_photo_box{
