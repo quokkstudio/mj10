@@ -462,6 +462,9 @@
     height:auto !important;
     display:block;
   }
+  .goods_list_item_tit + .list_item_category{
+    margin-top:0;
+  }
   .board_bd_recipe0 .board_list_gallery ul{
     display:flex;
     flex-wrap:nowrap;
