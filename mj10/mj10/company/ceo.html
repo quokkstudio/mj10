@@ -722,6 +722,14 @@
     var triggerText = function(){
       if (textTriggered || !text) return;
       var vh = window.innerHeight || document.documentElement.clientHeight;
+      var textRect = text.getBoundingClientRect();
+      if (textRect.top < vh * 0.8) {
+        root.classList.add('is-text-in');
+        textTriggered = true;
+        window.removeEventListener('scroll', triggerText);
+        window.removeEventListener('resize', triggerText);
+        return;
+      }
       var doc = document.documentElement;
       var maxScroll = Math.max(0, (doc.scrollHeight || 0) - vh);
       var stepPx = Math.round(Math.min(140, Math.max(70, vh * 0.12)));
