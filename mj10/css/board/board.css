@@ -92,7 +92,6 @@
 /* 게시판 이미지 */
 .board_list_table .board_img{overflow:hidden; position:relative; display:inline-block; text-align:center;}
 .board_list_table .board_img a{display:table-cell; height:100%; vertical-align:middle; border:1px solid #ebebeb;}
-.board_img > img{width:100%;}
 /* 게시판 제목 */
 .board_list_table .board_tit{text-align:left; vertical-align:middle;}
 .board_list_table .board_tit strong{font-weight:normal;}
@@ -117,6 +116,7 @@
 /* 게시판 이미지 */
 .board_list_gallery .board_img{overflow:hidden; display:table; position:relative; width:100%; min-height:200px; text-align:center; border:1px solid #ebebeb;}
 .board_list_gallery .board_img a{display:table-cell; height:100%; vertical-align:middle;}
+.board_list_gallery ul li > img{width:100%;}
 .gallery_info_cont{padding:10px 0 0 0; text-align:left;}
 /* 게시판 제목 */
 .gallery_info_cont .board_tit{margin:5px 0 0 0; text-align:left; vertical-align:middle;}
