@@ -269,6 +269,7 @@
   .sub_content{
     width:100%;
     max-width:none;
+    padding:40px 20px 0;
   }
 }
 .sub_content:after{display:block; clear:both; content:"";}
