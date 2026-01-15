@@ -478,7 +478,7 @@ body.cn-stuck #container{
 .cn-gnb-nav:focus-visible{ outline:none; box-shadow: var(--cn-focus); }
 
 .cn-allcat{
-  height: 55px;
+  height: 60px;
   color: black;
   cursor:pointer;
   display:flex;
