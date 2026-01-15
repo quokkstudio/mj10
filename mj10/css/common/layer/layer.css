@@ -230,6 +230,12 @@
 .add_cart_layer .btn_confirm, .add_wish_layer .btn_confirm{min-width:74px; padding:10px 10px 9px 10px; margin:0 0 0 6px; border:1px solid #000000; color:#ffffff; background:#000000; font-weight:bold;}
 .add_cart_layer .btn_confirm:hover, .add_wish_layer .btn_confirm:hover{border:1px solid #000000; background:#000000;}
 
+@media (max-width: 768px){
+  .add_cart_layer, .add_wish_layer{
+    width:100%;
+  }
+}
+
 
 /* ----------------------------------- 레이어 공통 ----------------------------------- */
 .btn_layer{position:relative; display:inline-block;}
