@@ -284,6 +284,7 @@
   grid-row:2;
   justify-content:flex-start;
   z-index:2;
+  margin-top:0;
 }
 .mj10-video-dot{
   width:28px;
