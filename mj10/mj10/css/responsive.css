@@ -645,6 +645,11 @@
     margin:0;
     padding:0;
   }
+  .mj10-join-v2 .base_info_box tr.dn,
+  .mj10-join-v2 .business_info_box tr.dn,
+  .mj10-join-v2 .addition_info_box tr.dn{
+    display:none !important;
+  }
   .join_base_wrap tr{
     display:block !important;
     margin:0;
