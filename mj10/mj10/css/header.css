@@ -570,8 +570,9 @@ body.cn-stuck #container{
 .cn-gnb .sub_menu0 > li > a,
 .cn-gnb .depth0 > li > a,
 .cn-gnb .gnb_menu0 > li > a{
-  font-size:14px;
+  font-size:16px;
   color:#111;
+  font-weight:500;
   padding: 6px 10px;
   border-radius:8px;
   display:inline-flex;
