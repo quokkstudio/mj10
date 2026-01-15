@@ -229,9 +229,9 @@
   min-height:var(--mj10-video-height);
 }
 .mj10-video-slide{
-  display:flex;
+  display:grid;
+  grid-template-columns: 40% 60%;
   align-items:stretch;
-  justify-content:space-between;
   gap:0;
   position:absolute;
   left:0;
@@ -249,8 +249,6 @@
   pointer-events:auto;
 }
 .mj10-video-banner{
-  flex:0 0 var(--mj10-banner-width);
-  max-width:var(--mj10-banner-width);
   position:relative;
   height:100%;
 }
@@ -261,8 +259,6 @@
   object-fit:cover;
 }
 .mj10-video-frame{
-  flex:0 0 60%;
-  max-width:60%;
   height:100%;
 }
 .mj10-video-frame iframe{
