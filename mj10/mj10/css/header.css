@@ -785,7 +785,7 @@ body.cn-stuck #container{
   }
   .cn-mega-grid .depth0 > li > a,
   .cn-mega-grid .gnb_menu0 > li > a{
-    padding:10px 5px;
+    padding:10px 10px;
     margin:0 0 12px;
     border-bottom:1px solid #e5e5e5;
     font-size:15px;
@@ -800,7 +800,7 @@ body.cn-stuck #container{
     padding:0;
   }
   .cn-mega-grid .depth1 > li > a{
-    padding:6px 5px;
+    padding:6px 10px;
     font-size:13px;
     white-space:normal;
   }
