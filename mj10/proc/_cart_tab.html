@@ -288,7 +288,13 @@
                 <div class="option_total_box">
                     <!--{ ?goodsView['orderPossible'] == 'n' }-->
                     <div class="btn_cart_box">
+                        <!--{ ? (goodsView['salesStartYmd'] != '0000-00-00 00:00:00' && goodsView['salesStartYmd'] && goodsView['salesStartYmd'] > date('Y-m-d H:i:s')) }-->
+                        <button type="button" class="btn_shop_soldout" aria-disabled="true">{=__('판매 예정')}</button>
+                        <!--{ : (goodsView['soldOutFl'] == 'y' || (goodsView['stockFl'] == 'y' && goodsView['stockCnt'] == '0')) }-->
+                        <button type="button" class="btn_shop_soldout" aria-disabled="true">{=__('품절')}</button>
+                        <!--{ : }-->
                         <button type="button" class="btn_shop_soldout js-biz-join" data-join-url="/member/join_agreement.php" aria-disabled="true">{=__('사업자 회원만 구매가능')}</button>
+                        <!--{ / }-->
                     </div>
                     <!--{ : }-->
                     <div>

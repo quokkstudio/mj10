@@ -1715,7 +1715,7 @@
                         </dl>
                         <!--{ / }-->
                         <!--{ : 'salesStartYmd' }-->
-                        <!--{ ? (goodsView['salesStartYmd'] != '0000-00-00 00:00:00' && goodsView['salesStartYmd']) || (goodsView['salesEndYmd'] != '0000-00-00 00:00:00' && goodsView['salesEndYmd']) }-->
+                        <!--{ ? false && ((goodsView['salesStartYmd'] != '0000-00-00 00:00:00' && goodsView['salesStartYmd']) || (goodsView['salesEndYmd'] != '0000-00-00 00:00:00' && goodsView['salesEndYmd'])) }-->
                         <dl>
                             <dt>{=__(displayDefaultField[.value_])}</dt>
                             <dd>
@@ -1917,7 +1917,13 @@
                         <!--{ ?goodsView['restockUsableFl'] === 'y' && !gGlobal.isFront }-->
                         <button type="button" class="btn_restock_notice_v2 restockSelector">{=__('재입고알림')}</button>
                         <!--{ / }-->
+                        <!--{ ? (goodsView['salesStartYmd'] != '0000-00-00 00:00:00' && goodsView['salesStartYmd'] && goodsView['salesStartYmd'] > date('Y-m-d H:i:s')) }-->
+                        <button type="button" class="btn_add_soldout" aria-disabled="true">{=__('판매 예정')}</button>
+                        <!--{ : (goodsView['soldOutFl'] == 'y' || (goodsView['stockFl'] == 'y' && goodsView['stockCnt'] == '0')) }-->
+                        <button type="button" class="btn_add_soldout" aria-disabled="true">{=__('품절')}</button>
+                        <!--{ : }-->
                         <button type="button" class="btn_add_soldout js-biz-join" data-join-url="/member/join_agreement.php" aria-disabled="true">{=__('사업자 회원만 구매가능')}</button>
+                        <!--{ / }-->
                     </div>
                     <!--{ : }-->
                     <!--{ ? goodsView['optionFl'] == 'y' }-->
