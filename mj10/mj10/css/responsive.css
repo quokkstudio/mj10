@@ -538,6 +538,9 @@
     flex:1 1 auto;
     max-width:100%;
   }
+  .mj10-video-frame iframe{
+    aspect-ratio:16 / 9;
+  }
   .mj10-video-pager{
     position:static;
     width:100%;
