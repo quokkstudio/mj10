@@ -527,11 +527,18 @@
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
     gap:8px;
-    padding:0 16px;
+    padding:0;
   }
   .list_item_category li{
     width:auto;
     flex:0 0 auto;
+  }
+  .goods_list_item_tit{
+    margin:0;
+  }
+  .list_item_category{
+    border:0;
+    border-top:0;
   }
 
   .content .location_wrap + .goods_list_item .goods_pick_list{
