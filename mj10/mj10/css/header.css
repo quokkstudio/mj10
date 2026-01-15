@@ -756,16 +756,15 @@ body.cn-stuck #container{
 
 @media (min-width: 769px){
   .cn-mega{
-    width:100%;
+    width:1400px;
     max-width:none;
-    left:0 !important;
-    right:0;
-    border-left:0;
-    border-right:0;
+    left:50% !important;
+    right:auto;
+    transform:translateX(-50%);
   }
   .cn-mega .cn-container{
-    width:1400px;
-    margin:0 auto;
+    width:100%;
+    margin:0;
     padding:24px 0 28px;
   }
   .cn-mega-grid{
