@@ -375,7 +375,8 @@ img[src*="icon_join_step_on.png"]{filter: grayscale(1) brightness(0);}
 .ly_dev_wrap .ly_btn span.on{position:relative;color:#fff;background-color:#2a2a2a;border:1px solid #2a2a2a;}
 
 /* 배송비 */
-.item_delivery dd strong{padding:0 5px 5px 0; font-weight:normal;}
+.item_delivery dd strong{padding:0; font-weight:normal;}
+.item_delivery dd .delivery-price{padding:0; font-weight:normal;}
 .item_delivery select{width:55%;}
 .item_delivery .chosen-container{display:inline-block; margin:5px 0 0 0;}
 .item_delivery .delivery-detail .delivery-division { display: inline-block; height: 30px; line-height: 30px; vertical-align: bottom; }

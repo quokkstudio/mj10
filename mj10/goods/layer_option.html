@@ -67,14 +67,14 @@
                             <dd>
                                 <!--{ ? goodsView['multipleDeliveryFl'] === true }-->
                                 <!--{ ? gd_isset(goodsView['delivery']['basic']['fixFl']) == 'fixed'  }-->
-                                <strong>{=gd_global_currency_symbol()}{=gd_global_money_format(goodsView['delivery']['firstCharge']['0']['price'])}{=gd_global_currency_string()}</strong>
+                                <span class="delivery-price">{=gd_global_currency_symbol()}{=gd_global_money_format(goodsView['delivery']['firstCharge']['0']['price'])}{=gd_global_currency_string()}</span>
                                 <!--{ ? addGlobalCurrency }-->
-                                <strong>{=gd_global_add_currency_display(goodsView['delivery']['firstCharge']['0']['price'])}</strong>
+                                <span class="delivery-price">{=gd_global_add_currency_display(goodsView['delivery']['firstCharge']['0']['price'])}</span>
                                 <!--{ / }-->
                                 <!--{ : }-->
-                                <strong>{=gd_global_currency_symbol()}{=gd_global_money_format(goodsView['delivery']['firstCharge'][goodsView['selectedDeliveryPrice']]['price'])}{=gd_global_currency_string()}</strong>
+                                <span class="delivery-price">{=gd_global_currency_symbol()}{=gd_global_money_format(goodsView['delivery']['firstCharge'][goodsView['selectedDeliveryPrice']]['price'])}{=gd_global_currency_string()}</span>
                                 <!--{ ? addGlobalCurrency }-->
-                                <strong>{=gd_global_add_currency_display(goodsView['delivery']['firstCharge'][goodsView['selectedDeliveryPrice']]['price'])}</strong>
+                                <span class="delivery-price">{=gd_global_add_currency_display(goodsView['delivery']['firstCharge'][goodsView['selectedDeliveryPrice']]['price'])}</span>
                                 <!--{ / }-->
                                 <!--{ / }-->
                                 <div class="btn_layer">
@@ -512,7 +512,7 @@
                             <!--{ ? count(goodsView['delivery']['basic']['deliveryMethodFlData']) == 1  }-->
                             <!--{ @ goodsView['delivery']['basic']['deliveryMethodFlData'] }-->
                             <input type="hidden" name="deliveryMethodFl" value="{.key_}" />
-                            <div class="delivery-division">{.value_}</div>
+                            <div class="delivery-division">({.value_})</div>
                             <!--{ / }-->
                             <!--{ : }-->
                             <select class="js-deliveryMethodFl chosen-select" name="deliveryMethodFl" style="min-width: 100px; width: 100px; max-width: 480px;">

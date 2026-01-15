@@ -152,6 +152,9 @@
   width:calc(100% - 140px);
   margin:-2px 0 0;
   padding:0 0 0 4px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
   font-size:18px;
   color:#000000;
   font-weight:400;
