@@ -252,12 +252,13 @@
   position:relative;
   display:flex;
   flex-direction:column;
-  gap:370px;
+  height:371px;
+  justify-content:space-between;
 }
 .mj10-video-banner img{
   display:block;
   width:100%;
-  height:100%;
+  height:auto;
   object-fit:cover;
 }
 .mj10-video-frame{
@@ -272,13 +273,10 @@
   border:0;
 }
 .mj10-video-pager{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:var(--mj10-pager-offset);
+  position:static;
   display:flex;
   gap:6px;
-  width:var(--mj10-banner-width);
+  width:100%;
   justify-content:flex-start;
   z-index:2;
 }
