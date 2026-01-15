@@ -339,3 +339,36 @@ th > .important{margin: 0 0 0 -10px; padding:0 0 0 10px; background:url('../../i
 .pay_with_list ul li{display:block; padding:2px 0 2px 0;}
 .pay_with_list .deposit_money{}
 
+@media (max-width: 768px){
+    .order_wrap .order_tit h2,
+    .order_wrap .order_tit ol{
+        float:none;
+        display:block;
+        text-align:left;
+        line-height:1.6;
+    }
+    .order_table_type{
+        width:100%;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+    }
+    .order_table_type table{
+        min-width:720px;
+    }
+    .order_table_type th,
+    .order_table_type td{
+        white-space:nowrap;
+    }
+    .order_table_type .table_left th,
+    .order_table_type .table_left td{
+        white-space:normal;
+    }
+    .order_cont input[type="text"],
+    .order_cont input[type="password"],
+    .order_cont select,
+    .order_cont textarea{
+        width:100%;
+        max-width:100%;
+        box-sizing:border-box;
+    }
+}
