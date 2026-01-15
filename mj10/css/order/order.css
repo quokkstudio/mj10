@@ -386,8 +386,8 @@ th > .important{margin: 0 0 0 -10px; padding:0 0 0 10px; background:url('../../i
         display:none;
     }
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout{
-        padding:12px 0;
-        border-bottom:1px solid #dbdbdb;
+        padding:16px 0;
+        border-bottom:1px solid #e6e6e6;
     }
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td{
         padding:6px 0;
@@ -395,12 +395,12 @@ th > .important{margin: 0 0 0 -10px; padding:0 0 0 10px; background:url('../../i
         text-align:left;
     }
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td.td_left{
-        padding-bottom:10px;
+        padding-bottom:12px;
     }
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:not(.td_left){
         display:flex;
         justify-content:flex-start;
-        gap:12px;
+        gap:10px;
     }
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:nth-child(2)::before{content:"수량";}
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:nth-child(3)::before{content:"상품금액";}
@@ -408,7 +408,34 @@ th > .important{margin: 0 0 0 -10px; padding:0 0 0 10px; background:url('../../i
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:nth-child(5)::before{content:"합계금액";}
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:nth-child(6)::before{content:"배송비";}
     .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout td:not(.td_left)::before{
-        color:#555;
+        color:#666;
         font-weight:600;
+        min-width:70px;
+    }
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout .pick_add_cont{
+        display:flex;
+        align-items:flex-start;
+        gap:12px;
+    }
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout .pick_add_img{
+        width:64px;
+        flex:0 0 64px;
+    }
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout .pick_add_img img{
+        width:64px;
+        height:64px;
+        object-fit:cover;
+        display:block;
+    }
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout .pick_add_info em{
+        display:block;
+        margin:2px 0 8px;
+        font-size:14px;
+        font-weight:700;
+        color:#111;
+    }
+    .order_wrap .cart_cont_list .order_table_type tr.order-goods-layout .pick_add_info .text_type_cont{
+        margin-top:4px;
+        color:#888;
     }
 }
