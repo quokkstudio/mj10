@@ -521,6 +521,18 @@
   .content .location_wrap + .goods_list_item{
     padding:0;
   }
+  .list_item_category ul{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    gap:8px;
+    padding:0 16px;
+  }
+  .list_item_category li{
+    width:auto;
+    flex:0 0 auto;
+  }
 
   .content .location_wrap + .goods_list_item .goods_pick_list{
     display:none;
