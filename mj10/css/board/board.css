@@ -82,7 +82,7 @@
 .board_zone_tit{margin:0 0 10px 0; padding:0 0 10px 0; font-size:16px;}
 .board_zone_cont{}
 .board_zone_sec + .board_zone_cont,
-.board_zone_cont + .board_zone_cont{margin:70px 0 0 0;}
+.board_zone_cont + .board_zone_cont{margin:0;}
 .board_zone_cont + .board_zone_tit{margin:70px 0 30px 0; padding:0 0 20px 0; border-bottom:1px solid #3c3c3c;}
 
 .board_list_table{width:100%; margin:0 0 20px 0; border:0; border-spacing:0; border-collapse:collapse; border-top:1px solid #999999; text-align:center;}
